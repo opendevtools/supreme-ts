@@ -1,16 +1,24 @@
-import commander from 'commander';
+import chalk from 'chalk'
+import meow from 'meow'
+import { react } from './commands/react'
+import { gitignore, jest, prettierrc } from './tools'
 
-const program = new commander.Command();
+const cli = meow(`
+    Usage
+    $ supreme <command>
+`)
 
-program.version('1');
+const { input, flags } = cli
+const [command, name] = input
 
-program
-  .command('create')
-  .alias('c')
-  .description('Create a new app')
-  .option('-a, --app <type>', 'What app setup to use')
-  .action(cmd => {
-    console.log(cmd.app);
-  });
+console.log(chalk.italic.bgRed(` SUPREME `))
 
-program.parse(process.argv);
+switch (command) {
+  case 'react':
+    react({ name, flags })
+    break
+  default:
+    gitignore()
+    prettierrc()
+    jest()
+}
