@@ -13,6 +13,7 @@ build
 dist
 lib/bs
 lib/js
+test-folder
 
 # Dependency directories
 node_modules

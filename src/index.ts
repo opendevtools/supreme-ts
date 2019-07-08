@@ -1,7 +1,7 @@
 import chalk from 'chalk'
 import meow from 'meow'
 import { react } from './commands/react'
-import { gitignore, jest, prettierrc } from './tools'
+import { gitignore, nvmrc, jest, prettierrc } from './tools'
 
 const cli = meow(`
     Usage
@@ -11,7 +11,7 @@ const cli = meow(`
 const { input, flags } = cli
 const [command, name] = input
 
-console.log(chalk.italic.bgRed(` SUPREME `))
+console.log(chalk.italic.bgRed(` SUPREME \n`))
 
 switch (command) {
   case 'react':
@@ -21,4 +21,5 @@ switch (command) {
     gitignore()
     prettierrc()
     jest()
+    nvmrc()
 }

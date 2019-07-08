@@ -4,31 +4,44 @@ import pjson from 'pjson'
 import fs from 'fs'
 import path from 'path'
 import util from 'util'
+import ejs from 'ejs'
 
 const writeFile = util.promisify(fs.writeFile)
-const readFile = util.promisify(fs.readFile)
 
-export const create = async (templateName: string, output: string) => {
+export const create = async (
+  templateName: string,
+  output: string,
+  templateData: { [key: string]: string } = {}
+) => {
   try {
-    const template = await readFile(
-      path.resolve(`src/templates/${templateName}`),
-      'utf-8'
+    const template = await ejs.renderFile(
+      path.join(__dirname, `../src/templates/${templateName}.ejs`),
+      templateData
     )
 
-    await writeFile(output, template, { flag: 'wx' })
+    await writeFile(path.join(process.cwd(), output), template, { flag: 'wx' })
 
     console.log(`Created ${chalk.green(output)}`)
   } catch (e) {
-    console.log(`\nFile already exists ${chalk.yellow(output)}`)
+    switch (e.code) {
+      case 'EEXIST':
+        console.error(`File already exists ${chalk.yellow(output)}`)
+        break
+      default:
+        console.error('Something went wrong', e)
+    }
   }
 }
 
-export const pkg = async (packageName: string) => {
-  const hasPkg =
+export const hasPkg = (packageName: string) => {
+  return (
     (pjson.dependencies && pjson.dependencies.hasOwnProperty(packageName)) ||
     (pjson.devDependencies && pjson.devDependencies.hasOwnProperty(packageName))
+  )
+}
 
-  if (!hasPkg) {
+export const pkg = async (packageName: string) => {
+  if (!hasPkg(packageName)) {
     console.log(`Installing ${chalk.blue(packageName)}`)
     await execa('npm', ['install', '--save-dev', packageName])
   }
