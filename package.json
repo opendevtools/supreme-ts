@@ -3,12 +3,14 @@
   "version": "0.1.3",
   "main": "bin/supreme",
   "bin": "bin/supreme",
+  "description": "A CLI tool that helps you get up an running fast",
   "preferGlobal": true,
   "publishConfig": {
     "access": "public"
   },
   "files": [
-    "dist"
+    "/dist",
+    "/src"
   ],
   "scripts": {
     "start": "tsdx watch",
