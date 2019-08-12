@@ -1,14 +1,8 @@
 import execa from 'execa'
 import chalk from 'chalk'
+import { CLIProps } from '../'
 
-interface ReactProps {
-  name?: string
-  flags: {
-    [name: string]: string
-  }
-}
-
-export const react = async ({ name, flags }: ReactProps) => {
+export const react = async ({ name, flags }: CLIProps) => {
   console.log(`Creating app ${chalk.blue(name || '')}`)
 
   // Create app
