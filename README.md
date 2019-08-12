@@ -1,27 +1,46 @@
-# TSDX Bootstrap
+<div align="center">
+  <p>
+    <img alt="Iteam Supreme" src="docs/iteam-supreme.png" width="300" />
+  </p>
+</div>
 
-This project was bootstrapped with [TSDX](https://github.com/jaredpalmer/tsdx).
+Use this tool to get up and running fast with configs and more in your project.
+The tool currently supports creating React apps (using [`create-react-app`](https://facebook.github.io/create-react-app)) and [ReasonReact](https://reasonml.github.io/reason-react/) apps. It can also create some basic configs in your project.
 
-## Local Development
+Built with ❤️ by [@Jimjardland](https://github.com/Jimjardland) and [@believer](https://github.com/believer).
 
-Below is a list of commands you will probably find useful.
+## commands
 
-### `npm start` or `yarn start`
+`supreme`
 
-Runs the project in development/watch mode. Your project will be rebuilt upon changes. TSDX has a special logger for you convenience. Error messages are pretty printed and formatted for compatibility VS Code's Problems tab.
+- Initializes empty Git repository and adds a `.gitignore`
+- Installs `prettier` and creates config
+- Installs `jest`
+- Creates an `.nvmrc` with the current Node version
 
-<img src="https://user-images.githubusercontent.com/4060187/52168303-574d3a00-26f6-11e9-9f3b-71dbec9ebfcb.gif" width="600" />
+`supreme react <name> [flags]`
 
-Your library will be rebuilt if you make edits.
+Creates a React app using `create-react-app` with the provided name.
 
-### `npm run build` or `yarn build`
+**Supported flags:**
 
-Bundles the package to the `dist` folder.
-The package is optimized and bundled with Rollup into multiple formats (CommonJS, UMD, and ES Module).
+- `--typescript` - create a Typescript React app
 
-<img src="https://user-images.githubusercontent.com/4060187/52168322-a98e5b00-26f6-11e9-8cf6-222d716b75ef.gif" width="600" />
+`supreme reason <name>`
 
-### `npm test` or `yarn test`
+Creates a ReasonReact app using `bsb` and customizes the app with our preferred
+defaults.
 
-Runs the test watcher (Jest) in an interactive mode.
-By default, runs tests related to files changed since the last commit.
+## Installation
+
+```bash
+npx @iteam/supreme
+```
+
+or
+
+```bash
+npm install -g @iteam/supreme
+```
+
+After that you'll have `supreme` as a global command to use in a repository of your choice.

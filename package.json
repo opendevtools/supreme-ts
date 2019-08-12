@@ -1,5 +1,5 @@
 {
-  "name": "supreme",
+  "name": "@iteam/supreme",
   "version": "0.1.0",
   "main": "dist/index.js",
   "module": "dist/supreme.esm.js",
