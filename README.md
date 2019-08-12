@@ -11,7 +11,7 @@ Built with ❤️ by [@Jimjardland](https://github.com/Jimjardland) and [@believ
 
 ## commands
 
-`supreme`
+`supreme init`
 
 - Initializes empty Git repository and adds a `.gitignore`
 - Installs `prettier` and creates config
