@@ -5,7 +5,7 @@ import { create, overwrite } from '../utils/file'
 import path from 'path'
 
 export const reason = async ({ name }: CLIProps) => {
-  const projectName = name || ''
+  const projectName = name || 'supreme-reason'
   const projectFolder = { cwd: path.join(process.cwd(), projectName) }
   const srcFolder = { cwd: path.join(projectFolder.cwd, 'src') }
 

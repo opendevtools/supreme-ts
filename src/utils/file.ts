@@ -1,27 +1,36 @@
 import chalk from 'chalk'
 import execa from 'execa'
-import pjson from 'pjson'
 import fs from 'fs'
 import path from 'path'
 import util from 'util'
 import ejs from 'ejs'
 
-const writeFile = util.promisify(fs.writeFile)
+interface HandleFile {
+  templateName: string
+  output: string
+  templateData: { [key: string]: string }
+  flag: 'w' | 'wx'
+  message: string
+}
 
-export const create = async (
-  templateName: string,
-  output: string,
-  templateData: { [key: string]: string } = {}
-) => {
+const handleFile = async ({
+  templateName,
+  output,
+  templateData,
+  flag,
+  message,
+}: HandleFile) => {
+  const writeFile = util.promisify(fs.writeFile)
+
   try {
     const template = await ejs.renderFile(
       path.join(__dirname, `../src/templates/${templateName}.ejs`),
       templateData
     )
 
-    await writeFile(path.join(process.cwd(), output), template, { flag: 'wx' })
+    await writeFile(path.join(process.cwd(), output), template, { flag })
 
-    console.log(`Created ${chalk.green(output)}`)
+    console.log(message)
   } catch (e) {
     switch (e.code) {
       case 'EEXIST':
@@ -33,34 +42,46 @@ export const create = async (
   }
 }
 
+export const create = async (
+  templateName: string,
+  output: string,
+  templateData: { [key: string]: string } = {}
+) => {
+  await handleFile({
+    templateName,
+    templateData,
+    output,
+    flag: 'wx',
+    message: `Created ${chalk.green(output)}`,
+  })
+}
+
 export const overwrite = async (
   templateName: string,
   output: string,
   templateData: { [key: string]: string } = {}
 ) => {
-  try {
-    const template = await ejs.renderFile(
-      path.join(__dirname, `../src/templates/${templateName}.ejs`),
-      templateData
-    )
-
-    await writeFile(path.join(process.cwd(), output), template, { flag: 'w' })
-
-    console.log(`Updated ${chalk.green(output)}`)
-  } catch (e) {
-    console.error('Something went wrong', e)
-  }
+  await handleFile({
+    templateName,
+    templateData,
+    output,
+    flag: 'w',
+    message: `Updated ${chalk.green(output)}`,
+  })
 }
 
-export const hasPkg = (packageName: string) => {
+export const hasPkg = (packageName: string, pkg: { [key: string]: string }) => {
   return (
-    (pjson.dependencies && pjson.dependencies.hasOwnProperty(packageName)) ||
-    (pjson.devDependencies && pjson.devDependencies.hasOwnProperty(packageName))
+    (!!pkg.dependencies && pkg.dependencies.hasOwnProperty(packageName)) ||
+    (!!pkg.devDependencies && pkg.devDependencies.hasOwnProperty(packageName))
   )
 }
 
-export const pkg = async (packageName: string) => {
-  if (!hasPkg(packageName)) {
+export const installPkg = async (
+  packageName: string,
+  pkg: { [key: string]: string }
+) => {
+  if (!hasPkg(packageName, pkg)) {
     console.log(`Installing ${chalk.blue(packageName)}`)
     await execa('npm', ['install', '--save-dev', packageName])
   }

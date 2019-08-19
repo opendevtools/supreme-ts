@@ -2,7 +2,7 @@ import chalk from 'chalk'
 import meow from 'meow'
 import { react } from './commands/react'
 import { reason } from './commands/reason'
-import { gitignore, jest, nvmrc, prettierrc } from './tools'
+import { init } from './commands/init'
 
 export interface CLIProps {
   name?: string
@@ -16,25 +16,22 @@ const cli = meow(`
       $ supreme [command]
 
     Commands
-      $ init            Create some configs and ignore files
-      $ react [flags]   Creates a React app (CRA)
-      $ reason [flags]  Creates a Reason app
+      $ init                    Create some configs and ignore files
+      $ react <name> [flags]    Creates a React app (CRA)
+      $ reason <name>           Creates a ReasonReact app
 
     Flags
       --typescript    Typescript (React apps only)
 `)
 
-const { input, flags } = cli
+const { input, flags, pkg } = cli
 const [command, name] = input
 
 console.log(chalk.italic.bgRed(` SUPREME \n`))
 
 switch (command) {
   case 'init':
-    gitignore()
-    prettierrc()
-    jest()
-    nvmrc()
+    init(pkg)
     break
   case 'react':
     react({ name, flags })

@@ -15,6 +15,14 @@ test('creates bucklescript app', async () => {
   )
 })
 
+test('creates bucklescript app using default name', async () => {
+  await reason({ flags: {} })
+
+  expect(execa.command).toHaveBeenCalledWith(
+    'bsb -init supreme-reason -theme react-hooks'
+  )
+})
+
 test('overwrites base files', async () => {
   await reason({ name: 'test', flags: {} })
 
