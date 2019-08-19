@@ -15,7 +15,10 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
-    "test": "tsdx test"
+    "test": "is-ci \"test:ci\" \"test:watch\"",
+    "test:ci": "tsdx test",
+    "test:watch": "tsdx test --watch",
+    "test:coverage": "tsdx test --coverage"
   },
   "license": "MIT",
   "husky": {
@@ -28,6 +31,7 @@
     "@types/jest": "24.0.17",
     "@types/meow": "5.0.0",
     "husky": "3.0.3",
+    "is-ci-cli": "1.1.1",
     "jest": "^24.8.0",
     "jest-watch-typeahead": "^0.3.1",
     "prettier": "^1.18.2",
