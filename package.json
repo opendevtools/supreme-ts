@@ -15,6 +15,7 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
+    "lint": "tsdx lint",
     "test": "is-ci \"test:ci\" \"test:watch\"",
     "test:ci": "tsdx test",
     "test:watch": "tsdx test --watch",
@@ -30,21 +31,33 @@
     "@types/ejs": "2.6.3",
     "@types/jest": "24.0.17",
     "@types/meow": "5.0.0",
-    "husky": "3.0.3",
+    "husky": "3.0.4",
     "is-ci-cli": "1.1.1",
-    "jest": "^24.8.0",
+    "jest": "24.9.0",
     "jest-watch-typeahead": "^0.3.1",
     "prettier": "^1.18.2",
     "pretty-quick": "^1.11.1",
-    "tsdx": "^0.7.2",
+    "tsdx": "0.8.0",
     "tslib": "^1.10.0",
     "typescript": "3.5.3"
   },
   "dependencies": {
     "chalk": "^2.4.2",
     "ejs": "^2.6.2",
-    "execa": "2.0.3",
+    "execa": "2.0.4",
     "meow": "^5.0.0",
     "pjson": "^1.0.9"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "watchPlugins": [
+      "jest-watch-typeahead/filename",
+      "jest-watch-typeahead/testname"
+    ],
+    "globals": {
+      "ts-jest": {
+        "diagnostics": false
+      }
+    }
   }
 }
