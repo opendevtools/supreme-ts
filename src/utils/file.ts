@@ -4,6 +4,7 @@ import fs from 'fs'
 import path from 'path'
 import util from 'util'
 import ejs from 'ejs'
+import readPkgUp from 'read-pkg-up'
 
 interface HandleFile {
   templateName: string
@@ -70,18 +71,26 @@ export const overwrite = async (
   })
 }
 
-export const hasPkg = (packageName: string, pkg: { [key: string]: string }) => {
+export const hasPkg = async (packageName: string) => {
+  const pkg = await readPkgUp()
+
+  if (!pkg) {
+    return false
+  }
+
+  const dep = pkg.package.dependencies
+  const devDep = pkg.package.devDependencies
+
   return (
-    (!!pkg.dependencies && pkg.dependencies.hasOwnProperty(packageName)) ||
-    (!!pkg.devDependencies && pkg.devDependencies.hasOwnProperty(packageName))
+    (!!dep && dep.hasOwnProperty(packageName)) ||
+    (!!devDep && devDep.hasOwnProperty(packageName))
   )
 }
 
-export const installPkg = async (
-  packageName: string,
-  pkg: { [key: string]: string }
-) => {
-  if (!hasPkg(packageName, pkg)) {
+export const installPkg = async (packageName: string) => {
+  const hasPackageInstalled = await hasPkg(packageName)
+
+  if (!hasPackageInstalled) {
     console.log(`Installing ${chalk.blue(packageName)}`)
     await execa('npm', ['install', '--save-dev', packageName])
   }

@@ -5,14 +5,14 @@ export const gitignore = async () => {
   await create('gitignore', '.gitignore')
 }
 
-export const prettierrc = async (pkg: { [key: string]: string }) => {
-  await installPkg('prettier', pkg)
+export const prettierrc = async () => {
+  await installPkg('prettier')
   await create('prettierrc', '.prettierrc')
 }
 
-export const jest = async (pkg: { [key: string]: string }) => {
-  await installPkg('jest', pkg)
-  await installPkg('jest-watch-typeahead', pkg)
+export const jest = async () => {
+  await installPkg('jest')
+  await installPkg('jest-watch-typeahead')
   await create('jest.config', 'jest.config.js')
 }
 

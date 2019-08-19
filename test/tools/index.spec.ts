@@ -15,13 +15,13 @@ describe('#gitignore', () => {
 
 describe('#prettierrc', () => {
   test('installs prettier', () => {
-    prettierrc({})
+    prettierrc()
 
-    expect(installPkg).toHaveBeenCalledWith('prettier', {})
+    expect(installPkg).toHaveBeenCalledWith('prettier')
   })
 
   test('creates a prettier config', () => {
-    prettierrc({})
+    prettierrc()
 
     expect(create).toHaveBeenCalledWith('prettierrc', '.prettierrc')
   })
@@ -29,19 +29,19 @@ describe('#prettierrc', () => {
 
 describe('#jest', () => {
   test('installs jest', () => {
-    jestFn({})
+    jestFn()
 
-    expect(installPkg).toHaveBeenCalledWith('jest', {})
+    expect(installPkg).toHaveBeenCalledWith('jest')
   })
 
   test('installs jest typeahead', () => {
-    jestFn({})
+    jestFn()
 
-    expect(installPkg).toHaveBeenCalledWith('jest-watch-typeahead', {})
+    expect(installPkg).toHaveBeenCalledWith('jest-watch-typeahead')
   })
 
   test('creates a jest config', () => {
-    jestFn({})
+    jestFn()
 
     expect(create).toHaveBeenCalledWith('jest.config', 'jest.config.js')
   })
