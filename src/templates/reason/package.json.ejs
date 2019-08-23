@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "scripts": {
     "build": "bsb -make-world",
-    "start": "BS_WATCH_CLEAR=true bsb -make-world -w",
+    "start": "cross-env BS_WATCH_CLEAR=true bsb -make-world -w",
     "clean": "bsb -clean-world",
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "webpack -w",
@@ -23,6 +23,7 @@
   "devDependencies": {
     "autoprefixer": "9.6.0",
     "bs-platform": "5.0.4",
+    "cross-env": "5.2.0",
     "css-loader": "3.0.0",
     "html-webpack-plugin": "3.2.0",
     "postcss-loader": "3.0.0",
