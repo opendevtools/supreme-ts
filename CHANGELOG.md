@@ -1,3 +1,11 @@
+# [1.3.0](https://github.com/Iteam1337/supreme/compare/v1.2.0...v1.3.0) (2019-08-27)
+
+
+### Features
+
+* add overwrite existing file ([b713191](https://github.com/Iteam1337/supreme/commit/b713191))
+* display help for unknown command ([c65a569](https://github.com/Iteam1337/supreme/commit/c65a569))
+
 # [1.2.0](https://github.com/Iteam1337/supreme/compare/v1.1.0...v1.2.0) (2019-08-27)
 
 
