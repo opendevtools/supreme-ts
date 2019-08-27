@@ -1,4 +1,4 @@
-import { config, gitignore, jest, nvmrc, prettierrc } from '../tools'
+import { config, gitignore, jest, nvmrc, prettierrc, husky } from '../tools'
 
 export const init = async () => {
   await config()
@@ -6,4 +6,5 @@ export const init = async () => {
   await prettierrc()
   await jest()
   await nvmrc()
+  await husky()
 }

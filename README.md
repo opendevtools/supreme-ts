@@ -30,11 +30,12 @@ After that you'll have `supreme` as a global command to use in a repository of y
 
 ### `init`
 
-- Initializes empty Git repository and adds a `.gitignore`
-- Installs `prettier` and creates config
-- Installs `jest`
-- Creates an `.nvmrc` with the current Node version
-- Creates a `config.js` with example and an empty `config.json` (uses [@iteam/config](https://github.com/Iteam1337/config))
+- Initialize empty Git repository and add a `.gitignore`
+- Install `prettier` and create config
+- Install `jest`
+- Install `husky` and configure for `pretty-quick`
+- Create a `.nvmrc` with the current Node version
+- Create a `config.js` with example and an empty `config.json` (uses [@iteam/config](https://github.com/Iteam1337/config))
 
 ### `add <command>`
 
@@ -61,5 +62,4 @@ Creates a React app using `create-react-app` with the provided name.
 
 ### `reason <name>`
 
-Creates a ReasonReact app using `bsb` and customizes the app with our preferred
-defaults.
+Creates a ReasonReact app using `bsb` and customizes the app with our preferred defaults.

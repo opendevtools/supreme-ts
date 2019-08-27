@@ -1,9 +1,10 @@
-import { nvmrc, gitignore, jest, prettierrc, config } from '../tools'
+import { nvmrc, gitignore, jest, prettierrc, config, husky } from '../tools'
 
 export type Command =
   | 'config'
   | 'gitignore'
   | 'git'
+  | 'husky'
   | 'jest'
   | 'nvm'
   | 'nvmrc'
@@ -27,6 +28,9 @@ export const add = (command: Command) => {
       break
     case 'config':
       config()
+      break
+    case 'husky':
+      husky()
       break
     default:
       console.log(`${command} is not a valid command`)

@@ -49,3 +49,13 @@ export const config = async () => {
     output: 'config.json',
   })
 }
+
+export const husky = async () => {
+  await installPkg('husky')
+  await installPkg('pretty-quick')
+
+  await create({
+    templateName: 'huskyrc',
+    output: '.huskyrc',
+  })
+}

@@ -5,6 +5,7 @@ import {
   jest as jestCreate,
   prettierrc,
   nvmrc,
+  husky,
 } from '../../src/tools'
 
 jest.mock('../../src/tools')
@@ -38,5 +39,11 @@ describe('#init', () => {
     await init()
 
     expect(nvmrc).toHaveBeenCalled()
+  })
+
+  test('should init husky', async () => {
+    await init()
+
+    expect(husky).toHaveBeenCalled()
   })
 })

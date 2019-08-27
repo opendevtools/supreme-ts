@@ -5,6 +5,7 @@ import {
   jest as jestFn,
   prettierrc,
   config,
+  husky,
 } from '../../src/tools'
 
 jest.mock('../../src/tools')
@@ -53,6 +54,12 @@ test('config - creates config files', async () => {
   await add('config')
 
   expect(config).toHaveBeenCalled()
+})
+
+test('husky - setup', async () => {
+  await add('husky')
+
+  expect(husky).toHaveBeenCalled()
 })
 
 test('handles unknown command', async () => {

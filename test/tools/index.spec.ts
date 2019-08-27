@@ -4,6 +4,7 @@ import {
   jest as jestFn,
   nvmrc,
   config,
+  husky,
 } from '../../src/tools'
 import { create, installPkg } from '../../src/utils/file'
 import execa from 'execa'
@@ -114,6 +115,29 @@ describe('#config', () => {
     expect(create).toHaveBeenCalledWith({
       templateName: 'config/config.json',
       output: 'config.json',
+    })
+  })
+})
+
+describe('#husky', () => {
+  test('installs husky', async () => {
+    await husky()
+
+    expect(installPkg).toHaveBeenCalledWith('husky')
+  })
+
+  test('installs pretty-quick', async () => {
+    await husky()
+
+    expect(installPkg).toHaveBeenCalledWith('pretty-quick')
+  })
+
+  test('creates a config', async () => {
+    await husky()
+
+    expect(create).toHaveBeenCalledWith({
+      templateName: 'huskyrc',
+      output: '.huskyrc',
     })
   })
 })
