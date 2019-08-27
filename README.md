@@ -4,6 +4,7 @@
   </p>
 </div>
 
+![npm (scoped)](https://img.shields.io/npm/v/@iteam/supreme)
 [![Build Status](https://travis-ci.com/Iteam1337/supreme.svg?branch=master)](https://travis-ci.com/Iteam1337/supreme) [![Test Coverage](https://api.codeclimate.com/v1/badges/f43b4db75e264464c6d1/test_coverage)](https://codeclimate.com/github/Iteam1337/supreme/test_coverage) [![Maintainability](https://api.codeclimate.com/v1/badges/f43b4db75e264464c6d1/maintainability)](https://codeclimate.com/github/Iteam1337/supreme/maintainability)
 
 Use this tool to get up and running fast with configs and more in your project.
