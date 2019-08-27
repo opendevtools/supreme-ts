@@ -33,7 +33,7 @@ describe('#create', () => {
   })
 
   test('renders template', async () => {
-    await create('test', 'test.md')
+    await create({ templateName: 'test', output: 'test.md' })
 
     expect(ejs.renderFile).toHaveBeenCalledWith(
       expect.stringContaining('test.ejs'),
@@ -42,7 +42,11 @@ describe('#create', () => {
   })
 
   test('renders template with data', async () => {
-    await create('test', 'test.md', { test: 'test' })
+    await create({
+      templateName: 'test',
+      output: 'test.md',
+      templateData: { test: 'test' },
+    })
 
     expect(ejs.renderFile).toHaveBeenCalledWith(
       expect.stringContaining('test.ejs'),
@@ -53,7 +57,7 @@ describe('#create', () => {
   test('creates a file', async () => {
     ejs.renderFile.mockResolvedValue('template')
 
-    await create('test', 'test.md')
+    await create({ templateName: 'test', output: 'test.md' })
 
     expect(writeFile).toHaveBeenCalledWith(
       expect.stringContaining('test'),
@@ -69,7 +73,7 @@ describe('#create', () => {
 
     inquirer.prompt.mockResolvedValue({ isOverwrite: false })
 
-    await create('test', 'test.md')
+    await create({ templateName: 'test', output: 'test.md' })
 
     expect(writeFile).not.toHaveBeenCalledWith(
       expect.stringContaining('test'),
@@ -88,7 +92,7 @@ describe('#create', () => {
 
     inquirer.prompt.mockResolvedValue({ isOverwrite: true })
 
-    await create('test', 'test.md')
+    await create({ templateName: 'test', output: 'test.md' })
 
     expect(writeFile).toHaveBeenCalledWith(
       expect.stringContaining('test'),
@@ -105,7 +109,7 @@ describe('#create', () => {
       code: 'ERR',
     })
 
-    await create('test', 'test.md')
+    await create({ templateName: 'test', output: 'test.md' })
 
     expect(global.console.error).toHaveBeenCalledWith('Something went wrong', {
       code: 'ERR',
@@ -122,7 +126,7 @@ describe('#overwrite', () => {
   })
 
   test('renders template', async () => {
-    await overwrite('test', 'test.md')
+    await overwrite({ templateName: 'test', output: 'test.md' })
 
     expect(ejs.renderFile).toHaveBeenCalledWith(
       expect.stringContaining('test.ejs'),
@@ -131,7 +135,11 @@ describe('#overwrite', () => {
   })
 
   test('renders template with data', async () => {
-    await overwrite('test', 'test.md', { test: 'test' })
+    await overwrite({
+      templateName: 'test',
+      output: 'test.md',
+      templateData: { test: 'test' },
+    })
 
     expect(ejs.renderFile).toHaveBeenCalledWith(
       expect.stringContaining('test.ejs'),
@@ -142,7 +150,7 @@ describe('#overwrite', () => {
   test('overwrites a file', async () => {
     ejs.renderFile.mockResolvedValue('template')
 
-    await overwrite('test', 'test.md')
+    await overwrite({ templateName: 'test', output: 'test.md' })
 
     expect(writeFile).toHaveBeenCalledWith(
       expect.stringContaining('test'),
@@ -156,7 +164,7 @@ describe('#overwrite', () => {
       code: 'ERR',
     })
 
-    await overwrite('test', 'test.md')
+    await overwrite({ templateName: 'test', output: 'test.md' })
 
     expect(global.console.error).toHaveBeenCalledWith('Something went wrong', {
       code: 'ERR',

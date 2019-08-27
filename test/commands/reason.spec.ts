@@ -45,24 +45,24 @@ test('creates bucklescript app using default name', async () => {
 test('overwrites base files', async () => {
   await reason({ name: 'test', flags: {} })
 
-  expect(overwrite).toHaveBeenCalledWith(
-    'reason/package.json',
-    'test/package.json',
-    {
+  expect(overwrite).toHaveBeenCalledWith({
+    templateName: 'reason/package.json',
+    output: 'test/package.json',
+    templateData: {
       name: 'test',
-    }
-  )
-  expect(overwrite).toHaveBeenCalledWith(
-    'reason/bsconfig.json',
-    'test/bsconfig.json',
-    {
+    },
+  })
+  expect(overwrite).toHaveBeenCalledWith({
+    templateName: 'reason/bsconfig.json',
+    output: 'test/bsconfig.json',
+    templateData: {
       name: 'test',
-    }
-  )
-  expect(overwrite).toHaveBeenCalledWith(
-    'reason/webpack.config.js',
-    'test/webpack.config.js'
-  )
+    },
+  })
+  expect(overwrite).toHaveBeenCalledWith({
+    templateName: 'reason/webpack.config.js',
+    output: 'test/webpack.config.js',
+  })
 })
 
 test('installs app dependencies', async () => {
@@ -84,12 +84,18 @@ test('setup for tailwind', async () => {
 test('create tailwind config', async () => {
   await reason({ name: 'test', flags: {} })
 
-  expect(create).toHaveBeenCalledWith(
-    'reason/postcss.config.js',
-    'test/postcss.config.js'
-  )
-  expect(create).toHaveBeenCalledWith('reason/index.css', 'test/src/index.css')
-  expect(create).toHaveBeenCalledWith('reason/index.js', 'test/src/index.js')
+  expect(create).toHaveBeenCalledWith({
+    templateName: 'reason/postcss.config.js',
+    output: 'test/postcss.config.js',
+  })
+  expect(create).toHaveBeenCalledWith({
+    templateName: 'reason/index.css',
+    output: 'test/src/index.css',
+  })
+  expect(create).toHaveBeenCalledWith({
+    templateName: 'reason/index.js',
+    output: 'test/src/index.js',
+  })
 })
 
 test('move and replace index.html', async () => {
@@ -106,13 +112,13 @@ test('move and replace index.html', async () => {
     }
   )
 
-  expect(overwrite).toHaveBeenCalledWith(
-    'reason/index.html',
-    'test/public/index.html',
-    {
+  expect(overwrite).toHaveBeenCalledWith({
+    templateName: 'reason/index.html',
+    output: 'test/public/index.html',
+    templateData: {
       name: 'test',
-    }
-  )
+    },
+  })
 })
 
 test('replace default components', async () => {
@@ -125,6 +131,12 @@ test('replace default components', async () => {
     cwd: expect.stringMatching(/test/),
   })
 
-  expect(overwrite).toHaveBeenCalledWith('reason/Index.re', 'test/src/Index.re')
-  expect(create).toHaveBeenCalledWith('reason/App.re', 'test/src/App.re')
+  expect(overwrite).toHaveBeenCalledWith({
+    templateName: 'reason/Index.re',
+    output: 'test/src/Index.re',
+  })
+  expect(create).toHaveBeenCalledWith({
+    templateName: 'reason/App.re',
+    output: 'test/src/App.re',
+  })
 })

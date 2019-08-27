@@ -19,18 +19,26 @@ export const reason = async ({ name }: CLIProps) => {
 
   // Overwrite base files
   spinner.text = 'Updating configs'
-  await overwrite('reason/package.json', `${projectName}/package.json`, {
-    name: projectName,
+  await overwrite({
+    templateName: 'reason/package.json',
+    output: `${projectName}/package.json`,
+    templateData: {
+      name: projectName,
+    },
   })
 
-  await overwrite('reason/bsconfig.json', `${projectName}/bsconfig.json`, {
-    name: projectName,
+  await overwrite({
+    templateName: 'reason/bsconfig.json',
+    output: `${projectName}/bsconfig.json`,
+    templateData: {
+      name: projectName,
+    },
   })
 
-  await overwrite(
-    'reason/webpack.config.js',
-    `${projectName}/webpack.config.js`
-  )
+  await overwrite({
+    templateName: 'reason/webpack.config.js',
+    output: `${projectName}/webpack.config.js`,
+  })
 
   // Install dependencies
   spinner.text = 'Installing dependencies'
@@ -40,25 +48,44 @@ export const reason = async ({ name }: CLIProps) => {
   spinner.text = 'Setting up styling'
   await execa('npx', ['tailwind', 'init'], projectFolder)
 
-  await create('reason/postcss.config.js', `${projectName}/postcss.config.js`)
-  await create('reason/index.css', `${projectName}/src/index.css`)
-  await create('reason/index.js', `${projectName}/src/index.js`)
+  await create({
+    templateName: 'reason/postcss.config.js',
+    output: `${projectName}/postcss.config.js`,
+  })
+  await create({
+    templateName: 'reason/index.css',
+    output: `${projectName}/src/index.css`,
+  })
+  await create({
+    templateName: 'reason/index.js',
+    output: `${projectName}/src/index.js`,
+  })
 
   // Move and overwrite index html
   spinner.text = 'Updating base files'
   await execa.command('mkdir public', projectFolder)
   await execa('mv', ['src/index.html', 'public/index.html'], projectFolder)
 
-  await overwrite('reason/index.html', `${projectName}/public/index.html`, {
-    name: projectName,
+  await overwrite({
+    templateName: 'reason/index.html',
+    output: `${projectName}/public/index.html`,
+    templateData: {
+      name: projectName,
+    },
   })
 
   // Replace default component setup
   await execa.command('rm Component1.re', srcFolder)
   await execa.command('rm Component2.re', srcFolder)
 
-  await overwrite('reason/Index.re', `${projectName}/src/Index.re`)
-  await create('reason/App.re', `${projectName}/src/App.re`)
+  await overwrite({
+    templateName: 'reason/Index.re',
+    output: `${projectName}/src/Index.re`,
+  })
+  await create({
+    templateName: 'reason/App.re',
+    output: `${projectName}/src/App.re`,
+  })
 
   spinner.stop()
 

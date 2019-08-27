@@ -2,22 +2,26 @@ import { create, installPkg } from '../utils/file'
 import execa from 'execa'
 
 export const gitignore = async () => {
-  await create('gitignore', '.gitignore')
+  await create({ templateName: 'gitignore', output: '.gitignore' })
 }
 
 export const prettierrc = async () => {
   await installPkg('prettier')
-  await create('prettierrc', '.prettierrc')
+  await create({ templateName: 'prettierrc', output: '.prettierrc' })
 }
 
 export const jest = async () => {
   await installPkg('jest')
   await installPkg('jest-watch-typeahead')
-  await create('jest.config', 'jest.config.js')
+  await create({ templateName: 'jest.config', output: 'jest.config.js' })
 }
 
 export const nvmrc = async () => {
   const { stdout: nodeVersion } = await execa('node', ['-v'])
 
-  await create('nvmrc', '.nvmrc', { nodeVersion })
+  await create({
+    templateName: 'nvmrc',
+    output: '.nvmrc',
+    templateData: { nodeVersion },
+  })
 }

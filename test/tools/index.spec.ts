@@ -9,7 +9,10 @@ describe('#gitignore', () => {
   test('creates a gitignore file', () => {
     gitignore()
 
-    expect(create).toHaveBeenCalledWith('gitignore', '.gitignore')
+    expect(create).toHaveBeenCalledWith({
+      templateName: 'gitignore',
+      output: '.gitignore',
+    })
   })
 })
 
@@ -23,7 +26,10 @@ describe('#prettierrc', () => {
   test('creates a prettier config', () => {
     prettierrc()
 
-    expect(create).toHaveBeenCalledWith('prettierrc', '.prettierrc')
+    expect(create).toHaveBeenCalledWith({
+      templateName: 'prettierrc',
+      output: '.prettierrc',
+    })
   })
 })
 
@@ -43,7 +49,10 @@ describe('#jest', () => {
   test('creates a jest config', () => {
     jestFn()
 
-    expect(create).toHaveBeenCalledWith('jest.config', 'jest.config.js')
+    expect(create).toHaveBeenCalledWith({
+      templateName: 'jest.config',
+      output: 'jest.config.js',
+    })
   })
 })
 
@@ -65,8 +74,12 @@ describe('#nvmrc', () => {
 
     await nvmrc()
 
-    expect(create).toHaveBeenCalledWith('nvmrc', '.nvmrc', {
-      nodeVersion: 'v4.2.0',
+    expect(create).toHaveBeenCalledWith({
+      templateName: 'nvmrc',
+      output: '.nvmrc',
+      templateData: {
+        nodeVersion: 'v4.2.0',
+      },
     })
   })
 })

@@ -7,19 +7,36 @@ import ejs from 'ejs'
 import readPkgUp from 'read-pkg-up'
 import inquirer from 'inquirer'
 
-interface HandleFile {
+interface HandleFileData {
   templateName: string
   output: string
-  templateData: { [key: string]: string }
+  templateData?: { [key: string]: string }
+}
+
+interface HandleFileOptions {
   flag: 'w' | 'wx'
 }
 
-const handleFile = async ({
-  templateName,
-  output,
-  templateData,
-  flag,
-}: HandleFile) => {
+const handleFileExists = async (data: HandleFileData) => {
+  console.error(`File already exists ${chalk.yellow(data.output)}`)
+
+  const answers = await inquirer.prompt({
+    type: 'confirm',
+    name: 'isOverwrite',
+    message: 'Do you want to overwrite the existing file?',
+    default: false,
+  })
+
+  if (answers.isOverwrite) {
+    overwrite(data)
+  }
+}
+
+const handleFile = async (
+  data: HandleFileData,
+  { flag }: HandleFileOptions
+) => {
+  const { templateName, output, templateData = {} } = data
   const writeFile = util.promisify(fs.writeFile)
 
   try {
@@ -32,19 +49,7 @@ const handleFile = async ({
   } catch (e) {
     switch (e.code) {
       case 'EEXIST':
-        console.error(`File already exists ${chalk.yellow(output)}`)
-
-        const answers = await inquirer.prompt({
-          type: 'confirm',
-          name: 'isOverwrite',
-          message: 'Do you want to overwrite the existing file?',
-          default: false,
-        })
-
-        if (answers.isOverwrite) {
-          overwrite(templateName, output, templateData)
-        }
-
+        await handleFileExists(data)
         break
       default:
         console.error('Something went wrong', e)
@@ -52,31 +57,15 @@ const handleFile = async ({
   }
 }
 
-export const create = async (
-  templateName: string,
-  output: string,
-  templateData: { [key: string]: string } = {}
-) => {
-  await handleFile({
-    templateName,
-    templateData,
-    output,
+export const create = (data: HandleFileData) =>
+  handleFile(data, {
     flag: 'wx',
   })
-}
 
-export const overwrite = async (
-  templateName: string,
-  output: string,
-  templateData: { [key: string]: string } = {}
-) => {
-  await handleFile({
-    templateName,
-    templateData,
-    output,
+export const overwrite = (data: HandleFileData) =>
+  handleFile(data, {
     flag: 'w',
   })
-}
 
 export const hasPkg = async (packageName: string) => {
   const pkg = await readPkgUp()
