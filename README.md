@@ -46,6 +46,7 @@ export type Command =
   | 'config'
   | 'gitignore'
   | 'git'
+  | 'husky'
   | 'jest'
   | 'nvm'
   | 'nvmrc'
