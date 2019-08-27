@@ -1,6 +1,7 @@
-import { nvmrc, gitignore, jest, prettierrc } from '../tools'
+import { nvmrc, gitignore, jest, prettierrc, config } from '../tools'
 
 export type Command =
+  | 'config'
   | 'gitignore'
   | 'git'
   | 'jest'
@@ -23,6 +24,9 @@ export const add = (command: Command) => {
       break
     case 'prettier':
       prettierrc()
+      break
+    case 'config':
+      config()
       break
     default:
       console.log(`${command} is not a valid command`)

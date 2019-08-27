@@ -1,13 +1,21 @@
-import { gitignore, prettierrc, jest as jestFn, nvmrc } from '../../src/tools'
+import {
+  gitignore,
+  prettierrc,
+  jest as jestFn,
+  nvmrc,
+  config,
+} from '../../src/tools'
 import { create, installPkg } from '../../src/utils/file'
 import execa from 'execa'
 
 jest.mock('../../src/utils/file')
 jest.mock('execa')
 
+beforeEach(jest.clearAllMocks)
+
 describe('#gitignore', () => {
-  test('creates a gitignore file', () => {
-    gitignore()
+  test('creates a gitignore file', async () => {
+    await gitignore()
 
     expect(create).toHaveBeenCalledWith({
       templateName: 'gitignore',
@@ -17,14 +25,14 @@ describe('#gitignore', () => {
 })
 
 describe('#prettierrc', () => {
-  test('installs prettier', () => {
-    prettierrc()
+  test('installs prettier', async () => {
+    await prettierrc()
 
     expect(installPkg).toHaveBeenCalledWith('prettier')
   })
 
-  test('creates a prettier config', () => {
-    prettierrc()
+  test('creates a prettier config', async () => {
+    await prettierrc()
 
     expect(create).toHaveBeenCalledWith({
       templateName: 'prettierrc',
@@ -34,20 +42,20 @@ describe('#prettierrc', () => {
 })
 
 describe('#jest', () => {
-  test('installs jest', () => {
-    jestFn()
+  test('installs jest', async () => {
+    await jestFn()
 
     expect(installPkg).toHaveBeenCalledWith('jest')
   })
 
-  test('installs jest typeahead', () => {
-    jestFn()
+  test('installs jest typeahead', async () => {
+    await jestFn()
 
     expect(installPkg).toHaveBeenCalledWith('jest-watch-typeahead')
   })
 
-  test('creates a jest config', () => {
-    jestFn()
+  test('creates a jest config', async () => {
+    await jestFn()
 
     expect(create).toHaveBeenCalledWith({
       templateName: 'jest.config',
@@ -80,6 +88,32 @@ describe('#nvmrc', () => {
       templateData: {
         nodeVersion: 'v4.2.0',
       },
+    })
+  })
+})
+
+describe('#config', () => {
+  test('installs @iteam/config', async () => {
+    await config()
+
+    expect(installPkg).toHaveBeenCalledWith('@iteam/config')
+  })
+
+  test('creates a config', async () => {
+    await config()
+
+    expect(create).toHaveBeenCalledWith({
+      templateName: 'config/config.js',
+      output: 'src/config.js',
+    })
+  })
+
+  test('creates a config override file', async () => {
+    await config()
+
+    expect(create).toHaveBeenCalledWith({
+      templateName: 'config/config.json',
+      output: 'config.json',
     })
   })
 })

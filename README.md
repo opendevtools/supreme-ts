@@ -34,6 +34,7 @@ After that you'll have `supreme` as a global command to use in a repository of y
 - Installs `prettier` and creates config
 - Installs `jest`
 - Creates an `.nvmrc` with the current Node version
+- Creates a `config.js` with example and an empty `config.json`
 
 ### `add <command>`
 
@@ -41,6 +42,7 @@ Add one of the configs/packages created by `init`. Valid commands are
 
 ```typescript
 export type Command =
+  | 'config'
   | 'gitignore'
   | 'git'
   | 'jest'

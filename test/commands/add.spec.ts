@@ -1,5 +1,11 @@
 import { add } from '../../src/commands/add'
-import { nvmrc, gitignore, jest as jestFn, prettierrc } from '../../src/tools'
+import {
+  nvmrc,
+  gitignore,
+  jest as jestFn,
+  prettierrc,
+  config,
+} from '../../src/tools'
 
 jest.mock('../../src/tools')
 
@@ -41,6 +47,12 @@ test('prettier - runs prettier tool', async () => {
   await add('prettier')
 
   expect(prettierrc).toHaveBeenCalled()
+})
+
+test('config - creates config files', async () => {
+  await add('config')
+
+  expect(config).toHaveBeenCalled()
 })
 
 test('handles unknown command', async () => {
