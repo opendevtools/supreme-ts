@@ -1,11 +1,30 @@
 import { reason } from '../../src/commands/reason'
 import execa from 'execa'
+import ora from 'ora'
 import { create, overwrite } from '../../src/utils/file'
 
 jest.mock('execa')
+jest.mock('chalk', () => ({
+  blue: (param: string) => param,
+  green: (param: string) => param,
+}))
+jest.mock('ora', () =>
+  jest.fn(({ text }) => ({
+    start: jest.fn().mockReturnValue({ text, stop: jest.fn() }),
+  }))
+)
 jest.mock('../../src/utils/file')
 
 jest.spyOn(global.console, 'log').mockImplementation(() => {})
+
+test('should setup a spinner', async () => {
+  await reason({ name: 'test', flags: {} })
+
+  expect(ora).toHaveBeenCalledWith({
+    text: 'Creating folder',
+    color: 'blue',
+  })
+})
 
 test('creates bucklescript app', async () => {
   await reason({ name: 'test', flags: {} })

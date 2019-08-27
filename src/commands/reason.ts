@@ -3,6 +3,7 @@ import chalk from 'chalk'
 import { CLIProps } from '../'
 import { create, overwrite } from '../utils/file'
 import path from 'path'
+import ora from 'ora'
 
 export const reason = async ({ name }: CLIProps) => {
   const projectName = name || 'supreme-reason'
@@ -11,10 +12,13 @@ export const reason = async ({ name }: CLIProps) => {
 
   console.log(`Creating app ${chalk.blue(projectName)}`)
 
+  const spinner = ora({ text: 'Creating folder', color: 'blue' }).start()
+
   // Create app
   await execa.command(`bsb -init ${projectName} -theme react-hooks`)
 
   // Overwrite base files
+  spinner.text = 'Updating configs'
   await overwrite('reason/package.json', `${projectName}/package.json`, {
     name: projectName,
   })
@@ -29,9 +33,11 @@ export const reason = async ({ name }: CLIProps) => {
   )
 
   // Install dependencies
+  spinner.text = 'Installing dependencies'
   await execa.command('npm install --silent', projectFolder)
 
   // Setup Tailwind CSS
+  spinner.text = 'Setting up styling'
   await execa('npx', ['tailwind', 'init'], projectFolder)
 
   await create('reason/postcss.config.js', `${projectName}/postcss.config.js`)
@@ -39,6 +45,7 @@ export const reason = async ({ name }: CLIProps) => {
   await create('reason/index.js', `${projectName}/src/index.js`)
 
   // Move and overwrite index html
+  spinner.text = 'Updating base files'
   await execa.command('mkdir public', projectFolder)
   await execa('mv', ['src/index.html', 'public/index.html'], projectFolder)
 
@@ -52,6 +59,8 @@ export const reason = async ({ name }: CLIProps) => {
 
   await overwrite('reason/Index.re', `${projectName}/src/Index.re`)
   await create('reason/App.re', `${projectName}/src/App.re`)
+
+  spinner.stop()
 
   // Bootstrap done
   console.log(chalk.green(`Created app ${projectName}`))

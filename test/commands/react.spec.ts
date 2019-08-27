@@ -1,11 +1,10 @@
 import { react } from '../../src/commands/react'
 import execa from 'execa'
-import chalk from 'chalk'
 
 jest.mock('execa')
 jest.mock('chalk', () => ({
-  blue: param => param,
-  green: param => param,
+  blue: (param: string) => param,
+  green: (param: string) => param,
 }))
 
 jest.spyOn(global.console, 'log').mockImplementation(() => {})

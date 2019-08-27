@@ -5,6 +5,10 @@ import { reason } from '../src/commands/reason'
 import { add } from '../src/commands/add'
 
 jest.mock('chalk', () => ({
+  blue: (param: string) => param,
+  green: (param: string) => param,
+  yellow: (param: string) => param,
+  red: (param: string) => param,
   italic: {
     bgRed: (param: string) => param,
   },

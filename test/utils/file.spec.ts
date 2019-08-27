@@ -62,14 +62,6 @@ describe('#create', () => {
     )
   })
 
-  test('prints success message', async () => {
-    ejs.renderFile.mockResolvedValue('template')
-
-    await create('test', 'test.md')
-
-    expect(global.console.log).toHaveBeenCalledWith('Created test.md')
-  })
-
   test('errors when file exists', async () => {
     writeFile.mockRejectedValue({
       code: 'EEXIST',
@@ -157,14 +149,6 @@ describe('#overwrite', () => {
       'template',
       { flag: 'w' }
     )
-  })
-
-  test('prints success message', async () => {
-    ejs.renderFile.mockResolvedValue('template')
-
-    await overwrite('test', 'test.md')
-
-    expect(global.console.log).toHaveBeenCalledWith('Updated test.md')
   })
 
   test('handle any errors', async () => {

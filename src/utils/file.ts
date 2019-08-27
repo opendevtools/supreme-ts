@@ -12,7 +12,6 @@ interface HandleFile {
   output: string
   templateData: { [key: string]: string }
   flag: 'w' | 'wx'
-  message: string
 }
 
 const handleFile = async ({
@@ -20,7 +19,6 @@ const handleFile = async ({
   output,
   templateData,
   flag,
-  message,
 }: HandleFile) => {
   const writeFile = util.promisify(fs.writeFile)
 
@@ -31,8 +29,6 @@ const handleFile = async ({
     )
 
     await writeFile(path.join(process.cwd(), output), template, { flag })
-
-    console.log(message)
   } catch (e) {
     switch (e.code) {
       case 'EEXIST':
@@ -66,7 +62,6 @@ export const create = async (
     templateData,
     output,
     flag: 'wx',
-    message: `Created ${chalk.green(output)}`,
   })
 }
 
@@ -80,7 +75,6 @@ export const overwrite = async (
     templateData,
     output,
     flag: 'w',
-    message: `Updated ${chalk.green(output)}`,
   })
 }
 
