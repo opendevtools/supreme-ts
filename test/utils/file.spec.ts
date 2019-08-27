@@ -3,8 +3,10 @@ import ejs from 'ejs'
 import util from 'util'
 import execa from 'execa'
 import readPkgUp from 'read-pkg-up'
+import inquirer from 'inquirer'
 
 jest.mock('ejs')
+jest.mock('inquirer')
 jest.mock('chalk', () => ({
   yellow: (param: string) => param,
   green: (param: string) => param,
@@ -73,8 +75,34 @@ describe('#create', () => {
       code: 'EEXIST',
     })
 
+    inquirer.prompt.mockResolvedValue({ isOverwrite: false })
+
     await create('test', 'test.md')
 
+    expect(writeFile).not.toHaveBeenCalledWith(
+      expect.stringContaining('test'),
+      'template',
+      { flag: 'w' }
+    )
+    expect(global.console.error).toHaveBeenCalledWith(
+      'File already exists test.md'
+    )
+  })
+
+  test('overwrites file if user requests it', async () => {
+    writeFile.mockRejectedValue({
+      code: 'EEXIST',
+    })
+
+    inquirer.prompt.mockResolvedValue({ isOverwrite: true })
+
+    await create('test', 'test.md')
+
+    expect(writeFile).toHaveBeenCalledWith(
+      expect.stringContaining('test'),
+      'template',
+      { flag: 'w' }
+    )
     expect(global.console.error).toHaveBeenCalledWith(
       'File already exists test.md'
     )

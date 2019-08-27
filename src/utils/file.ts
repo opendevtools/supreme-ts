@@ -5,6 +5,7 @@ import path from 'path'
 import util from 'util'
 import ejs from 'ejs'
 import readPkgUp from 'read-pkg-up'
+import inquirer from 'inquirer'
 
 interface HandleFile {
   templateName: string
@@ -36,6 +37,18 @@ const handleFile = async ({
     switch (e.code) {
       case 'EEXIST':
         console.error(`File already exists ${chalk.yellow(output)}`)
+
+        const answers = await inquirer.prompt({
+          type: 'confirm',
+          name: 'isOverwrite',
+          message: 'Do you want to overwrite the existing file?',
+          default: false,
+        })
+
+        if (answers.isOverwrite) {
+          overwrite(templateName, output, templateData)
+        }
+
         break
       default:
         console.error('Something went wrong', e)
