@@ -42,3 +42,9 @@ test('handles add command', () => {
 
   expect(add).toHaveBeenCalledWith('test')
 })
+
+test('handles unknown command by displaying help', () => {
+  run({ input: ['__not_valid__'], flags: {}, help: 'help' })
+
+  expect(global.console.log).toHaveBeenCalledWith('help')
+})

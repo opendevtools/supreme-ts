@@ -13,7 +13,7 @@ export interface CLIProps {
 }
 
 export const run = (cli: meow.Result) => {
-  const { input, flags } = cli
+  const { input, flags, help } = cli
   const [command, name] = input
 
   console.log(chalk.italic.bgRed(` SUPREME \n`))
@@ -31,6 +31,8 @@ export const run = (cli: meow.Result) => {
     case 'add':
       add(name as Command)
       break
+    default:
+      console.log(help)
   }
 }
 
