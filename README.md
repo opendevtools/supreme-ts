@@ -34,7 +34,7 @@ After that you'll have `supreme` as a global command to use in a repository of y
 - Installs `prettier` and creates config
 - Installs `jest`
 - Creates an `.nvmrc` with the current Node version
-- Creates a `config.js` with example and an empty `config.json`
+- Creates a `config.js` with example and an empty `config.json` (uses [@iteam/config](https://github.com/Iteam1337/config))
 
 ### `add <command>`
 
