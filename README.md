@@ -54,7 +54,7 @@ export type Command =
 
 ### `react <name> [flags]`
 
-Creates a React app using `create-react-app` with the provided name.
+Create a React app using `create-react-app` with the provided name.
 
 **Supported flags:**
 
@@ -62,4 +62,7 @@ Creates a React app using `create-react-app` with the provided name.
 
 ### `reason <name>`
 
-Creates a ReasonReact app using `bsb` and customizes the app with our preferred defaults.
+**Note:** To use this command you will need BuckleScript and Reason which can be installed
+using `npm i -g bs-platform`.
+
+Create a ReasonReact app using `bsb`, from `bs-platform`, and customize the app with our preferred defaults.
