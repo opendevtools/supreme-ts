@@ -1,6 +1,7 @@
 import chalk from 'chalk'
 import meow from 'meow'
 import { react } from './commands/react'
+import { add, Command } from './commands/add'
 import { reason } from './commands/reason'
 import { init } from './commands/init'
 
@@ -27,6 +28,9 @@ export const run = (cli: meow.Result) => {
     case 'reason':
       reason({ name, flags })
       break
+    case 'add':
+      add(name as Command)
+      break
   }
 }
 
@@ -37,6 +41,7 @@ const cli = meow(
 
     Commands
     $ init                    Create some configs and ignore files
+    $ add <name>              Add a specific config
     $ react <name> [flags]    Creates a React app (CRA)
     $ reason <name>           Creates a ReasonReact app
 

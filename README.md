@@ -11,28 +11,6 @@ The tool currently supports creating React apps (using [`create-react-app`](http
 
 Built with ❤️ by [@Jimjardland](https://github.com/Jimjardland) and [@believer](https://github.com/believer).
 
-## commands
-
-`supreme init`
-
-- Initializes empty Git repository and adds a `.gitignore`
-- Installs `prettier` and creates config
-- Installs `jest`
-- Creates an `.nvmrc` with the current Node version
-
-`supreme react <name> [flags]`
-
-Creates a React app using `create-react-app` with the provided name.
-
-**Supported flags:**
-
-- `--typescript` - create a Typescript React app
-
-`supreme reason <name>`
-
-Creates a ReasonReact app using `bsb` and customizes the app with our preferred
-defaults.
-
 ## Installation
 
 ```bash
@@ -46,3 +24,39 @@ npm install -g @iteam/supreme
 ```
 
 After that you'll have `supreme` as a global command to use in a repository of your choice.
+
+## Commands
+
+### `init`
+
+- Initializes empty Git repository and adds a `.gitignore`
+- Installs `prettier` and creates config
+- Installs `jest`
+- Creates an `.nvmrc` with the current Node version
+
+### `add <command>`
+
+Add one of the configs/packages created by `init`. Valid commands are
+
+```typescript
+export type Command =
+  | 'gitignore'
+  | 'git'
+  | 'jest'
+  | 'nvm'
+  | 'nvmrc'
+  | 'prettier'
+```
+
+### `react <name> [flags]`
+
+Creates a React app using `create-react-app` with the provided name.
+
+**Supported flags:**
+
+- `--typescript` - create a Typescript React app
+
+### `reason <name>`
+
+Creates a ReasonReact app using `bsb` and customizes the app with our preferred
+defaults.

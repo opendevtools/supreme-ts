@@ -2,6 +2,7 @@ import { run } from '../src'
 import { init } from '../src/commands/init'
 import { react } from '../src/commands/react'
 import { reason } from '../src/commands/reason'
+import { add } from '../src/commands/add'
 
 jest.mock('chalk', () => ({
   italic: {
@@ -11,6 +12,7 @@ jest.mock('chalk', () => ({
 jest.mock('../src/commands/init')
 jest.mock('../src/commands/react')
 jest.mock('../src/commands/reason')
+jest.mock('../src/commands/add')
 
 jest.spyOn(global.console, 'log').mockImplementation(() => {})
 
@@ -33,4 +35,10 @@ test('handles reason command', () => {
   run({ input: ['reason', 'test'], flags: {} })
 
   expect(reason).toHaveBeenCalledWith({ name: 'test', flags: {} })
+})
+
+test('handles add command', () => {
+  run({ input: ['add', 'test'], flags: {} })
+
+  expect(add).toHaveBeenCalledWith('test')
 })
