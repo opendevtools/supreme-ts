@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/Iteam1337/supreme/compare/v1.5.0...v1.6.0) (2019-08-27)
+
+
+### Features
+
+* add husky with pretty-quick ([8913f80](https://github.com/Iteam1337/supreme/commit/8913f80))
+
 # [1.5.0](https://github.com/Iteam1337/supreme/compare/v1.4.0...v1.5.0) (2019-08-27)
 
 
