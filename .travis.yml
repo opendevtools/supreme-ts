@@ -18,8 +18,7 @@ jobs:
       node_js:
         - 10
       install:
-        - npm i -D @semantic-release/commit-analyzer @semantic-release/release-notes-generator
-          @semantic-release/github
+        - npm i -D @semantic-release/git @semantic-release/changelog
       script:
         - npx semantic-release
 stages:
