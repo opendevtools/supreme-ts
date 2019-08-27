@@ -1,6 +1,6 @@
 {
   "name": "@iteam/supreme",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "main": "bin/supreme",
   "bin": "bin/supreme",
   "description": "A CLI tool that helps you get up an running fast",
@@ -28,6 +28,8 @@
     }
   },
   "devDependencies": {
+    "@semantic-release/changelog": "^3.0.4",
+    "@semantic-release/git": "^7.0.16",
     "@types/ejs": "2.6.3",
     "@types/jest": "24.0.18",
     "@types/meow": "5.0.0",
