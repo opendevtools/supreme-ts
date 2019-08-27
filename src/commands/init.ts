@@ -1,8 +1,9 @@
-import { gitignore, jest, nvmrc, prettierrc } from '../tools'
+import { config, gitignore, jest, nvmrc, prettierrc } from '../tools'
 
-export const init = () => {
-  gitignore()
-  prettierrc()
-  jest()
-  nvmrc()
+export const init = async () => {
+  await config()
+  await gitignore()
+  await prettierrc()
+  await jest()
+  await nvmrc()
 }

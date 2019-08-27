@@ -1,5 +1,6 @@
 import { init } from '../../src/commands/init'
 import {
+  config,
   gitignore,
   jest as jestCreate,
   prettierrc,
@@ -9,26 +10,32 @@ import {
 jest.mock('../../src/tools')
 
 describe('#init', () => {
-  test('should create gitignore', () => {
-    init()
+  test('should create config', async () => {
+    await init()
+
+    expect(config).toHaveBeenCalled()
+  })
+
+  test('should create gitignore', async () => {
+    await init()
 
     expect(gitignore).toHaveBeenCalled()
   })
 
-  test('should install prettier', () => {
-    init()
+  test('should install prettier', async () => {
+    await init()
 
     expect(prettierrc).toHaveBeenCalled()
   })
 
-  test('should install jest', () => {
-    init()
+  test('should install jest', async () => {
+    await init()
 
     expect(jestCreate).toHaveBeenCalled()
   })
 
-  test('should create nvmrc', () => {
-    init()
+  test('should create nvmrc', async () => {
+    await init()
 
     expect(nvmrc).toHaveBeenCalled()
   })
