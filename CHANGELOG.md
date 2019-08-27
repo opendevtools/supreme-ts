@@ -1,3 +1,15 @@
+# [1.5.0](https://github.com/Iteam1337/supreme/compare/v1.4.0...v1.5.0) (2019-08-27)
+
+
+### Bug Fixes
+
+* **init:** update to async ([9f51ace](https://github.com/Iteam1337/supreme/commit/9f51ace))
+
+
+### Features
+
+* add @iteam/config creation ([fe7c31f](https://github.com/Iteam1337/supreme/commit/fe7c31f))
+
 # [1.4.0](https://github.com/Iteam1337/supreme/compare/v1.3.0...v1.4.0) (2019-08-27)
 
 
