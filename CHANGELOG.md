@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/Iteam1337/supreme/compare/v1.6.0...v1.7.0) (2019-08-30)
+
+
+### Features
+
+* **reason:** add more warnings and errors to compiler fixes [#11](https://github.com/Iteam1337/supreme/issues/11) ([eb39c0f](https://github.com/Iteam1337/supreme/commit/eb39c0f))
+
 # [1.6.0](https://github.com/Iteam1337/supreme/compare/v1.5.0...v1.6.0) (2019-08-27)
 
 
