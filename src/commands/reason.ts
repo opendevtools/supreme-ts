@@ -123,6 +123,12 @@ export const reason = async ({ name }: CLIProps) => {
     output: `${projectName}/__tests__/App_test.re`,
   })
 
+  // Travis setup
+  await create({
+    templateName: 'reason/travis.yml',
+    output: `${projectName}/.travis.yml`,
+  })
+
   spinner.stop()
 
   // Bootstrap done

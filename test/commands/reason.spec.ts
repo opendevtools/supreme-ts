@@ -189,3 +189,12 @@ test('creates testing directory with simple test', async () => {
     output: 'test/__tests__/App_test.re',
   })
 })
+
+test('add travis build setup', async () => {
+  await reason({ name: 'test', flags: {} })
+
+  expect(create).toHaveBeenCalledWith({
+    templateName: 'reason/travis.yml',
+    output: 'test/.travis.yml',
+  })
+})
