@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/Iteam1337/supreme/compare/v1.7.0...v1.8.0) (2019-09-02)
+
+
+### Features
+
+* **reason:** update gitignore ([#19](https://github.com/Iteam1337/supreme/issues/19)) ([66d27e5](https://github.com/Iteam1337/supreme/commit/66d27e5))
+
 # [1.7.0](https://github.com/Iteam1337/supreme/compare/v1.6.0...v1.7.0) (2019-08-30)
 
 

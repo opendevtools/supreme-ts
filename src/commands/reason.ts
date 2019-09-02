@@ -68,6 +68,12 @@ export const reason = async ({ name }: CLIProps) => {
     output: `${projectName}/src/index.js`,
   })
 
+  // Creates .releaserc for @semantic-release
+  await create({
+    templateName: 'reason/releaserc',
+    output: `${projectName}/.releaserc`,
+  })
+
   // Move and overwrite index html
   spinner.text = 'Updating base files'
   await execa.command('mkdir public', projectFolder)
