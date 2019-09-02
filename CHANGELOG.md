@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/Iteam1337/supreme/compare/v1.9.0...v1.10.0) (2019-09-02)
+
+
+### Features
+
+* **reason:** add travis testing and release ([#22](https://github.com/Iteam1337/supreme/issues/22)) ([2c32a16](https://github.com/Iteam1337/supreme/commit/2c32a16))
+
 # [1.9.0](https://github.com/Iteam1337/supreme/compare/v1.8.0...v1.9.0) (2019-09-02)
 
 
