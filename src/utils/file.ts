@@ -67,6 +67,12 @@ export const overwrite = (data: HandleFileData) =>
     flag: 'w',
   })
 
+export const createFolder = async (folderName: string) => {
+  const mkdir = util.promisify(fs.mkdir)
+
+  await mkdir(folderName)
+}
+
 export const hasPkg = async (packageName: string) => {
   const pkg = await readPkgUp()
 

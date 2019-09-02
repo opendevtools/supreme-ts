@@ -1,7 +1,7 @@
 import { reason } from '../../src/commands/reason'
 import execa from 'execa'
 import ora from 'ora'
-import { create, overwrite } from '../../src/utils/file'
+import { create, overwrite, createFolder } from '../../src/utils/file'
 
 jest.mock('execa')
 jest.mock('chalk', () => ({
@@ -176,5 +176,16 @@ test('add travis build setup', async () => {
   expect(create).toHaveBeenCalledWith({
     templateName: 'reason/travis.yml',
     output: 'test/.travis.yml',
+  })
+})
+
+test('creates testing directory with simple test', async () => {
+  await reason({ name: 'test', flags: {} })
+
+  expect(createFolder).toHaveBeenCalledWith('test/__tests__')
+
+  expect(create).toHaveBeenCalledWith({
+    templateName: 'reason/App_test.re',
+    output: 'test/__tests__/App_test.re',
   })
 })
