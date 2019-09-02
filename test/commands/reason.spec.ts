@@ -118,6 +118,15 @@ test('create tailwind config', async () => {
   })
 })
 
+test('creates releaserc for semantic release', async () => {
+  await reason({ name: 'test', flags: {} })
+
+  expect(create).toHaveBeenCalledWith({
+    templateName: 'reason/releaserc',
+    output: 'test/.releaserc',
+  })
+})
+
 test('move and replace index.html', async () => {
   await reason({ name: 'test', flags: {} })
 
