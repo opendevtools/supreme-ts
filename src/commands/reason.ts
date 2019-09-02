@@ -40,6 +40,13 @@ export const reason = async ({ name }: CLIProps) => {
     output: `${projectName}/webpack.config.js`,
   })
 
+  // Creating git
+  await execa.command('git init', projectFolder)
+  await overwrite({
+    templateName: 'reason/gitignore',
+    output: `${projectName}/.gitignore`,
+  })
+
   // Install dependencies
   spinner.text = 'Installing dependencies'
   await execa.command('npm install --silent', projectFolder)

@@ -65,6 +65,19 @@ test('overwrites base files', async () => {
   })
 })
 
+test('should setup git', async () => {
+  await reason({ name: 'test', flags: {} })
+
+  expect(execa.command).toHaveBeenCalledWith('git init', {
+    cwd: expect.stringMatching(/test/),
+  })
+
+  expect(overwrite).toHaveBeenCalledWith({
+    templateName: 'reason/gitignore',
+    output: 'test/.gitignore',
+  })
+})
+
 test('installs app dependencies', async () => {
   await reason({ name: 'test', flags: {} })
 
