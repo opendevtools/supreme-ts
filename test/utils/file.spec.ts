@@ -1,4 +1,10 @@
-import { create, hasPkg, overwrite, installPkg } from '../../src/utils/file'
+import {
+  create,
+  createFolder,
+  hasPkg,
+  overwrite,
+  installPkg,
+} from '../../src/utils/file'
 import ejs from 'ejs'
 import util from 'util'
 import execa from 'execa'
@@ -169,6 +175,21 @@ describe('#overwrite', () => {
     expect(global.console.error).toHaveBeenCalledWith('Something went wrong', {
       code: 'ERR',
     })
+  })
+})
+
+describe('#createFolder', () => {
+  let mkdir: jest.Mock
+
+  beforeEach(() => {
+    mkdir = jest.fn()
+    util.promisify.mockReturnValue(mkdir)
+  })
+
+  test('creates a directory', async () => {
+    await createFolder('/test/test')
+
+    expect(mkdir).toHaveBeenCalledWith('/test/test')
   })
 })
 

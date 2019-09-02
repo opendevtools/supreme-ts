@@ -1,7 +1,7 @@
 import execa from 'execa'
 import chalk from 'chalk'
 import { CLIProps } from '../'
-import { create, overwrite } from '../utils/file'
+import { create, overwrite, createFolder } from '../utils/file'
 import path from 'path'
 import ora from 'ora'
 
@@ -98,6 +98,14 @@ export const reason = async ({ name }: CLIProps) => {
   await create({
     templateName: 'reason/App.re',
     output: `${projectName}/src/App.re`,
+  })
+
+  // Test setup
+  await createFolder(`${projectName}/__tests__`)
+
+  await create({
+    templateName: 'reason/App_test.re',
+    output: `${projectName}/__tests__/App_test.re`,
   })
 
   spinner.stop()
