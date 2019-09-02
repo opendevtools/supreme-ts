@@ -63,6 +63,13 @@ test('overwrites base files', async () => {
     templateName: 'reason/webpack.config.js',
     output: 'test/webpack.config.js',
   })
+  expect(overwrite).toHaveBeenCalledWith({
+    templateName: 'reason/README.md',
+    output: 'test/README.md',
+    templateData: {
+      name: 'test',
+    },
+  })
 })
 
 test('should setup git', async () => {
@@ -171,5 +178,14 @@ test('creates testing directory with simple test', async () => {
   expect(create).toHaveBeenCalledWith({
     templateName: 'reason/App_test.re',
     output: 'test/__tests__/App_test.re',
+  })
+})
+
+test('add travis build setup', async () => {
+  await reason({ name: 'test', flags: {} })
+
+  expect(create).toHaveBeenCalledWith({
+    templateName: 'reason/travis.yml',
+    output: 'test/.travis.yml',
   })
 })

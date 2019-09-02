@@ -40,6 +40,15 @@ export const reason = async ({ name }: CLIProps) => {
     output: `${projectName}/webpack.config.js`,
   })
 
+  // Add custom README
+  await overwrite({
+    templateName: 'reason/README.md',
+    output: `${projectName}/README.md`,
+    templateData: {
+      name: projectName,
+    },
+  })
+
   // Creating git
   await execa.command('git init', projectFolder)
   await overwrite({
@@ -100,12 +109,24 @@ export const reason = async ({ name }: CLIProps) => {
     output: `${projectName}/src/App.re`,
   })
 
+  // Travis setup
+  await create({
+    templateName: 'reason/travis.yml',
+    output: `${projectName}/.travis.yml`,
+  })
+
   // Test setup
   await createFolder(`${projectName}/__tests__`)
 
   await create({
     templateName: 'reason/App_test.re',
     output: `${projectName}/__tests__/App_test.re`,
+  })
+
+  // Travis setup
+  await create({
+    templateName: 'reason/travis.yml',
+    output: `${projectName}/.travis.yml`,
   })
 
   spinner.stop()
