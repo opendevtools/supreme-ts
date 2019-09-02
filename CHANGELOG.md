@@ -1,3 +1,11 @@
+# [1.9.0](https://github.com/Iteam1337/supreme/compare/v1.8.0...v1.9.0) (2019-09-02)
+
+
+### Features
+
+* **reason:** add semantic-release ([#20](https://github.com/Iteam1337/supreme/issues/20)) ([624a039](https://github.com/Iteam1337/supreme/commit/624a039))
+* **reason:** add test setup ([#21](https://github.com/Iteam1337/supreme/issues/21)) ([a99894c](https://github.com/Iteam1337/supreme/commit/a99894c))
+
 # [1.8.0](https://github.com/Iteam1337/supreme/compare/v1.7.0...v1.8.0) (2019-09-02)
 
 
