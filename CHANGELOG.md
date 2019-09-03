@@ -1,3 +1,10 @@
+## [1.10.1](https://github.com/Iteam1337/supreme/compare/v1.10.0...v1.10.1) (2019-09-03)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ejs to v2.7.1 ([80de525](https://github.com/Iteam1337/supreme/commit/80de525))
+
 # [1.10.0](https://github.com/Iteam1337/supreme/compare/v1.9.0...v1.10.0) (2019-09-02)
 
 
