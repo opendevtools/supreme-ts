@@ -1,6 +1,6 @@
 <div align="center">
   <p>
-    <img alt="Iteam Supreme" src="docs/iteam-supreme.png" width="300" />
+    <img alt="Iteam Supreme" src="docs/_media/iteam-supreme.png" width="300" />
   </p>
 </div>
 
