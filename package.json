@@ -16,6 +16,7 @@
     "start": "tsdx watch",
     "build": "tsdx build",
     "lint": "tsdx lint",
+    "prepare": "npm run build",
     "test": "is-ci \"test:ci\" \"test:watch\"",
     "test:ci": "tsdx test",
     "test:watch": "tsdx test --watch",
