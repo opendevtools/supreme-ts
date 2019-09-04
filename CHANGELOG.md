@@ -1,3 +1,11 @@
+## [1.10.2](https://github.com/Iteam1337/supreme/compare/v1.10.1...v1.10.2) (2019-09-04)
+
+
+### Bug Fixes
+
+* **reason:** travis duplicate ([0fb75de](https://github.com/Iteam1337/supreme/commit/0fb75de))
+* add prepare script ([8d8067e](https://github.com/Iteam1337/supreme/commit/8d8067e))
+
 ## [1.10.1](https://github.com/Iteam1337/supreme/compare/v1.10.0...v1.10.1) (2019-09-03)
 
 
