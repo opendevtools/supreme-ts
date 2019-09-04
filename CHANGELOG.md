@@ -1,3 +1,10 @@
+## [1.10.3](https://github.com/Iteam1337/supreme/compare/v1.10.2...v1.10.3) (2019-09-04)
+
+
+### Bug Fixes
+
+* create config in existing project folder fixes [#25](https://github.com/Iteam1337/supreme/issues/25) ([13564c7](https://github.com/Iteam1337/supreme/commit/13564c7))
+
 ## [1.10.2](https://github.com/Iteam1337/supreme/compare/v1.10.1...v1.10.2) (2019-09-04)
 
 
