@@ -70,7 +70,12 @@ export const overwrite = (data: HandleFileData) =>
 export const createFolder = async (folderName: string) => {
   const mkdir = util.promisify(fs.mkdir)
 
-  await mkdir(folderName)
+  await mkdir(path.resolve(process.cwd(), folderName))
+}
+
+export const folderExists = (folderName: string) => {
+  const stat = util.promisify(fs.stat)
+  return stat(path.resolve(process.cwd(), folderName))
 }
 
 export const hasPkg = async (packageName: string) => {

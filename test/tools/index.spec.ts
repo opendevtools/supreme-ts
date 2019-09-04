@@ -6,13 +6,18 @@ import {
   config,
   husky,
 } from '../../src/tools'
-import { create, installPkg } from '../../src/utils/file'
+import {
+  create,
+  createFolder,
+  folderExists,
+  installPkg,
+} from '../../src/utils/file'
 import execa from 'execa'
 
 jest.mock('../../src/utils/file')
 jest.mock('execa')
 
-beforeEach(jest.clearAllMocks)
+beforeEach(jest.resetAllMocks)
 
 describe('#gitignore', () => {
   test('creates a gitignore file', async () => {
@@ -95,21 +100,112 @@ describe('#nvmrc', () => {
 
 describe('#config', () => {
   test('installs @iteam/config', async () => {
+    ;(folderExists as jest.Mock)
+      .mockImplementationOnce(() =>
+        Promise.resolve({
+          isDirectory: jest.fn().mockReturnValue(true),
+        })
+      )
+      .mockImplementationOnce(() =>
+        Promise.resolve({
+          isDirectory: jest.fn().mockReturnValue(false),
+        })
+      )
+
     await config()
 
     expect(installPkg).toHaveBeenCalledWith('@iteam/config')
   })
 
-  test('creates a config', async () => {
+  test('creates a config in lib folder', async () => {
+    ;(folderExists as jest.Mock)
+      .mockImplementationOnce(() =>
+        Promise.resolve({
+          isDirectory: jest.fn().mockReturnValue(true),
+        })
+      )
+      .mockImplementationOnce(() =>
+        Promise.resolve({
+          isDirectory: jest.fn().mockReturnValue(false),
+        })
+      )
+
+    await config()
+
+    expect(create).toHaveBeenCalledWith({
+      templateName: 'config/config.js',
+      output: 'lib/config.js',
+    })
+    expect(create).not.toHaveBeenCalledWith({
+      templateName: 'config/config.js',
+      output: 'src/config.js',
+    })
+  })
+
+  test('creates a config in src folder', async () => {
+    ;(folderExists as jest.Mock)
+      .mockImplementationOnce(() =>
+        Promise.resolve({
+          isDirectory: jest.fn().mockReturnValue(false),
+        })
+      )
+      .mockImplementationOnce(() =>
+        Promise.resolve({
+          isDirectory: jest.fn().mockReturnValue(true),
+        })
+      )
+
     await config()
 
     expect(create).toHaveBeenCalledWith({
       templateName: 'config/config.js',
       output: 'src/config.js',
     })
+    expect(create).not.toHaveBeenCalledWith({
+      templateName: 'config/config.js',
+      output: 'lib/config.js',
+    })
+  })
+
+  test('if neither lib nor src exists, create src and src/config.js', async () => {
+    ;(folderExists as jest.Mock)
+      .mockImplementationOnce(() =>
+        Promise.resolve({
+          isDirectory: jest.fn().mockReturnValue(false),
+        })
+      )
+      .mockImplementationOnce(() =>
+        Promise.resolve({
+          isDirectory: jest.fn().mockReturnValue(false),
+        })
+      )
+
+    await config()
+
+    expect(createFolder).toHaveBeenCalledWith('src')
+    expect(create).toHaveBeenCalledWith({
+      templateName: 'config/config.js',
+      output: 'src/config.js',
+    })
+    expect(create).not.toHaveBeenCalledWith({
+      templateName: 'config/config.js',
+      output: 'lib/config.js',
+    })
   })
 
   test('creates a config override file', async () => {
+    ;(folderExists as jest.Mock)
+      .mockImplementationOnce(() =>
+        Promise.resolve({
+          isDirectory: jest.fn().mockReturnValue(true),
+        })
+      )
+      .mockImplementationOnce(() =>
+        Promise.resolve({
+          isDirectory: jest.fn().mockReturnValue(false),
+        })
+      )
+
     await config()
 
     expect(create).toHaveBeenCalledWith({
