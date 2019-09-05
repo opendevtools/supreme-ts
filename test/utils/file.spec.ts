@@ -1,6 +1,7 @@
 import {
   create,
   createFolder,
+  folderExists,
   hasPkg,
   overwrite,
   installPkg,
@@ -190,6 +191,21 @@ describe('#createFolder', () => {
     await createFolder('/test/test')
 
     expect(mkdir).toHaveBeenCalledWith('/test/test')
+  })
+})
+
+describe('#folderExists', () => {
+  let stat: jest.Mock
+
+  beforeEach(() => {
+    stat = jest.fn()
+    util.promisify.mockReturnValue(stat)
+  })
+
+  test('checks if folder exists', async () => {
+    await folderExists('/test/test')
+
+    expect(stat).toHaveBeenCalledWith('/test/test')
   })
 })
 

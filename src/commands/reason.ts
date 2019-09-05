@@ -109,12 +109,6 @@ export const reason = async ({ name }: CLIProps) => {
     output: `${projectName}/src/App.re`,
   })
 
-  // Travis setup
-  await create({
-    templateName: 'reason/travis.yml',
-    output: `${projectName}/.travis.yml`,
-  })
-
   // Test setup
   await createFolder(`${projectName}/__tests__`)
 

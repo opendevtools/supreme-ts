@@ -1,4 +1,4 @@
-import { create, installPkg } from '../utils/file'
+import { create, createFolder, folderExists, installPkg } from '../utils/file'
 import execa from 'execa'
 
 export const gitignore = async () => {
@@ -39,14 +39,46 @@ export const nvmrc = async () => {
 
 export const config = async () => {
   await installPkg('@iteam/config')
+  await create({
+    templateName: 'config/config.json',
+    output: 'config.json',
+  })
+
+  try {
+    const libFolder = await folderExists('lib')
+
+    if (libFolder.isDirectory()) {
+      await create({
+        templateName: 'config/config.js',
+        output: 'lib/config.js',
+      })
+
+      return
+    }
+  } catch (e) {
+    // Swallow errors
+  }
+
+  try {
+    const srcFolder = await folderExists('src')
+
+    if (srcFolder.isDirectory()) {
+      await create({
+        templateName: 'config/config.js',
+        output: 'src/config.js',
+      })
+
+      return
+    }
+  } catch (e) {
+    // Swallow errors
+  }
+
+  createFolder('src')
 
   await create({
     templateName: 'config/config.js',
     output: 'src/config.js',
-  })
-  await create({
-    templateName: 'config/config.json',
-    output: 'config.json',
   })
 }
 
