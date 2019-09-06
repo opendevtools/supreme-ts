@@ -1,3 +1,10 @@
+## [1.11.1](https://github.com/Iteam1337/supreme/compare/v1.11.0...v1.11.1) (2019-09-06)
+
+
+### Bug Fixes
+
+* **reason:** add index.css in postcss-purgecss fixes [#29](https://github.com/Iteam1337/supreme/issues/29) ([8d02385](https://github.com/Iteam1337/supreme/commit/8d02385))
+
 # [1.11.0](https://github.com/Iteam1337/supreme/compare/v1.10.4...v1.11.0) (2019-09-06)
 
 
