@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/Iteam1337/supreme/compare/v1.10.4...v1.11.0) (2019-09-06)
+
+
+### Features
+
+* **reason:** add postcss-purgecss fixes [#28](https://github.com/Iteam1337/supreme/issues/28) ([4d9d50e](https://github.com/Iteam1337/supreme/commit/4d9d50e))
+
 ## [1.10.4](https://github.com/Iteam1337/supreme/compare/v1.10.3...v1.10.4) (2019-09-06)
 
 
