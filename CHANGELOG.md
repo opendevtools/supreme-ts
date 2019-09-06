@@ -1,3 +1,10 @@
+## [1.10.4](https://github.com/Iteam1337/supreme/compare/v1.10.3...v1.10.4) (2019-09-06)
+
+
+### Bug Fixes
+
+* **reason:** add public path to webpack fixes [#27](https://github.com/Iteam1337/supreme/issues/27) ([ef99de6](https://github.com/Iteam1337/supreme/commit/ef99de6))
+
 ## [1.10.3](https://github.com/Iteam1337/supreme/compare/v1.10.2...v1.10.3) (2019-09-04)
 
 ### Bug Fixes
