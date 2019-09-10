@@ -12,7 +12,7 @@ The tool currently supports creating React apps (using [`create-react-app`](http
 
 Built with ❤️ by [@Jimjardland](https://github.com/Jimjardland) and [@believer](https://github.com/believer).
 
-**Documentation:** [https://iteam1337.github.io/supreme/](https://iteam1337.github.io/supreme/)
+**Documentation:** [https://iteam1337.github.io/#/supreme](https://iteam1337.github.io/#/supreme)
 
 ## Installation
 
