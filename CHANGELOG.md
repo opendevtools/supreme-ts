@@ -1,3 +1,10 @@
+# [1.12.0](https://github.com/Iteam1337/supreme/compare/v1.11.1...v1.12.0) (2019-09-10)
+
+
+### Features
+
+* add snippets ([b819a09](https://github.com/Iteam1337/supreme/commit/b819a09))
+
 ## [1.11.1](https://github.com/Iteam1337/supreme/compare/v1.11.0...v1.11.1) (2019-09-06)
 
 
