@@ -12,8 +12,6 @@ The tool currently supports creating React apps (using [`create-react-app`](http
 
 Built with ❤️ by [@Jimjardland](https://github.com/Jimjardland) and [@believer](https://github.com/believer).
 
-**Documentation:** [https://iteam1337.github.io/#/supreme](https://iteam1337.github.io/#/supreme)
-
 ## Installation
 
 ```bash
@@ -28,44 +26,5 @@ npm install -g @iteam/supreme
 
 After that you'll have `supreme` as a global command to use in a repository of your choice.
 
-## Commands
-
-### `init`
-
-- Initialize empty Git repository and add a `.gitignore`
-- Install `prettier` and create config
-- Install `jest`
-- Install `husky` and configure for `pretty-quick`
-- Create a `.nvmrc` with the current Node version
-- Create a `config.js` with example and an empty `config.json` (uses [@iteam/config](https://github.com/Iteam1337/config))
-
-### `add <command>`
-
-Add one of the configs/packages created by `init`. Valid commands are
-
-```typescript
-export type Command =
-  | 'config'
-  | 'gitignore'
-  | 'git'
-  | 'husky'
-  | 'jest'
-  | 'nvm'
-  | 'nvmrc'
-  | 'prettier'
-```
-
-### `react <name> [flags]`
-
-Create a React app using `create-react-app` with the provided name.
-
-**Supported flags:**
-
-- `--typescript` - create a Typescript React app
-
-### `reason <name>`
-
-**Note:** To use this command you will need BuckleScript and Reason which can be installed
-using `npm i -g bs-platform`.
-
-Create a ReasonReact app using `bsb`, from `bs-platform`, and customize the app with our preferred defaults.
+## Documentation
+Find everything you need to know at [Iteam Supreme](https://iteam1337.github.io/#/supreme)
