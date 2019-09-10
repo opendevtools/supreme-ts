@@ -6,8 +6,6 @@ jobs:
       node_js:
         - 12
         - 10
-      before_install:
-        - sudo apt-get install xsel
       install:
         - npm ci
       script:

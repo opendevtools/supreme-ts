@@ -1,6 +1,7 @@
 import { snippets } from '../../src/commands/snippets'
 import clipboardy from 'clipboardy'
 
+jest.mock('clipboardy')
 jest.spyOn(global.console, 'log').mockImplementation(() => {})
 
 beforeEach(jest.clearAllMocks)
@@ -20,7 +21,7 @@ test('should handle undefined language', async () => {
 test('should handle vim and typescript snippets', async () => {
   await snippets({ language: 'typescript', ide: 'vim' })
 
-  expect(clipboardy.readSync()).toMatchSnapshot()
+  expect((clipboardy.writeSync as jest.Mock).mock.calls[0][0]).toMatchSnapshot()
   expect(global.console.log).toHaveBeenCalledWith(
     'Typescript snippets for VIM (UltiSnips) have been copied to the clipboard'
   )
@@ -29,7 +30,7 @@ test('should handle vim and typescript snippets', async () => {
 test('should handle vim and typescript (ts) snippets', async () => {
   await snippets({ language: 'ts', ide: 'vim' })
 
-  expect(clipboardy.readSync()).toMatchSnapshot()
+  expect((clipboardy.writeSync as jest.Mock).mock.calls[0][0]).toMatchSnapshot()
   expect(global.console.log).toHaveBeenCalledWith(
     'Typescript snippets for VIM (UltiSnips) have been copied to the clipboard'
   )
@@ -38,7 +39,7 @@ test('should handle vim and typescript (ts) snippets', async () => {
 test('should handle vim and reason snippets', async () => {
   await snippets({ language: 'reason', ide: 'vim' })
 
-  expect(clipboardy.readSync()).toMatchSnapshot()
+  expect((clipboardy.writeSync as jest.Mock).mock.calls[0][0]).toMatchSnapshot()
   expect(global.console.log).toHaveBeenCalledWith(
     'ReasonML snippets for VIM (UltiSnips) have been copied to the clipboard'
   )
@@ -47,7 +48,7 @@ test('should handle vim and reason snippets', async () => {
 test('should handle vim and reason (reasonml) snippets', async () => {
   await snippets({ language: 'reasonml', ide: 'vim' })
 
-  expect(clipboardy.readSync()).toMatchSnapshot()
+  expect((clipboardy.writeSync as jest.Mock).mock.calls[0][0]).toMatchSnapshot()
   expect(global.console.log).toHaveBeenCalledWith(
     'ReasonML snippets for VIM (UltiSnips) have been copied to the clipboard'
   )
