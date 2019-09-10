@@ -31,6 +31,7 @@
   "devDependencies": {
     "@semantic-release/changelog": "3.0.4",
     "@semantic-release/git": "7.0.16",
+    "@types/app-root-path": "1.2.4",
     "@types/ejs": "2.6.3",
     "@types/inquirer": "6.5.0",
     "@types/jest": "24.0.18",
@@ -46,7 +47,9 @@
     "typescript": "3.6.2"
   },
   "dependencies": {
+    "app-root-path": "^2.2.1",
     "chalk": "2.4.2",
+    "clipboardy": "^2.1.0",
     "ejs": "2.7.1",
     "execa": "2.0.4",
     "inquirer": "7.0.0",

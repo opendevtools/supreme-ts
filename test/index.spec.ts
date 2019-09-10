@@ -3,6 +3,7 @@ import { init } from '../src/commands/init'
 import { react } from '../src/commands/react'
 import { reason } from '../src/commands/reason'
 import { add } from '../src/commands/add'
+import { snippets } from '../src/commands/snippets'
 
 jest.mock('chalk', () => ({
   blue: (param: string) => param,
@@ -17,6 +18,7 @@ jest.mock('../src/commands/init')
 jest.mock('../src/commands/react')
 jest.mock('../src/commands/reason')
 jest.mock('../src/commands/add')
+jest.mock('../src/commands/snippets')
 
 jest.spyOn(global.console, 'log').mockImplementation(() => {})
 
@@ -45,6 +47,12 @@ test('handles add command', () => {
   run({ input: ['add', 'test'], flags: {} })
 
   expect(add).toHaveBeenCalledWith('test')
+})
+
+test('handles snippet command', () => {
+  run({ input: ['snippets'], flags: { language: 'typescript', ide: 'vim' } })
+
+  expect(snippets).toHaveBeenCalledWith({ language: 'typescript', ide: 'vim' })
 })
 
 test('handles unknown command by displaying help', () => {

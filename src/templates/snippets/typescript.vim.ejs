@@ -1,0 +1,111 @@
+# ----------------------------------------------------------
+# Testing
+# ----------------------------------------------------------
+snippet rtest "React test using react-testing-library" b
+import * as React from 'react'
+import { render } from 'test-utils'
+import $1 from '../$1'
+
+test('$2', () => {
+	const { debug } = render(<$1 />)
+
+	debug()
+})
+endsnippet
+
+snippet asmock "Create function as a Jest mock"
+;($1 as jest.Mock).mockImplementation(() => $2)
+endsnippet
+
+snippet stest "Simple test setup" b
+import $1 from '../$1'
+
+test('$2', () => {
+	$3
+})
+endsnippet
+
+snippet desc "Jest describe" b
+describe('$1', () => {
+	$0
+})
+endsnippet
+
+snippet desct "Jest describe with test" b
+describe('$1', () => {
+	test('${2:should}', () => {
+		$0
+	})
+})
+endsnippet
+
+snippet test "Jest test" b
+test('${1:should}', () => {
+	$0
+})
+endsnippet
+
+snippet testa "Jest test async" b
+test('${1:should}', async () => {
+	$0
+})
+endsnippet
+
+snippet mock "Jest mock" b
+jest.mock('${1:pkg}', () => ({
+	$0
+}))
+endsnippet
+
+# ----------------------------------------------------------
+# Logging
+# ----------------------------------------------------------
+snippet clog "console.log"
+console.log(${1:data})
+endsnippet
+
+# ----------------------------------------------------------
+# React
+# ----------------------------------------------------------
+snippet imr "Import React" b
+import React from 'react'
+endsnippet
+
+snippet imra "Import React" b
+import * as React from 'react'
+endsnippet
+
+snippet slr "Functional component" b
+const ${1:`!v expand('%:t:r')`} = () => {
+	return ($0)
+}
+endsnippet
+
+snippet fslr "Full functional component" b
+import * as React from 'react'
+
+const `!v expand('%:t:r')` = () => {
+	return <div>${1:Test}</div>
+}
+
+export default `!v expand('%:t:r')`
+endsnippet
+
+# ----------------------------------------------------------
+# Styling
+# ----------------------------------------------------------
+snippet styc "Styled component" b
+const $1 = styled.$2\`
+	$3
+\`
+endsnippet
+
+snippet tp "Styled component theme"
+$1: ${({ theme }) => theme.$2};
+endsnippet
+
+snippet inter "Interface" b
+interface $1 {
+	$2
+}
+endsnippet

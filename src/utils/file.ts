@@ -6,6 +6,7 @@ import util from 'util'
 import ejs from 'ejs'
 import readPkgUp from 'read-pkg-up'
 import inquirer from 'inquirer'
+import appRoot from 'app-root-path'
 
 interface HandleFileData {
   templateName: string
@@ -40,8 +41,8 @@ const handleFile = async (
   const writeFile = util.promisify(fs.writeFile)
 
   try {
-    const template = await ejs.renderFile(
-      path.join(__dirname, `../src/templates/${templateName}.ejs`),
+    const template = await ejs.renderFile<string>(
+      path.join(appRoot.path, `src/templates/${templateName}.ejs`),
       templateData
     )
 
@@ -55,6 +56,12 @@ const handleFile = async (
         console.error('Something went wrong', e)
     }
   }
+}
+
+export const readSnippet = (templateName: string) => {
+  return ejs.renderFile<string>(
+    path.resolve(appRoot.path, `src/templates/snippets/${templateName}.ejs`)
+  )
 }
 
 export const create = (data: HandleFileData) =>

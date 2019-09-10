@@ -9,9 +9,7 @@ jest.mock('chalk', () => ({
 
 jest.spyOn(global.console, 'log').mockImplementation(() => {})
 
-beforeEach(() => {
-  jest.clearAllMocks()
-})
+beforeEach(jest.clearAllMocks)
 
 describe('#react', () => {
   test('prints intro message', async () => {
