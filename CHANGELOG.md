@@ -1,3 +1,10 @@
+## [1.12.1](https://github.com/Iteam1337/supreme/compare/v1.12.0...v1.12.1) (2019-09-11)
+
+
+### Bug Fixes
+
+* **deps:** pin dependencies ([#32](https://github.com/Iteam1337/supreme/issues/32)) ([415d5a6](https://github.com/Iteam1337/supreme/commit/415d5a6))
+
 # [1.12.0](https://github.com/Iteam1337/supreme/compare/v1.11.1...v1.12.0) (2019-09-10)
 
 
