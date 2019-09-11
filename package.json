@@ -47,9 +47,9 @@
     "typescript": "3.6.3"
   },
   "dependencies": {
-    "app-root-path": "^2.2.1",
+    "app-root-path": "2.2.1",
     "chalk": "2.4.2",
-    "clipboardy": "^2.1.0",
+    "clipboardy": "2.1.0",
     "ejs": "2.7.1",
     "execa": "2.0.4",
     "inquirer": "7.0.0",
