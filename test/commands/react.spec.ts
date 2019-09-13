@@ -22,24 +22,28 @@ describe('#react', () => {
     await react({ flags: {} })
 
     expect(global.console.log).toHaveBeenCalledWith('Creating app ')
-    expect(execa).toHaveBeenCalledWith('npx', ['create-react-app', '.', ''])
+    expect(execa).toHaveBeenCalledWith('npx', [
+      'create-react-app',
+      '.',
+      '--typescript',
+    ])
     expect(global.console.log).toHaveBeenCalledWith('Created app ')
   })
 
   test('create a CRA app', async () => {
     await react({ name: 'test', flags: {} })
 
-    expect(execa).toHaveBeenCalledWith('npx', ['create-react-app', 'test', ''])
-  })
-
-  test('create a typescript CRA app', async () => {
-    await react({ name: 'test', flags: { typescript: true } })
-
     expect(execa).toHaveBeenCalledWith('npx', [
       'create-react-app',
       'test',
       '--typescript',
     ])
+  })
+
+  test('create a javascript CRA app', async () => {
+    await react({ name: 'test', flags: { javascript: true } })
+
+    expect(execa).toHaveBeenCalledWith('npx', ['create-react-app', 'test', ''])
   })
 
   test('prints success message', async () => {

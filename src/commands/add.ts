@@ -10,7 +10,14 @@ export type Command =
   | 'nvmrc'
   | 'prettier'
 
-export const add = (command: Command) => {
+interface AddProps {
+  command: Command
+  flags: {
+    javascript: boolean
+  }
+}
+
+export const add = ({ command, flags }: AddProps) => {
   switch (command) {
     case 'nvm':
     case 'nvmrc':
@@ -27,7 +34,7 @@ export const add = (command: Command) => {
       prettierrc()
       break
     case 'config':
-      config()
+      config({ javascript: flags.javascript })
       break
     case 'husky':
       husky()

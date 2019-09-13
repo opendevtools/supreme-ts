@@ -10,39 +10,49 @@ import {
 
 jest.mock('../../src/tools')
 
-describe('#init', () => {
-  test('should create config', async () => {
-    await init()
+const props = {
+  flags: {},
+}
 
-    expect(config).toHaveBeenCalled()
+describe('#init', () => {
+  test('should create config with typescript', async () => {
+    await init(props)
+
+    expect(config).toHaveBeenCalledWith({ javascript: false })
+  })
+
+  test('should create config with javascript', async () => {
+    await init({ flags: { javascript: true } })
+
+    expect(config).toHaveBeenCalledWith({ javascript: true })
   })
 
   test('should create gitignore', async () => {
-    await init()
+    await init(props)
 
     expect(gitignore).toHaveBeenCalled()
   })
 
   test('should install prettier', async () => {
-    await init()
+    await init(props)
 
     expect(prettierrc).toHaveBeenCalled()
   })
 
   test('should install jest', async () => {
-    await init()
+    await init(props)
 
     expect(jestCreate).toHaveBeenCalled()
   })
 
   test('should create nvmrc', async () => {
-    await init()
+    await init(props)
 
     expect(nvmrc).toHaveBeenCalled()
   })
 
   test('should init husky', async () => {
-    await init()
+    await init(props)
 
     expect(husky).toHaveBeenCalled()
   })

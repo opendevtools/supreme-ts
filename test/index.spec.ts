@@ -23,9 +23,15 @@ jest.mock('../src/commands/snippets')
 jest.spyOn(global.console, 'log').mockImplementation(() => {})
 
 test('handles init command', () => {
-  run({ input: ['init'], flags: {} })
+  run({ input: ['init'], flags: { javascript: false } })
 
-  expect(init).toHaveBeenCalled()
+  expect(init).toHaveBeenCalledWith({ flags: { javascript: false } })
+})
+
+test('handles init command with javascript', () => {
+  run({ input: ['init'], flags: { javascript: true } })
+
+  expect(init).toHaveBeenCalledWith({ flags: { javascript: true } })
 })
 
 test('handles react command', () => {
@@ -44,9 +50,12 @@ test('handles reason command', () => {
 })
 
 test('handles add command', () => {
-  run({ input: ['add', 'test'], flags: {} })
+  run({ input: ['add', 'test'], flags: { javascript: false } })
 
-  expect(add).toHaveBeenCalledWith('test')
+  expect(add).toHaveBeenCalledWith({
+    command: 'test',
+    flags: { javascript: false },
+  })
 })
 
 test('handles snippet command', () => {

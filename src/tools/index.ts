@@ -37,7 +37,11 @@ export const nvmrc = async () => {
   })
 }
 
-export const config = async () => {
+interface ConfigProps {
+  javascript: boolean
+}
+
+export const config = async ({ javascript }: ConfigProps) => {
   await installPkg('@iteam/config')
   await create({
     templateName: 'config/config.json',
@@ -47,10 +51,19 @@ export const config = async () => {
   try {
     const libFolder = await folderExists('lib')
 
-    if (libFolder.isDirectory()) {
+    if (libFolder.isDirectory() && javascript) {
       await create({
         templateName: 'config/config.js',
         output: 'lib/config.js',
+      })
+
+      return
+    }
+
+    if (libFolder.isDirectory() && !javascript) {
+      await create({
+        templateName: 'config/config.ts',
+        output: 'lib/config.ts',
       })
 
       return
@@ -62,10 +75,19 @@ export const config = async () => {
   try {
     const srcFolder = await folderExists('src')
 
-    if (srcFolder.isDirectory()) {
+    if (srcFolder.isDirectory() && javascript) {
       await create({
         templateName: 'config/config.js',
         output: 'src/config.js',
+      })
+
+      return
+    }
+
+    if (srcFolder.isDirectory() && !javascript) {
+      await create({
+        templateName: 'config/config.ts',
+        output: 'src/config.ts',
       })
 
       return
@@ -76,10 +98,19 @@ export const config = async () => {
 
   createFolder('src')
 
-  await create({
-    templateName: 'config/config.js',
-    output: 'src/config.js',
-  })
+  if (javascript) {
+    await create({
+      templateName: 'config/config.js',
+      output: 'src/config.js',
+    })
+  }
+
+  if (!javascript) {
+    await create({
+      templateName: 'config/config.ts',
+      output: 'src/config.ts',
+    })
+  }
 }
 
 export const husky = async () => {
