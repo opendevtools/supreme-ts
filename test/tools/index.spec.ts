@@ -111,8 +111,7 @@ describe('#config', () => {
           isDirectory: jest.fn().mockReturnValue(false),
         })
       )
-
-    await config()
+    await config({ javascript: false })
 
     expect(installPkg).toHaveBeenCalledWith('@iteam/config')
   })
@@ -130,7 +129,7 @@ describe('#config', () => {
         })
       )
 
-    await config()
+    await config({ javascript: true })
 
     expect(create).toHaveBeenCalledWith({
       templateName: 'config/config.js',
@@ -142,7 +141,7 @@ describe('#config', () => {
     })
   })
 
-  test('creates a config in src folder', async () => {
+  test('creates a typescript config in src folder', async () => {
     ;(folderExists as jest.Mock)
       .mockImplementationOnce(() =>
         Promise.resolve({
@@ -155,7 +154,32 @@ describe('#config', () => {
         })
       )
 
-    await config()
+    await config({ javascript: false })
+
+    expect(create).toHaveBeenCalledWith({
+      templateName: 'config/config.ts',
+      output: 'src/config.ts',
+    })
+    expect(create).not.toHaveBeenCalledWith({
+      templateName: 'config/config.ts',
+      output: 'lib/config.ts',
+    })
+  })
+
+  test('creates a javascript config in src folder', async () => {
+    ;(folderExists as jest.Mock)
+      .mockImplementationOnce(() =>
+        Promise.resolve({
+          isDirectory: jest.fn().mockReturnValue(false),
+        })
+      )
+      .mockImplementationOnce(() =>
+        Promise.resolve({
+          isDirectory: jest.fn().mockReturnValue(true),
+        })
+      )
+
+    await config({ javascript: true })
 
     expect(create).toHaveBeenCalledWith({
       templateName: 'config/config.js',
@@ -180,7 +204,7 @@ describe('#config', () => {
         })
       )
 
-    await config()
+    await config({ javascript: true })
 
     expect(createFolder).toHaveBeenCalledWith('src')
     expect(create).toHaveBeenCalledWith({
@@ -206,7 +230,7 @@ describe('#config', () => {
         })
       )
 
-    await config()
+    await config({ javascript: false })
 
     expect(create).toHaveBeenCalledWith({
       templateName: 'config/config.json',

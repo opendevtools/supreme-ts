@@ -6,11 +6,15 @@ import { reason } from './commands/reason'
 import { init } from './commands/init'
 import { snippets, SnippetLanguage, SnippetIDE } from './commands/snippets'
 
+export interface CLIFlags {
+  javascript: boolean
+  ide?: string
+  language?: string
+}
+
 export interface CLIProps {
   name?: string
-  flags: {
-    [name: string]: string
-  }
+  flags: CLIFlags
 }
 
 export const run = (cli: meow.Result) => {
@@ -21,16 +25,16 @@ export const run = (cli: meow.Result) => {
 
   switch (command) {
     case 'init':
-      init()
+      init({ flags: flags as CLIFlags })
       break
     case 'react':
-      react({ name, flags })
+      react({ name, flags: flags as CLIFlags })
       break
     case 'reason':
-      reason({ name, flags })
+      reason({ name, flags: flags as CLIFlags })
       break
     case 'add':
-      add(name as Command)
+      add({ command: name as Command, flags: flags as CLIFlags })
       break
     case 'snippets':
       snippets({
@@ -56,16 +60,20 @@ const cli = meow(
     $ snippets [flags]          Copy snippets to clipboard
 
     Flags
-    --typescript    Typescript app (react)
+    --javascript    JavaScript app (react)
     --ide           IDE for snippets (snippets) 
     --language      Language for snippets (snippets) 
     `,
   {
     flags: {
-      typescript: {
+      javascript: {
         type: 'boolean',
+        default: false,
       },
       ide: {
+        type: 'string',
+      },
+      language: {
         type: 'string',
       },
     },
