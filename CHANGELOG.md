@@ -1,3 +1,16 @@
+# [2.0.0](https://github.com/Iteam1337/supreme/compare/v1.12.1...v2.0.0) (2019-09-13)
+
+
+### Features
+
+* make typescript default ([#35](https://github.com/Iteam1337/supreme/issues/35)) ([7ddffe6](https://github.com/Iteam1337/supreme/commit/7ddffe6))
+
+
+### BREAKING CHANGES
+
+* Make TypeScript the default for `config` and `react`
+commands, with an optional `--javascript` flag
+
 ## [1.12.1](https://github.com/Iteam1337/supreme/compare/v1.12.0...v1.12.1) (2019-09-11)
 
 
