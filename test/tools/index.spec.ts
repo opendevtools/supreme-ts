@@ -217,6 +217,32 @@ describe('#config', () => {
     })
   })
 
+  test('if neither lib nor src exists, create src and src/config.js for typescript', async () => {
+    ;(folderExists as jest.Mock)
+      .mockImplementationOnce(() =>
+        Promise.resolve({
+          isDirectory: jest.fn().mockReturnValue(false),
+        })
+      )
+      .mockImplementationOnce(() =>
+        Promise.resolve({
+          isDirectory: jest.fn().mockReturnValue(false),
+        })
+      )
+
+    await config({ javascript: false })
+
+    expect(createFolder).toHaveBeenCalledWith('src')
+    expect(create).toHaveBeenCalledWith({
+      templateName: 'config/config.ts',
+      output: 'src/config.ts',
+    })
+    expect(create).not.toHaveBeenCalledWith({
+      templateName: 'config/config.js',
+      output: 'src/config.js',
+    })
+  })
+
   test('creates a config override file', async () => {
     ;(folderExists as jest.Mock)
       .mockImplementationOnce(() =>
