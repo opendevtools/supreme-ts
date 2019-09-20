@@ -1,3 +1,11 @@
+## [2.0.1](https://github.com/Iteam1337/supreme/compare/v2.0.0...v2.0.1) (2019-09-20)
+
+
+### Bug Fixes
+
+* **snippets:** handle form notify in hook snippet ([bcb48d0](https://github.com/Iteam1337/supreme/commit/bcb48d0))
+* revert file path change ([7d71444](https://github.com/Iteam1337/supreme/commit/7d71444))
+
 # [2.0.0](https://github.com/Iteam1337/supreme/compare/v1.12.1...v2.0.0) (2019-09-13)
 
 
