@@ -6,7 +6,6 @@ import util from 'util'
 import ejs from 'ejs'
 import readPkgUp from 'read-pkg-up'
 import inquirer from 'inquirer'
-import appRoot from 'app-root-path'
 
 interface HandleFileData {
   templateName: string
@@ -42,7 +41,7 @@ const handleFile = async (
 
   try {
     const template = await ejs.renderFile<string>(
-      path.join(appRoot.path, `src/templates/${templateName}.ejs`),
+      path.join(__dirname, `../src/templates/${templateName}.ejs`),
       templateData
     )
 
@@ -60,7 +59,7 @@ const handleFile = async (
 
 export const readSnippet = (templateName: string) => {
   return ejs.renderFile<string>(
-    path.resolve(appRoot.path, `src/templates/snippets/${templateName}.ejs`)
+    path.resolve(__dirname, `../src/templates/snippets/${templateName}.ejs`)
   )
 }
 

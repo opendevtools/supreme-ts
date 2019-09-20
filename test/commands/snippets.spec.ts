@@ -1,10 +1,12 @@
 import { snippets } from '../../src/commands/snippets'
 import clipboardy from 'clipboardy'
+import ejs from 'ejs'
 
+jest.mock('ejs')
 jest.mock('clipboardy')
 jest.spyOn(global.console, 'log').mockImplementation(() => {})
 
-beforeEach(jest.clearAllMocks)
+beforeEach(jest.resetAllMocks)
 
 test('should handle undefined ide', async () => {
   await snippets({ language: 'typescript', ide: undefined })
@@ -19,6 +21,8 @@ test('should handle undefined language', async () => {
 })
 
 test('should handle vim and typescript snippets', async () => {
+  ;(ejs as jest.Mock).renderFile.mockResolvedValue('tssnippet')
+
   await snippets({ language: 'typescript', ide: 'vim' })
 
   expect((clipboardy.writeSync as jest.Mock).mock.calls[0][0]).toMatchSnapshot()
@@ -28,6 +32,8 @@ test('should handle vim and typescript snippets', async () => {
 })
 
 test('should handle vim and typescript (ts) snippets', async () => {
+  ;(ejs as jest.Mock).renderFile.mockResolvedValue('tssnippet')
+
   await snippets({ language: 'ts', ide: 'vim' })
 
   expect((clipboardy.writeSync as jest.Mock).mock.calls[0][0]).toMatchSnapshot()
@@ -37,6 +43,8 @@ test('should handle vim and typescript (ts) snippets', async () => {
 })
 
 test('should handle vim and reason snippets', async () => {
+  ;(ejs as jest.Mock).renderFile.mockResolvedValue('reasonsnippet')
+
   await snippets({ language: 'reason', ide: 'vim' })
 
   expect((clipboardy.writeSync as jest.Mock).mock.calls[0][0]).toMatchSnapshot()
@@ -46,6 +54,8 @@ test('should handle vim and reason snippets', async () => {
 })
 
 test('should handle vim and reason (reasonml) snippets', async () => {
+  ;(ejs as jest.Mock).renderFile.mockResolvedValue('reasonsnippet')
+
   await snippets({ language: 'reasonml', ide: 'vim' })
 
   expect((clipboardy.writeSync as jest.Mock).mock.calls[0][0]).toMatchSnapshot()
