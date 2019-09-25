@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/Iteam1337/supreme/compare/v2.0.3...v2.1.0) (2019-09-25)
+
+
+### Features
+
+* **snippet:** add useEffect2 snippet ([20aef4a](https://github.com/Iteam1337/supreme/commit/20aef4a))
+
 ## [2.0.3](https://github.com/Iteam1337/supreme/compare/v2.0.2...v2.0.3) (2019-09-24)
 
 
