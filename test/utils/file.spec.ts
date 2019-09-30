@@ -212,7 +212,7 @@ describe('#folderExists', () => {
 describe('#hasPkg', () => {
   test('returns true if package.json contains dependency', async () => {
     readPkgUp.mockReturnValue({
-      package: {
+      packageJson: {
         dependencies: {
           test: '0.1.0',
         },
@@ -224,7 +224,7 @@ describe('#hasPkg', () => {
 
   test('returns true if package.json contains dev dependency', async () => {
     readPkgUp.mockReturnValue({
-      package: {
+      packageJson: {
         devDependencies: {
           test: '0.1.0',
         },
@@ -236,7 +236,7 @@ describe('#hasPkg', () => {
 
   test('returns false if package.json does not contain either normal or dev dependency', async () => {
     readPkgUp.mockReturnValue({
-      package: {
+      packageJson: {
         dependencies: {},
         devDependencies: {},
       },
@@ -264,7 +264,7 @@ describe('#installPkg', () => {
 
   test('does nothing if package is installed', async () => {
     readPkgUp.mockReturnValue({
-      package: {
+      packageJson: {
         devDependencies: {
           jest: '0.1.0',
         },

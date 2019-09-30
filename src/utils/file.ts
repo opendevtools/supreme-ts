@@ -91,8 +91,8 @@ export const hasPkg = async (packageName: string) => {
     return false
   }
 
-  const dep = pkg.package.dependencies
-  const devDep = pkg.package.devDependencies
+  const dep = pkg.packageJson.dependencies
+  const devDep = pkg.packageJson.devDependencies
 
   return (
     (!!dep && dep.hasOwnProperty(packageName)) ||
