@@ -1,6 +1,6 @@
 {
   "name": "@iteam/supreme",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "main": "bin/supreme",
   "bin": "bin/supreme",
   "description": "A CLI tool that helps you get up an running fast",
@@ -37,7 +37,7 @@
     "@types/inquirer": "6.5.0",
     "@types/jest": "24.0.18",
     "@types/meow": "5.0.0",
-    "husky": "3.0.5",
+    "husky": "3.0.7",
     "is-ci-cli": "1.1.1",
     "jest": "24.9.0",
     "jest-watch-typeahead": "0.4.0",
@@ -55,7 +55,7 @@
     "execa": "2.0.4",
     "inquirer": "7.0.0",
     "meow": "5.0.0",
-    "ora": "4.0.1",
+    "ora": "4.0.2",
     "read-pkg-up": "7.0.0"
   },
   "jest": {
