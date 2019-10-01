@@ -11,6 +11,7 @@ export interface CLIFlags {
   javascript: boolean
   ide?: string
   language?: string
+  examples?: boolean
 }
 
 export interface CLIProps {
@@ -68,6 +69,7 @@ const cli = meow(
     --javascript    JavaScript app (react)
     --ide           IDE for snippets (snippets) 
     --language      Language for snippets (snippets) 
+    --examples      GraphQL examples (examples)
     `,
   {
     flags: {
@@ -80,6 +82,9 @@ const cli = meow(
       },
       language: {
         type: 'string',
+      },
+      examples: {
+        type: 'boolean',
       },
     },
   }

@@ -98,3 +98,32 @@ test('should add server', async () => {
     output: 'test/lib/server.ts',
   })
 })
+
+test('should add server with examples', async () => {
+  await graphql({ name: 'test', flags: { examples: true } })
+
+  expect(create).toHaveBeenCalledWith({
+    templateName: 'graphql/serverExample.ts',
+    output: 'test/lib/server.ts',
+  })
+})
+
+test('should add resolvers with examples', async () => {
+  await graphql({ name: 'test', flags: { examples: true } })
+
+  expect(createFolder).toHaveBeenCalledWith('test/lib/resolvers')
+  expect(create).toHaveBeenCalledWith({
+    templateName: 'graphql/resolversExample.ts',
+    output: 'test/lib/resolvers/queue.ts',
+  })
+})
+
+test('should add generated types', async () => {
+  await graphql({ name: 'test', flags: { examples: true } })
+
+  expect(createFolder).toHaveBeenCalledWith('test/lib/__generated__')
+  expect(create).toHaveBeenCalledWith({
+    templateName: 'graphql/graphql.d.ts',
+    output: 'test/lib/__generated__/graphql.d.ts',
+  })
+})
