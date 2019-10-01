@@ -1,3 +1,10 @@
+# [2.3.0](https://github.com/Iteam1337/supreme/compare/v2.2.0...v2.3.0) (2019-10-01)
+
+
+### Features
+
+* add graphql api generator ([#46](https://github.com/Iteam1337/supreme/issues/46)) ([d42e542](https://github.com/Iteam1337/supreme/commit/d42e542))
+
 # [2.2.0](https://github.com/Iteam1337/supreme/compare/v2.1.2...v2.2.0) (2019-10-01)
 
 
