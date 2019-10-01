@@ -34,7 +34,7 @@ describe('#prettierrc', () => {
   test('installs prettier', async () => {
     await prettierrc()
 
-    expect(installPkg).toHaveBeenCalledWith('prettier')
+    expect(installPkg).toHaveBeenCalledWith('prettier', {})
   })
 
   test('creates a prettier config', async () => {
@@ -45,19 +45,30 @@ describe('#prettierrc', () => {
       output: '.prettierrc',
     })
   })
+
+  test('creates a prettier config in subfolder', async () => {
+    await prettierrc({ cwd: 'test' })
+
+    expect(create).toHaveBeenCalledWith({
+      templateName: 'prettierrc',
+      output: 'test/.prettierrc',
+    })
+  })
 })
 
 describe('#jest', () => {
   test('installs jest', async () => {
-    await jestFn()
+    await jestFn({ cwd: 'test' })
 
-    expect(installPkg).toHaveBeenCalledWith('jest')
+    expect(installPkg).toHaveBeenCalledWith('jest', { cwd: 'test' })
   })
 
   test('installs jest typeahead', async () => {
-    await jestFn()
+    await jestFn({ cwd: 'test' })
 
-    expect(installPkg).toHaveBeenCalledWith('jest-watch-typeahead')
+    expect(installPkg).toHaveBeenCalledWith('jest-watch-typeahead', {
+      cwd: 'test',
+    })
   })
 
   test('creates a jest config', async () => {
@@ -66,6 +77,15 @@ describe('#jest', () => {
     expect(create).toHaveBeenCalledWith({
       templateName: 'jest.config',
       output: 'jest.config.js',
+    })
+  })
+
+  test('creates a jest config in subfolder', async () => {
+    await jestFn({ cwd: 'test' })
+
+    expect(create).toHaveBeenCalledWith({
+      templateName: 'jest.config',
+      output: 'test/jest.config.js',
     })
   })
 })
@@ -91,6 +111,22 @@ describe('#nvmrc', () => {
     expect(create).toHaveBeenCalledWith({
       templateName: 'nvmrc',
       output: '.nvmrc',
+      templateData: {
+        nodeVersion: 'v4.2.0',
+      },
+    })
+  })
+
+  test('creates a nvmrc with current node version in sub folder', async () => {
+    ;((execa as unknown) as jest.Mock).mockResolvedValue({
+      stdout: 'v4.2.0',
+    })
+
+    await nvmrc({ cwd: 'test' })
+
+    expect(create).toHaveBeenCalledWith({
+      templateName: 'nvmrc',
+      output: 'test/.nvmrc',
       templateData: {
         nodeVersion: 'v4.2.0',
       },
@@ -267,15 +303,15 @@ describe('#config', () => {
 
 describe('#husky', () => {
   test('installs husky', async () => {
-    await husky()
+    await husky({ cwd: 'test' })
 
-    expect(installPkg).toHaveBeenCalledWith('husky')
+    expect(installPkg).toHaveBeenCalledWith('husky', { cwd: 'test' })
   })
 
   test('installs pretty-quick', async () => {
-    await husky()
+    await husky({ cwd: 'test' })
 
-    expect(installPkg).toHaveBeenCalledWith('pretty-quick')
+    expect(installPkg).toHaveBeenCalledWith('pretty-quick', { cwd: 'test' })
   })
 
   test('creates a config', async () => {
@@ -284,6 +320,14 @@ describe('#husky', () => {
     expect(create).toHaveBeenCalledWith({
       templateName: 'huskyrc',
       output: '.huskyrc',
+    })
+  })
+  test('creates a config in a sub folder', async () => {
+    await husky({ cwd: 'test' })
+
+    expect(create).toHaveBeenCalledWith({
+      templateName: 'huskyrc',
+      output: 'test/.huskyrc',
     })
   })
 })
