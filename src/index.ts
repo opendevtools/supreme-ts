@@ -62,6 +62,7 @@ const cli = meow(
     $ react <name> [flags]      Creates a React app (CRA)
     $ reason <name>             Creates a ReasonReact app
     $ snippets [flags]          Copy snippets to clipboard
+    $ graphql <name>            Create a GraphQL API
 
     Flags
     --javascript    JavaScript app (react)
