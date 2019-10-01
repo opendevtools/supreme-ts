@@ -1,5 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`should handle vim and javascript (javascript) snippets 1`] = `"javascriptsnippet"`;
+
+exports[`should handle vim and javascript snippets 1`] = `"javascriptsnippet"`;
+
 exports[`should handle vim and reason (reasonml) snippets 1`] = `"reasonsnippet"`;
 
 exports[`should handle vim and reason snippets 1`] = `"reasonsnippet"`;
