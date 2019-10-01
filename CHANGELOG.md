@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/Iteam1337/supreme/compare/v2.1.2...v2.2.0) (2019-10-01)
+
+
+### Features
+
+* **snippets:** add javascript and update other snippets ([#44](https://github.com/Iteam1337/supreme/issues/44)) ([8561908](https://github.com/Iteam1337/supreme/commit/8561908))
+
 ## [2.1.2](https://github.com/Iteam1337/supreme/compare/v2.1.1...v2.1.2) (2019-09-30)
 
 
