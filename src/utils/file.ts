@@ -100,11 +100,18 @@ export const hasPkg = async (packageName: string) => {
   )
 }
 
-export const installPkg = async (packageName: string) => {
+interface PackageOptions {
+  cwd?: string
+}
+
+export const installPkg = async (
+  packageName: string,
+  options: PackageOptions = {}
+) => {
   const hasPackageInstalled = await hasPkg(packageName)
 
   if (!hasPackageInstalled) {
     console.log(`Installing ${chalk.blue(packageName)}`)
-    await execa('npm', ['install', '--save-dev', packageName])
+    await execa.command(`npm install --save-dev ${packageName}`, options)
   }
 }

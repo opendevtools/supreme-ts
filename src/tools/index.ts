@@ -1,6 +1,10 @@
 import { create, createFolder, folderExists, installPkg } from '../utils/file'
 import execa from 'execa'
 
+interface ToolProps {
+  cwd?: string
+}
+
 export const gitignore = async () => {
   await create({
     templateName: 'gitignore',
@@ -8,31 +12,31 @@ export const gitignore = async () => {
   })
 }
 
-export const prettierrc = async () => {
-  await installPkg('prettier')
+export const prettierrc = async (options: ToolProps = {}) => {
+  await installPkg('prettier', options)
 
   await create({
     templateName: 'prettierrc',
-    output: '.prettierrc',
+    output: options.cwd ? `${options.cwd}/.prettierrc` : '.prettierrc',
   })
 }
 
-export const jest = async () => {
-  await installPkg('jest')
-  await installPkg('jest-watch-typeahead')
+export const jest = async (options: ToolProps = {}) => {
+  await installPkg('jest', options)
+  await installPkg('jest-watch-typeahead', options)
 
   await create({
     templateName: 'jest.config',
-    output: 'jest.config.js',
+    output: options.cwd ? `${options.cwd}/jest.config.js` : 'jest.config.js',
   })
 }
 
-export const nvmrc = async () => {
+export const nvmrc = async (options: ToolProps = {}) => {
   const { stdout: nodeVersion } = await execa('node', ['-v'])
 
   await create({
     templateName: 'nvmrc',
-    output: '.nvmrc',
+    output: options.cwd ? `${options.cwd}/.nvmrc` : '.nvmrc',
     templateData: { nodeVersion },
   })
 }
@@ -113,12 +117,12 @@ export const config = async ({ javascript }: ConfigProps) => {
   }
 }
 
-export const husky = async () => {
-  await installPkg('husky')
-  await installPkg('pretty-quick')
+export const husky = async (options: ToolProps = {}) => {
+  await installPkg('husky', options)
+  await installPkg('pretty-quick', options)
 
   await create({
     templateName: 'huskyrc',
-    output: '.huskyrc',
+    output: options.cwd ? `${options.cwd}/.huskyrc` : '.huskyrc',
   })
 }

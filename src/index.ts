@@ -5,6 +5,7 @@ import { add, Command } from './commands/add'
 import { reason } from './commands/reason'
 import { init } from './commands/init'
 import { snippets, SnippetLanguage, SnippetIDE } from './commands/snippets'
+import { graphql } from './commands/graphql'
 
 export interface CLIFlags {
   javascript: boolean
@@ -41,6 +42,9 @@ export const run = (cli: meow.Result) => {
         language: flags.language as SnippetLanguage,
         ide: flags.ide as SnippetIDE,
       })
+      break
+    case 'graphql':
+      graphql({ name, flags: flags as CLIFlags })
       break
     default:
       console.log(help)
