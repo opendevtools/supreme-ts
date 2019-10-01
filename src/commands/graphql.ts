@@ -10,7 +10,7 @@ interface GraphQLProps {
   name?: string
 }
 
-export const graphql = async ({ name }: GraphQLProps) => {
+export const graphql = async ({ name, flags }: GraphQLProps) => {
   if (!name) {
     console.log(`No name provided`)
     return
@@ -55,10 +55,29 @@ export const graphql = async ({ name }: GraphQLProps) => {
 
   await createFolder(`${name}/lib`)
 
-  await create({
-    templateName: 'graphql/server.ts',
-    output: `${name}/lib/server.ts`,
-  })
+  if (flags.examples) {
+    await create({
+      templateName: 'graphql/serverExample.ts',
+      output: `${name}/lib/server.ts`,
+    })
+
+    await createFolder(`${name}/lib/resolvers`)
+    await create({
+      templateName: 'graphql/resolversExample.ts',
+      output: `${name}/lib/resolvers/queue.ts`,
+    })
+
+    await createFolder(`${name}/lib/__generated__`)
+    await create({
+      templateName: 'graphql/graphql.d.ts',
+      output: `${name}/lib/__generated__/graphql.d.ts`,
+    })
+  } else {
+    await create({
+      templateName: 'graphql/server.ts',
+      output: `${name}/lib/server.ts`,
+    })
+  }
 
   spinner.stop()
 
