@@ -1,3 +1,10 @@
+# [2.4.0](https://github.com/Iteam1337/supreme/compare/v2.3.0...v2.4.0) (2019-10-01)
+
+
+### Features
+
+* **graphql:** add example generation ([#48](https://github.com/Iteam1337/supreme/issues/48)) ([ac14efc](https://github.com/Iteam1337/supreme/commit/ac14efc))
+
 # [2.3.0](https://github.com/Iteam1337/supreme/compare/v2.2.0...v2.3.0) (2019-10-01)
 
 
