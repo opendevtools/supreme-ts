@@ -112,6 +112,9 @@ export const installPkg = async (
 
   if (!hasPackageInstalled) {
     console.log(`Installing ${chalk.blue(packageName)}`)
-    await execa.command(`npm install --save-dev ${packageName}`, options)
+    await execa.command(
+      `npm install --save-dev --save-exact ${packageName}`,
+      options
+    )
   }
 }
