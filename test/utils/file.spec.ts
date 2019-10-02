@@ -260,7 +260,7 @@ describe('#installPkg', () => {
 
     expect(global.console.log).toHaveBeenCalledWith('Installing jest')
     expect(execa.command).toHaveBeenCalledWith(
-      'npm install --save-dev jest',
+      'npm install --save-dev --save-exact jest',
       {}
     )
   })
@@ -278,7 +278,7 @@ describe('#installPkg', () => {
 
     expect(global.console.log).not.toHaveBeenCalledWith('Installing jest')
     expect(execa.command).not.toHaveBeenCalledWith(
-      'npm install --save-dev jest',
+      'npm install --save-dev --save-exact jest',
       {}
     )
   })
@@ -289,8 +289,11 @@ describe('#installPkg', () => {
     await installPkg('jest', { cwd: 'test' })
 
     expect(global.console.log).toHaveBeenCalledWith('Installing jest')
-    expect(execa.command).toHaveBeenCalledWith('npm install --save-dev jest', {
-      cwd: expect.stringMatching(/test/),
-    })
+    expect(execa.command).toHaveBeenCalledWith(
+      'npm install --save-dev --save-exact jest',
+      {
+        cwd: expect.stringMatching(/test/),
+      }
+    )
   })
 })
