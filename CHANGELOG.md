@@ -1,3 +1,10 @@
+## [2.4.1](https://github.com/Iteam1337/supreme/compare/v2.4.0...v2.4.1) (2019-10-02)
+
+
+### Bug Fixes
+
+* install exact versions ([#53](https://github.com/Iteam1337/supreme/issues/53)) ([b510a36](https://github.com/Iteam1337/supreme/commit/b510a36))
+
 # [2.4.0](https://github.com/Iteam1337/supreme/compare/v2.3.0...v2.4.0) (2019-10-01)
 
 

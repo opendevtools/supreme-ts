@@ -1,6 +1,6 @@
 {
   "name": "@iteam/supreme",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "main": "bin/supreme",
   "bin": "bin/supreme",
   "description": "A CLI tool that helps you get up an running fast",
