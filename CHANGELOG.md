@@ -1,3 +1,10 @@
+## [2.4.2](https://github.com/Iteam1337/supreme/compare/v2.4.1...v2.4.2) (2019-10-07)
+
+
+### Bug Fixes
+
+* **deps:** update dependency execa to v2.0.5 ([512779d](https://github.com/Iteam1337/supreme/commit/512779d))
+
 ## [2.4.1](https://github.com/Iteam1337/supreme/compare/v2.4.0...v2.4.1) (2019-10-02)
 
 
