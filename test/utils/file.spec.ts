@@ -190,7 +190,7 @@ describe('#createFolder', () => {
   test('creates a directory', async () => {
     await createFolder('/test/test')
 
-    expect(mkdir).toHaveBeenCalledWith('/test/test')
+    expect(mkdir).toHaveBeenCalledWith(expect.stringMatching(/test(\/|\\)test/))
   })
 })
 
@@ -205,7 +205,7 @@ describe('#folderExists', () => {
   test('checks if folder exists', async () => {
     await folderExists('/test/test')
 
-    expect(stat).toHaveBeenCalledWith('/test/test')
+    expect(stat).toHaveBeenCalledWith(expect.stringMatching(/test(\/|\\)test/))
   })
 })
 
