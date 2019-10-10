@@ -1,3 +1,38 @@
+## [2.4.2](https://github.com/Iteam1337/supreme/compare/v2.4.1...v2.4.2) (2019-10-07)
+
+
+### Bug Fixes
+
+* **deps:** update dependency execa to v2.0.5 ([512779d](https://github.com/Iteam1337/supreme/commit/512779d))
+
+## [2.4.1](https://github.com/Iteam1337/supreme/compare/v2.4.0...v2.4.1) (2019-10-02)
+
+
+### Bug Fixes
+
+* install exact versions ([#53](https://github.com/Iteam1337/supreme/issues/53)) ([b510a36](https://github.com/Iteam1337/supreme/commit/b510a36))
+
+# [2.4.0](https://github.com/Iteam1337/supreme/compare/v2.3.0...v2.4.0) (2019-10-01)
+
+
+### Features
+
+* **graphql:** add example generation ([#48](https://github.com/Iteam1337/supreme/issues/48)) ([ac14efc](https://github.com/Iteam1337/supreme/commit/ac14efc))
+
+# [2.3.0](https://github.com/Iteam1337/supreme/compare/v2.2.0...v2.3.0) (2019-10-01)
+
+
+### Features
+
+* add graphql api generator ([#46](https://github.com/Iteam1337/supreme/issues/46)) ([d42e542](https://github.com/Iteam1337/supreme/commit/d42e542))
+
+# [2.2.0](https://github.com/Iteam1337/supreme/compare/v2.1.2...v2.2.0) (2019-10-01)
+
+
+### Features
+
+* **snippets:** add javascript and update other snippets ([#44](https://github.com/Iteam1337/supreme/issues/44)) ([8561908](https://github.com/Iteam1337/supreme/commit/8561908))
+
 ## [2.1.2](https://github.com/Iteam1337/supreme/compare/v2.1.1...v2.1.2) (2019-09-30)
 
 

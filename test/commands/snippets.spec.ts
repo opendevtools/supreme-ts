@@ -64,6 +64,28 @@ test('should handle vim and reason (reasonml) snippets', async () => {
   )
 })
 
+test('should handle vim and javascript snippets', async () => {
+  ;(ejs as jest.Mock).renderFile.mockResolvedValue('javascriptsnippet')
+
+  await snippets({ language: 'js', ide: 'vim' })
+
+  expect((clipboardy.writeSync as jest.Mock).mock.calls[0][0]).toMatchSnapshot()
+  expect(global.console.log).toHaveBeenCalledWith(
+    'JavaScript snippets for VIM (UltiSnips) have been copied to the clipboard'
+  )
+})
+
+test('should handle vim and javascript (javascript) snippets', async () => {
+  ;(ejs as jest.Mock).renderFile.mockResolvedValue('javascriptsnippet')
+
+  await snippets({ language: 'javascript', ide: 'vim' })
+
+  expect((clipboardy.writeSync as jest.Mock).mock.calls[0][0]).toMatchSnapshot()
+  expect(global.console.log).toHaveBeenCalledWith(
+    'JavaScript snippets for VIM (UltiSnips) have been copied to the clipboard'
+  )
+})
+
 test('should display error for unknown language', async () => {
   await snippets({ language: '__no_lang__', ide: 'vim' })
 

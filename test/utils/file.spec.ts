@@ -256,10 +256,13 @@ describe('#installPkg', () => {
   test('installs package if it does not already exist', async () => {
     readPkgUp.mockReturnValue(undefined)
 
-    await installPkg('test')
+    await installPkg('jest')
 
-    expect(global.console.log).toHaveBeenCalledWith('Installing test')
-    expect(execa).toHaveBeenCalledWith('npm', ['install', '--save-dev', 'test'])
+    expect(global.console.log).toHaveBeenCalledWith('Installing jest')
+    expect(execa.command).toHaveBeenCalledWith(
+      'npm install --save-dev --save-exact jest',
+      {}
+    )
   })
 
   test('does nothing if package is installed', async () => {
@@ -273,11 +276,24 @@ describe('#installPkg', () => {
 
     await installPkg('jest')
 
-    expect(global.console.log).not.toHaveBeenCalledWith('Installing test')
-    expect(execa).not.toHaveBeenCalledWith('npm', [
-      'install',
-      '--save-dev',
-      'test',
-    ])
+    expect(global.console.log).not.toHaveBeenCalledWith('Installing jest')
+    expect(execa.command).not.toHaveBeenCalledWith(
+      'npm install --save-dev --save-exact jest',
+      {}
+    )
+  })
+
+  test('handles sub folders', async () => {
+    readPkgUp.mockReturnValue(undefined)
+
+    await installPkg('jest', { cwd: 'test' })
+
+    expect(global.console.log).toHaveBeenCalledWith('Installing jest')
+    expect(execa.command).toHaveBeenCalledWith(
+      'npm install --save-dev --save-exact jest',
+      {
+        cwd: expect.stringMatching(/test/),
+      }
+    )
   })
 })

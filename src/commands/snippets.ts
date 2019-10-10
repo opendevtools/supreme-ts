@@ -1,7 +1,14 @@
 import clipboardy from 'clipboardy'
 import { readSnippet } from '../utils/file'
 
-export type SnippetLanguage = 'ts' | 'typescript' | 'reason' | 'reasonml'
+export type SnippetLanguage =
+  | 'ts'
+  | 'typescript'
+  | 'reason'
+  | 'reasonml'
+  | 'js'
+  | 'javascript'
+
 export type SnippetIDE = 'vim'
 
 interface SnippetsProps {
@@ -22,22 +29,33 @@ const copySnippet = async ({ template, message }: CopySnippetProps) => {
 
 const handleVim = async (language: SnippetLanguage) => {
   switch (language) {
+    case 'js':
+    case 'javascript':
+      copySnippet({
+        template: 'javascript.vim',
+        message:
+          'JavaScript snippets for VIM (UltiSnips) have been copied to the clipboard',
+      })
+      break
+
     case 'ts':
     case 'typescript':
-      await copySnippet({
+      copySnippet({
         template: 'typescript.vim',
         message:
           'Typescript snippets for VIM (UltiSnips) have been copied to the clipboard',
       })
       break
+
     case 'reason':
     case 'reasonml':
-      await copySnippet({
+      copySnippet({
         template: 'reason.vim',
         message:
           'ReasonML snippets for VIM (UltiSnips) have been copied to the clipboard',
       })
       break
+
     default:
       console.log(`I don't have any snippets for that language (${language})`)
   }
