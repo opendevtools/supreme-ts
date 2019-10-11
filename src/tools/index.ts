@@ -126,3 +126,31 @@ export const husky = async (options: ToolProps = {}) => {
     output: options.cwd ? `${options.cwd}/.huskyrc` : '.huskyrc',
   })
 }
+
+interface EslintFlags extends ToolProps {
+  node?: boolean
+  react?: boolean
+}
+
+export const eslint = async (options: EslintFlags = {}) => {
+  await installPkg('eslint', options)
+
+  if (options.node) {
+    await installPkg('@iteam/eslint-config-node', options)
+
+    await create({
+      templateName: 'eslint/eslintrc.node',
+      output: options.cwd ? `${options.cwd}/.eslintrc` : '.eslintrc',
+    })
+  }
+
+  if (options.react) {
+    await installPkg('@iteam/eslint-config-react', options)
+    await installPkg('@typescript-eslint/eslint-plugin', options)
+
+    await create({
+      templateName: 'eslint/eslintrc.react',
+      output: options.cwd ? `${options.cwd}/.eslintrc` : '.eslintrc',
+    })
+  }
+}

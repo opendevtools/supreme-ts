@@ -6,6 +6,7 @@ import {
   prettierrc,
   nvmrc,
   husky,
+  eslint,
 } from '../../src/tools'
 
 jest.mock('../../src/tools')
@@ -55,5 +56,11 @@ describe('#init', () => {
     await init(props)
 
     expect(husky).toHaveBeenCalled()
+  })
+
+  test('should init eslint', async () => {
+    await init({ flags: { node: true } })
+
+    expect(eslint).toHaveBeenCalledWith({ node: true })
   })
 })

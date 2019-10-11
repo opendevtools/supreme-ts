@@ -8,10 +8,12 @@ import { snippets, SnippetLanguage, SnippetIDE } from './commands/snippets'
 import { graphql } from './commands/graphql'
 
 export interface CLIFlags {
-  javascript: boolean
-  ide?: string
-  language?: string
   examples?: boolean
+  ide?: string
+  javascript: boolean
+  language?: string
+  node?: boolean
+  react?: boolean
 }
 
 export interface CLIProps {
@@ -70,12 +72,14 @@ const cli = meow(
     --ide           IDE for snippets (snippets) 
     --language      Language for snippets (snippets) 
     --examples      GraphQL examples (examples)
+    --node          ESLint node (add/init)
+    --react         ESLint react (add/init)
     `,
   {
     flags: {
       javascript: {
-        type: 'boolean',
         default: false,
+        type: 'boolean',
       },
       ide: {
         type: 'string',
@@ -84,6 +88,12 @@ const cli = meow(
         type: 'string',
       },
       examples: {
+        type: 'boolean',
+      },
+      react: {
+        type: 'boolean',
+      },
+      node: {
         type: 'boolean',
       },
     },

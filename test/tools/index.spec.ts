@@ -5,6 +5,7 @@ import {
   nvmrc,
   config,
   husky,
+  eslint,
 } from '../../src/tools'
 import {
   create,
@@ -322,12 +323,91 @@ describe('#husky', () => {
       output: '.huskyrc',
     })
   })
+
   test('creates a config in a sub folder', async () => {
     await husky({ cwd: 'test' })
 
     expect(create).toHaveBeenCalledWith({
       templateName: 'huskyrc',
       output: 'test/.huskyrc',
+    })
+  })
+})
+
+describe('#eslint', () => {
+  test('installs eslint', async () => {
+    await eslint({ cwd: 'test' })
+
+    expect(installPkg).toHaveBeenCalledWith('eslint', { cwd: 'test' })
+  })
+
+  describe('Node', () => {
+    test('installs eslint node config', async () => {
+      await eslint({ cwd: 'test', node: true })
+
+      expect(installPkg).toHaveBeenCalledWith('@iteam/eslint-config-node', {
+        cwd: 'test',
+        node: true,
+      })
+    })
+
+    test('creates a config', async () => {
+      await eslint({ node: true })
+
+      expect(create).toHaveBeenCalledWith({
+        templateName: 'eslint/eslintrc.node',
+        output: '.eslintrc',
+      })
+    })
+
+    test('creates a config in a sub folder', async () => {
+      await eslint({ cwd: 'test', node: true })
+
+      expect(create).toHaveBeenCalledWith({
+        templateName: 'eslint/eslintrc.node',
+        output: 'test/.eslintrc',
+      })
+    })
+  })
+
+  describe('React', () => {
+    test('installs eslint react config', async () => {
+      await eslint({ cwd: 'test', react: true })
+
+      expect(installPkg).toHaveBeenCalledWith('@iteam/eslint-config-react', {
+        cwd: 'test',
+        react: true,
+      })
+    })
+
+    test('installs typescript eslint plugin', async () => {
+      await eslint({ cwd: 'test', react: true })
+
+      expect(installPkg).toHaveBeenCalledWith(
+        '@typescript-eslint/eslint-plugin',
+        {
+          cwd: 'test',
+          react: true,
+        }
+      )
+    })
+
+    test('creates a config', async () => {
+      await eslint({ react: true })
+
+      expect(create).toHaveBeenCalledWith({
+        templateName: 'eslint/eslintrc.react',
+        output: '.eslintrc',
+      })
+    })
+
+    test('creates a config in a sub folder', async () => {
+      await eslint({ cwd: 'test', react: true })
+
+      expect(create).toHaveBeenCalledWith({
+        templateName: 'eslint/eslintrc.react',
+        output: 'test/.eslintrc',
+      })
     })
   })
 })
