@@ -1,3 +1,10 @@
+# [2.5.0](https://github.com/Iteam1337/supreme/compare/v2.4.3...v2.5.0) (2019-10-11)
+
+
+### Features
+
+* add eslint ([#59](https://github.com/Iteam1337/supreme/issues/59)) ([3d2d2a9](https://github.com/Iteam1337/supreme/commit/3d2d2a9da7862b02b4623c830e5a528c52544d10))
+
 ## [2.4.3](https://github.com/Iteam1337/supreme/compare/v2.4.2...v2.4.3) (2019-10-11)
 
 
