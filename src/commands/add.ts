@@ -1,9 +1,19 @@
-import { nvmrc, gitignore, jest, prettierrc, config, husky } from '../tools'
+import {
+  config,
+  eslint,
+  gitignore,
+  husky,
+  jest,
+  nvmrc,
+  prettierrc,
+} from '../tools'
+import { CLIFlags } from '../'
 
 export type Command =
   | 'config'
-  | 'gitignore'
+  | 'eslint'
   | 'git'
+  | 'gitignore'
   | 'husky'
   | 'jest'
   | 'nvm'
@@ -12,9 +22,7 @@ export type Command =
 
 interface AddProps {
   command: Command
-  flags: {
-    javascript: boolean
-  }
+  flags: CLIFlags
 }
 
 export const add = ({ command, flags }: AddProps) => {
@@ -38,6 +46,9 @@ export const add = ({ command, flags }: AddProps) => {
       break
     case 'husky':
       husky()
+      break
+    case 'eslint':
+      eslint({ node: flags.node, react: flags.react })
       break
     default:
       console.log(`${command} is not a valid command`)

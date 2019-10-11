@@ -6,6 +6,7 @@ import {
   prettierrc,
   config,
   husky,
+  eslint,
 } from '../../src/tools'
 
 jest.mock('../../src/tools')
@@ -60,6 +61,12 @@ test('husky - setup', () => {
   add({ command: 'husky', flags: { javascript: false } })
 
   expect(husky).toHaveBeenCalled()
+})
+
+test('eslint - setup', () => {
+  add({ command: 'eslint', flags: { node: true } })
+
+  expect(eslint).toHaveBeenCalledWith({ node: true })
 })
 
 test('handles unknown command', () => {

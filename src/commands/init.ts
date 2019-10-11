@@ -1,4 +1,12 @@
-import { config, gitignore, jest, nvmrc, prettierrc, husky } from '../tools'
+import {
+  config,
+  gitignore,
+  jest,
+  nvmrc,
+  prettierrc,
+  husky,
+  eslint,
+} from '../tools'
 import { CLIFlags } from '../'
 
 interface InitProps {
@@ -12,4 +20,5 @@ export const init = async ({ flags }: InitProps) => {
   await jest()
   await nvmrc()
   await husky()
+  await eslint({ node: flags.node, react: flags.react })
 }
