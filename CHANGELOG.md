@@ -1,3 +1,10 @@
+# [2.6.0](https://github.com/Iteam1337/supreme/compare/v2.5.0...v2.6.0) (2019-10-11)
+
+
+### Features
+
+* **snippets:** update reason and typescript ([#60](https://github.com/Iteam1337/supreme/issues/60)) ([ebf9534](https://github.com/Iteam1337/supreme/commit/ebf95344ff0c37e5aa81853ff61aeb3d2818c47b))
+
 # [2.5.0](https://github.com/Iteam1337/supreme/compare/v2.4.3...v2.5.0) (2019-10-11)
 
 
