@@ -1,10 +1,28 @@
 {
   "name": "@iteam/supreme",
   "version": "2.6.0",
+  "description": "A CLI tool that helps you get up an running fast",
+  "author": {
+    "name": "Rickard Laurin",
+    "email": "rickard.laurin@gmail.com",
+    "url": "https://willcodefor.beer"
+  },
+  "contributors": [
+    {
+      "name": "Jimmy Jardland"
+    }
+  ],
+  "repository": "github:Iteam1337/supreme",
+  "homepage": "https://iteam1337.github.io/#/supreme",
+  "bugs": "https://github.com/Iteam1337/supreme/issues",
   "main": "bin/supreme",
   "bin": "bin/supreme",
-  "description": "A CLI tool that helps you get up an running fast",
   "preferGlobal": true,
+  "keywords": [
+    "productivity",
+    "cli",
+    "generator"
+  ],
   "publishConfig": {
     "access": "public"
   },
