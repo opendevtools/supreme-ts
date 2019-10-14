@@ -11,6 +11,7 @@ import util from 'util'
 import execa from 'execa'
 import readPkgUp from 'read-pkg-up'
 import inquirer from 'inquirer'
+import fs from 'fs'
 
 jest.mock('ejs')
 jest.mock('inquirer')
@@ -195,17 +196,12 @@ describe('#createFolder', () => {
 })
 
 describe('#folderExists', () => {
-  let stat: jest.Mock
-
-  beforeEach(() => {
-    stat = jest.fn()
-    util.promisify.mockReturnValue(stat)
-  })
-
   test('checks if folder exists', async () => {
     await folderExists('/test/test')
 
-    expect(stat).toHaveBeenCalledWith(expect.stringMatching(/test(\/|\\)test/))
+    expect(fs.existsSync).toHaveBeenCalledWith(
+      expect.stringMatching(/test(\/|\\)test/)
+    )
   })
 })
 

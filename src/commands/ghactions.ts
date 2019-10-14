@@ -1,10 +1,15 @@
 import { create, createFolder, folderExists } from '../utils/file'
+import chalk from 'chalk'
 
 export const ghactions = async () => {
-  const workflowsFolder = await folderExists('.github')
+  const githubFolder = folderExists('.github')
+  const workflowsFolder = folderExists('.github/workflows')
 
-  if (!workflowsFolder.isDirectory()) {
+  if (!githubFolder) {
     await createFolder('.github')
+  }
+
+  if (!workflowsFolder) {
     await createFolder('.github/workflows')
   }
 
@@ -17,4 +22,6 @@ export const ghactions = async () => {
     templateName: 'ghactions/release.yml',
     output: '.github/workflows/release.yml',
   })
+
+  console.log(`Added GitHub actions in ${chalk.green(`.github/workflows`)}`)
 }

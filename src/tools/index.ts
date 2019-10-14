@@ -53,9 +53,9 @@ export const config = async ({ javascript }: ConfigProps) => {
   })
 
   try {
-    const libFolder = await folderExists('lib')
+    const libFolder = folderExists('lib')
 
-    if (libFolder.isDirectory() && javascript) {
+    if (libFolder && javascript) {
       await create({
         templateName: 'config/config.js',
         output: 'lib/config.js',
@@ -64,7 +64,7 @@ export const config = async ({ javascript }: ConfigProps) => {
       return
     }
 
-    if (libFolder.isDirectory() && !javascript) {
+    if (libFolder && !javascript) {
       await create({
         templateName: 'config/config.ts',
         output: 'lib/config.ts',
@@ -77,9 +77,9 @@ export const config = async ({ javascript }: ConfigProps) => {
   }
 
   try {
-    const srcFolder = await folderExists('src')
+    const srcFolder = folderExists('src')
 
-    if (srcFolder.isDirectory() && javascript) {
+    if (srcFolder && javascript) {
       await create({
         templateName: 'config/config.js',
         output: 'src/config.js',
@@ -88,7 +88,7 @@ export const config = async ({ javascript }: ConfigProps) => {
       return
     }
 
-    if (srcFolder.isDirectory() && !javascript) {
+    if (srcFolder && !javascript) {
       await create({
         templateName: 'config/config.ts',
         output: 'src/config.ts',

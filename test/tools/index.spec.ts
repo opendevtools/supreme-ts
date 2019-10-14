@@ -155,16 +155,8 @@ describe('#config', () => {
 
   test('creates a config in lib folder', async () => {
     ;(folderExists as jest.Mock)
-      .mockImplementationOnce(() =>
-        Promise.resolve({
-          isDirectory: jest.fn().mockReturnValue(true),
-        })
-      )
-      .mockImplementationOnce(() =>
-        Promise.resolve({
-          isDirectory: jest.fn().mockReturnValue(false),
-        })
-      )
+      .mockReturnValueOnce(true)
+      .mockReturnValueOnce(false)
 
     await config({ javascript: true })
 
@@ -180,16 +172,8 @@ describe('#config', () => {
 
   test('creates a typescript config in src folder', async () => {
     ;(folderExists as jest.Mock)
-      .mockImplementationOnce(() =>
-        Promise.resolve({
-          isDirectory: jest.fn().mockReturnValue(false),
-        })
-      )
-      .mockImplementationOnce(() =>
-        Promise.resolve({
-          isDirectory: jest.fn().mockReturnValue(true),
-        })
-      )
+      .mockReturnValueOnce(false)
+      .mockReturnValueOnce(true)
 
     await config({ javascript: false })
 
@@ -205,16 +189,8 @@ describe('#config', () => {
 
   test('creates a javascript config in src folder', async () => {
     ;(folderExists as jest.Mock)
-      .mockImplementationOnce(() =>
-        Promise.resolve({
-          isDirectory: jest.fn().mockReturnValue(false),
-        })
-      )
-      .mockImplementationOnce(() =>
-        Promise.resolve({
-          isDirectory: jest.fn().mockReturnValue(true),
-        })
-      )
+      .mockReturnValueOnce(false)
+      .mockReturnValueOnce(true)
 
     await config({ javascript: true })
 
@@ -230,16 +206,8 @@ describe('#config', () => {
 
   test('if neither lib nor src exists, create src and src/config.js', async () => {
     ;(folderExists as jest.Mock)
-      .mockImplementationOnce(() =>
-        Promise.resolve({
-          isDirectory: jest.fn().mockReturnValue(false),
-        })
-      )
-      .mockImplementationOnce(() =>
-        Promise.resolve({
-          isDirectory: jest.fn().mockReturnValue(false),
-        })
-      )
+      .mockReturnValueOnce(false)
+      .mockReturnValueOnce(false)
 
     await config({ javascript: true })
 
@@ -256,16 +224,8 @@ describe('#config', () => {
 
   test('if neither lib nor src exists, create src and src/config.js for typescript', async () => {
     ;(folderExists as jest.Mock)
-      .mockImplementationOnce(() =>
-        Promise.resolve({
-          isDirectory: jest.fn().mockReturnValue(false),
-        })
-      )
-      .mockImplementationOnce(() =>
-        Promise.resolve({
-          isDirectory: jest.fn().mockReturnValue(false),
-        })
-      )
+      .mockReturnValueOnce(false)
+      .mockReturnValueOnce(false)
 
     await config({ javascript: false })
 
@@ -282,16 +242,8 @@ describe('#config', () => {
 
   test('creates a config override file', async () => {
     ;(folderExists as jest.Mock)
-      .mockImplementationOnce(() =>
-        Promise.resolve({
-          isDirectory: jest.fn().mockReturnValue(true),
-        })
-      )
-      .mockImplementationOnce(() =>
-        Promise.resolve({
-          isDirectory: jest.fn().mockReturnValue(false),
-        })
-      )
+      .mockReturnValueOnce(true)
+      .mockReturnValueOnce(false)
 
     await config({ javascript: false })
 

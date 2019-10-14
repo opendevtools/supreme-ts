@@ -80,8 +80,7 @@ export const createFolder = async (folderName: string) => {
 }
 
 export const folderExists = (folderName: string) => {
-  const stat = util.promisify(fs.stat)
-  return stat(path.resolve(process.cwd(), folderName))
+  return fs.existsSync(path.resolve(process.cwd(), folderName))
 }
 
 export const hasPkg = async (packageName: string) => {
