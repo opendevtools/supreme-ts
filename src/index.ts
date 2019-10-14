@@ -7,6 +7,7 @@ import { init } from './commands/init'
 import { snippets, SnippetLanguage, SnippetIDE } from './commands/snippets'
 import { graphql } from './commands/graphql'
 import { ghactions } from './commands/ghactions'
+import { typescript } from './commands/typescript'
 
 export interface CLIFlags {
   examples?: boolean
@@ -53,6 +54,9 @@ export const run = (cli: meow.Result) => {
     case 'ghactions':
       ghactions()
       break
+    case 'typescript':
+      typescript({ name, flags: flags as CLIFlags })
+      break
     default:
       console.log(help)
   }
@@ -71,6 +75,7 @@ const cli = meow(
     $ snippets [flags]          Copy snippets to clipboard
     $ graphql <name>            Create a GraphQL API
     $ ghactions                 Create base GitHub actions
+    $ typescript                Create basic Typescript app
 
     Flags
     --javascript    JavaScript app (react)

@@ -2,7 +2,13 @@ import { createFolder, create, overwrite } from '../../src/utils/file'
 import ora from 'ora'
 import { graphql } from '../../src/commands/graphql'
 import execa from 'execa'
-import { prettierrc, jest as jestFn, nvmrc, husky } from '../../src/tools'
+import {
+  prettierrc,
+  jest as jestFn,
+  nvmrc,
+  husky,
+  eslint,
+} from '../../src/tools'
 
 jest.mock('execa')
 jest.mock('../../src/utils/file')
@@ -73,13 +79,14 @@ test('should use tools to create files', async () => {
   expect(jestFn).toHaveBeenCalledWith({ cwd: 'test' })
   expect(nvmrc).toHaveBeenCalledWith({ cwd: 'test' })
   expect(husky).toHaveBeenCalledWith({ cwd: 'test' })
+  expect(eslint).toHaveBeenCalledWith({ cwd: 'test', node: true })
 })
 
 test('should add tsconfig', async () => {
   await graphql({ name: 'test', flags: {} })
 
   expect(create).toHaveBeenCalledWith({
-    templateName: 'graphql/tsconfig.json',
+    templateName: 'typescript/tsconfig.json',
     output: 'test/tsconfig.json',
   })
 })

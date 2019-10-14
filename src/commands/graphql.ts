@@ -2,7 +2,7 @@ import chalk from 'chalk'
 import execa from 'execa'
 import ora from 'ora'
 import path from 'path'
-import { husky, jest, nvmrc, prettierrc } from '../tools'
+import { husky, jest, nvmrc, prettierrc, eslint } from '../tools'
 import { create, createFolder, overwrite } from '../utils/file'
 
 interface GraphQLProps {
@@ -45,11 +45,12 @@ export const graphql = async ({ name, flags }: GraphQLProps) => {
   await jest({ cwd: name })
   await nvmrc({ cwd: name })
   await husky({ cwd: name })
+  await eslint({ cwd: name, node: true })
 
   spinner.text = 'Creating base files'
 
   await create({
-    templateName: 'graphql/tsconfig.json',
+    templateName: 'typescript/tsconfig.json',
     output: `${name}/tsconfig.json`,
   })
 
