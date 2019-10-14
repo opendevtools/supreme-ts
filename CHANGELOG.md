@@ -1,3 +1,10 @@
+## [2.7.2](https://github.com/Iteam1337/supreme/compare/v2.7.1...v2.7.2) (2019-10-14)
+
+
+### Bug Fixes
+
+* add semantic release with changelog ([1cda5ca](https://github.com/Iteam1337/supreme/commit/1cda5ca375869317da2acf1fcc90858b8c7e1352))
+
 ## [2.7.1](https://github.com/Iteam1337/supreme/compare/v2.7.0...v2.7.1) (2019-10-14)
 
 
