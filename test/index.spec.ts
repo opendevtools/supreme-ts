@@ -5,6 +5,7 @@ import { reason } from '../src/commands/reason'
 import { add } from '../src/commands/add'
 import { snippets } from '../src/commands/snippets'
 import { graphql } from '../src/commands/graphql'
+import { ghactions } from '../src/commands/ghactions'
 
 jest.mock('chalk', () => ({
   blue: (param: string) => param,
@@ -21,6 +22,7 @@ jest.mock('../src/commands/reason')
 jest.mock('../src/commands/add')
 jest.mock('../src/commands/snippets')
 jest.mock('../src/commands/graphql')
+jest.mock('../src/commands/ghactions')
 
 jest.spyOn(global.console, 'log').mockImplementation(() => {})
 
@@ -70,6 +72,12 @@ test('handles graphql command', () => {
   run({ input: ['graphql', 'test'], flags: {} })
 
   expect(graphql).toHaveBeenCalledWith({ name: 'test', flags: {} })
+})
+
+test('handles github actions command', () => {
+  run({ input: ['ghactions'], flags: {} })
+
+  expect(ghactions).toHaveBeenCalled()
 })
 
 test('handles unknown command by displaying help', () => {
