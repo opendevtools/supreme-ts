@@ -31,9 +31,9 @@ endsnippet
 
 snippet urh "useReducer"
 let (state, dispatch) = React.useReducer((state, action) => {
-		switch(action) {
-		| $1 => $2
-		}
+	switch(action) {
+	| $1 => $2
+	}
 }, ${3:initialState});
 endsnippet
 
@@ -96,52 +96,6 @@ let make = () => {
 };
 endsnippet
 
-snippet usc "useState component" b
-[@react.component]
-let make = () => {
-	let (test, setTest) = React.useState(() => "Test");
-
-	<div>{React.string(test)}</div>
-};
-endsnippet
-
-snippet urc "useReducer component" b
-[@react.component]
-let make = () => {
-	let (state, _dispatch) = React.useReducer((state, action) => {
-			switch(action) {
-			| $1 => $2
-			}
-	}, ${3:initialState});
-
-	<div>{React.string(state)}</div>
-};
-endsnippet
-
-snippet qslr "Query component" b
-module $1 = [%graphql
-{|
-	$2
-|}
-];
-
-module $1Query = ReasonApollo.CreateQuery($1);
-
-[@react.component]
-let make = () => {
-	let variables = $1.make(~id, ())##variables;
-
-	<$1Query variables>
-		{({result}) =>
-			switch (result) {
-			| Loading => <div> {React.string("Loading")} </div>
-			| Error(error) => <div> {React.string(error##message)} </div>
-			| Data(_response) => <div>{React.string("Test")}</div>
-			}}
-	</$1Query>;
-};
-endsnippet
-
 snippet form "Re-formality form" b
 module $1Form = {
 	open Formality;
@@ -179,7 +133,6 @@ let make = () => {
 			},
 		);
 
-
 	let handleChange = (field, fieldUpdater, event) => {
 		form.change(
 			field,
@@ -191,7 +144,6 @@ let make = () => {
 		<div> {React.string("Test")} </div>
 	</form>;
 };
-
 endsnippet
 
 snippet str "React.string"

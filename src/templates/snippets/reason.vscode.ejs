@@ -1,0 +1,293 @@
+{
+  /* Hooks */
+  "useState": {
+    "prefix": "ush",
+    "body": [
+      "let ($1, $2) = React.useState(() => ${3:initialValue});"
+    ]
+  },
+  "useEffect": {
+    "prefix": "ueh",
+    "body": [
+      "React.useEffect0(() => {",
+        "\t$1",
+        "",
+        "\tNone;",
+      "});"
+    ]
+  },
+  "useEffect 1": {
+    "prefix": "ueh1",
+    "body": [
+      "React.useEffect1(() => {",
+        "\t$2",
+        "",
+        "\tNone;",
+      "}, [|$1|]);"
+    ]
+  },
+  "useEffect 2": {
+    "prefix": "ueh2",
+    "body": [
+      "React.useEffect2(() => {",
+        "\t$3",
+        "",
+        "\tNone;",
+      "}, ($1, $2));"
+    ]
+  },
+  "useReducer 2": {
+    "prefix": "urh",
+    "body": [
+      "let (state, dispatch) = React.useReducer((state, action) => {",
+        "\tswitch(action) {",
+        "\t| $1 => $2",
+        "\t}",
+      "}, ${3:initialState});"
+    ]
+  },
+  "useMutation": {
+    "prefix": "umh",
+    "body": [
+      "module $1 = [%graphql",
+        "{|",
+          "$2",
+        "|}",
+        "];",
+        "",
+        "module $1Mutation = ReasonApolloHooks.Mutation.Make($1);",
+        "",
+        "[@react.component]",
+        "let make = () => {",
+          "\tlet (mutation, _, _) = $1Mutation.use();",
+          "\tlet variables = $1.make(~id, ())##variables;",
+        "",
+          "\tmutation(~variables, ()) |> ignore;",
+        "};"
+    ]
+  },
+  "useQuery": {
+    "prefix": "uqh",
+    "body": [
+      "module $1 = [%graphql",
+        "{|",
+          "$2",
+        "|}",
+        "];",
+        "",
+        "module $1Query = ReasonApolloHooks.Query.Make($1);",
+        "",
+        "[@react.component]",
+        "let make = () => {",
+          "\tlet variables = $1.make(~id, ())##variables;",
+          "\tlet (result, _full) = $1Query.use(~variables, ());",
+        "",
+          "\t<div>",
+          "\t{switch(result) {",
+            "\t\t| Loading => <p>{React.string(\"Loading...\")}</p>",
+            "\t\t| Data(data) => <p>{React.string(data##currentUser##name)}</p>",
+            "\t\t| NoData",
+            "\t\t| Error(_) => <p>{React.string(\"Get off my lawn!\")}</p>",
+          "\t}}",
+          "\t</div>",
+        "};",
+    ]
+  },
+
+  /* Components */
+  "Module": {
+    "prefix": "mod",
+    "body": [
+      "module $1 = {",
+        "\t$2",
+      "};"
+    ]
+  },
+  "Stateless component": {
+    "prefix": "slr",
+    "body": [
+      "[@react.component]",
+      "let make = () => {",
+        "\t<div>{React.string(\"Test\")}</div>",
+      "};"
+    ]
+  },
+  "Re-formality form": {
+    "prefix": "form",
+    "body": [
+      "module $1Form = {",
+        "\topen Formality;",
+        "",
+        "\ttype field = ",
+          "\t\t| $2;",
+        "",
+        "\ttype state = {",
+          "\t\t$3: $4",
+        "\t};",
+        "",
+        "\ttype message = string;",
+        "\ttype submissionError = unit;",
+        "",
+        "\tmodule $2Field = {",
+          "\t\tlet update = (state, $3) => {...state, $3};",
+        "\t};",
+        "",
+        "\tlet validators = [];",
+      "};",
+      "",
+      "module $1FormHook = Formality.Make($1Form);",
+      "",
+      "[@react.component]",
+      "let make = () => {",
+        "\tlet form =",
+          "\t\t$1FormHook.useForm(",
+            "\t\t\t~initialState=",
+              "\t\t\t\t$1Form.{",
+                "\t\t\t\t\t$3: $5",
+              "\t\t\t\t},",
+            "\t\t\t~onSubmit=(state, form) => {",
+              "\t\t\t\tJs.log2(\"Submit\", state);",
+              "\t\t\t\tform.notifyOnSuccess(None);",
+            "\t\t\t},",
+          "\t\t);",
+        "",
+        "\tlet handleChange = (field, fieldUpdater, event) => {",
+          "\t\tform.change(",
+            "\t\t\tfield,",
+            "\t\t\tfieldUpdater(form.state, event->ReactEvent.Form.target##value),",
+          "\t\t);",
+        "\t};",
+        "",
+        "\t<form className=\"mb-6\" onSubmit={form.submit->Formality.Dom.preventDefault}>",
+          "\t\t<div> {React.string(\"Test\")} </div>",
+        "\t</form>;",
+      "};"
+    ]
+  },
+
+  /* React */
+  "React.string": {
+    "prefix": "str",
+    "body": [
+      "{React.string($1)}"
+    ]
+  },
+  "React.string - encoded": {
+    "prefix": "stre",
+    "body": [
+      "{React.string({j|$1|j})"
+    ]
+  },
+  "Encoded string": {
+    "prefix": "enc",
+    "body": [
+      "{j|$1|j"
+    ]
+  },
+  "Switch statement": {
+    "prefix": "swc",
+    "body": [
+      "{switch ($1) {",
+        "\t| $2 => $3",
+        "}}"
+    ]
+  },
+
+  /* Logging */
+  "Console log": {
+    "prefix": "clog",
+    "body": [
+      "Js.log($1);",
+    ]
+  },
+  "Console log 2": {
+    "prefix": "clog2",
+    "body": [
+      "Js.log2($1, $2, $3);",
+    ]
+  },
+  "Console log 3": {
+    "prefix": "clog3",
+    "body": [
+      "Js.log3($1, $2, $3);",
+    ]
+  },
+
+  /* Styling */
+  "Style": {
+    "prefix": "style",
+    "body": [
+      "module Style = {",
+        "\topen Css;",
+        "",
+        "\tlet $1 = style([$2]);",
+      "};"
+    ]
+  },
+  "css": {
+    "prefix": "css",
+    "body": [
+      "let $1 = style([$2]);"
+    ]
+  },
+
+  /* Testing */
+  "Basic test setup": {
+    "prefix": "rtest",
+    "body": [
+      "open Jest;",
+      "open Expect;",
+      "",
+      "describe(\"$1\", () => {",
+        "\ttest(\"$2\", () => {",
+          "\t\t$3",
+        "\t});",
+      "});"
+    ]
+  },
+  "Describe": {
+    "prefix": "desc",
+    "body": [
+      "describe(\"$1\", () => {",
+        "\t$2",
+      "});"
+    ]
+  },
+  "Describe and test": {
+    "prefix": "desct",
+    "body": [
+      "describe(\"$1\", () => {",
+        "\ttest(\"$2\", () => {",
+          "\t\t$3",
+        "\t});",
+      "});"
+    ]
+  },
+  "Test": {
+    "prefix": "test",
+    "body": [
+      "test(\"$1\", () => {",
+        "\t$2",
+      "});"
+    ]
+  },
+  "Jest - Expect toEqual": {
+    "prefix": "exp",
+    "body": [
+      "expect($1) |> toEqual($2)"
+    ]
+  },
+  "Jest - Expect toBe": {
+    "prefix": "expb",
+    "body": [
+      "expect($1) |> toBe($2)"
+    ]
+  },
+  "Jest - Expect toMatchSnapshot": {
+    "prefix": "expm",
+    "body": [
+      "expect($1) |> toMatchSnapshot($2)"
+    ]
+  },
+}
+

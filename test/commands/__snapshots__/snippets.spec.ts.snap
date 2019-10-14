@@ -11,3 +11,7 @@ exports[`should handle vim and reason snippets 1`] = `"reasonsnippet"`;
 exports[`should handle vim and typescript (ts) snippets 1`] = `"tssnippet"`;
 
 exports[`should handle vim and typescript snippets 1`] = `"tssnippet"`;
+
+exports[`should handle vscode and reason (reasonml) snippets 1`] = `"reasonsnippet"`;
+
+exports[`should handle vscode and reason snippets 1`] = `"reasonsnippet"`;
