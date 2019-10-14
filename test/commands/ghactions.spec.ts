@@ -1,5 +1,10 @@
 import { ghactions } from '../../src/commands/ghactions'
-import { create, createFolder, folderExists } from '../../src/utils/file'
+import {
+  create,
+  createFolder,
+  folderExists,
+  installPkg,
+} from '../../src/utils/file'
 
 jest.mock('../../src/utils/file')
 jest.spyOn(global.console, 'log').mockImplementation(() => {})
@@ -9,6 +14,13 @@ beforeEach(() => {
   ;(folderExists as jest.Mock)
     .mockReturnValueOnce(false)
     .mockReturnValueOnce(false)
+})
+
+test('should install dependencies', async () => {
+  await ghactions()
+
+  expect(installPkg).toHaveBeenCalledWith('@semantic-release/changelog')
+  expect(installPkg).toHaveBeenCalledWith('@semantic-release/git')
 })
 
 test('should create workflows folders', async () => {
@@ -30,6 +42,15 @@ test('should not create folders if they exist', async () => {
   await ghactions()
 
   expect(createFolder).not.toHaveBeenCalled()
+})
+
+test('should create a .releaserc', async () => {
+  await ghactions()
+
+  expect(create).toHaveBeenCalledWith({
+    templateName: 'ghactions/releaserc',
+    output: '.releaserc',
+  })
 })
 
 test('should create a PR check action', async () => {

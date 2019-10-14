@@ -1,9 +1,12 @@
-import { create, createFolder, folderExists } from '../utils/file'
+import { create, createFolder, folderExists, installPkg } from '../utils/file'
 import chalk from 'chalk'
 
 export const ghactions = async () => {
   const githubFolder = folderExists('.github')
   const workflowsFolder = folderExists('.github/workflows')
+
+  installPkg('@semantic-release/changelog')
+  installPkg('@semantic-release/git')
 
   if (!githubFolder) {
     await createFolder('.github')
@@ -12,6 +15,11 @@ export const ghactions = async () => {
   if (!workflowsFolder) {
     await createFolder('.github/workflows')
   }
+
+  await create({
+    templateName: 'ghactions/releaserc',
+    output: '.releaserc',
+  })
 
   await create({
     templateName: 'ghactions/pr_check.yml',
