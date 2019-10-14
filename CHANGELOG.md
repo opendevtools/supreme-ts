@@ -1,3 +1,10 @@
+# [2.8.0](https://github.com/Iteam1337/supreme/compare/v2.7.2...v2.8.0) (2019-10-14)
+
+
+### Features
+
+* add basic typescript add ([#66](https://github.com/Iteam1337/supreme/issues/66)) ([5c1518b](https://github.com/Iteam1337/supreme/commit/5c1518b3394fd1a2bc0c446a906a9d7d2f569485))
+
 ## [2.7.2](https://github.com/Iteam1337/supreme/compare/v2.7.1...v2.7.2) (2019-10-14)
 
 
