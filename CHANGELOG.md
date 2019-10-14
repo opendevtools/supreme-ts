@@ -1,3 +1,10 @@
+# [2.7.0](https://github.com/Iteam1337/supreme/compare/v2.6.0...v2.7.0) (2019-10-14)
+
+
+### Features
+
+* add github actions generation ([#64](https://github.com/Iteam1337/supreme/issues/64)) ([76c8887](https://github.com/Iteam1337/supreme/commit/76c88872e11ba93217cd180f176177bf2605ff8f))
+
 # [2.6.0](https://github.com/Iteam1337/supreme/compare/v2.5.0...v2.6.0) (2019-10-11)
 
 
