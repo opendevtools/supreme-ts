@@ -76,15 +76,24 @@ export const overwrite = (data: HandleFileData) =>
 export const createFolder = async (folderName: string) => {
   const mkdir = util.promisify(fs.mkdir)
 
-  await mkdir(path.resolve(process.cwd(), folderName))
+  try {
+    await mkdir(path.resolve(process.cwd(), folderName))
+  } catch (e) {
+    console.log(e)
+    process.exit(1)
+  }
 }
 
 export const folderExists = (folderName: string) => {
   return fs.existsSync(path.resolve(process.cwd(), folderName))
 }
 
-export const hasPkg = async (packageName: string) => {
-  const pkg = await readPkgUp()
+interface PackageOptions {
+  cwd?: string
+}
+
+export const hasPkg = async (packageName: string, options: PackageOptions) => {
+  const pkg = await readPkgUp(options)
 
   if (!pkg) {
     return false
@@ -99,15 +108,11 @@ export const hasPkg = async (packageName: string) => {
   )
 }
 
-interface PackageOptions {
-  cwd?: string
-}
-
 export const installPkg = async (
   packageName: string,
   options: PackageOptions = {}
 ) => {
-  const hasPackageInstalled = await hasPkg(packageName)
+  const hasPackageInstalled = await hasPkg(packageName, options)
 
   if (!hasPackageInstalled) {
     console.log(`Installing ${chalk.blue(packageName)}`)

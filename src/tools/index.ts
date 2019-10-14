@@ -5,10 +5,10 @@ interface ToolProps {
   cwd?: string
 }
 
-export const gitignore = async () => {
+export const gitignore = async (options: ToolProps = {}) => {
   await create({
     templateName: 'gitignore',
-    output: '.gitignore',
+    output: options.cwd ? `${options.cwd}/.gitignore` : '.gitignore',
   })
 }
 
