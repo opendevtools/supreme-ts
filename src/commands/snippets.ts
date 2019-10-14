@@ -9,7 +9,7 @@ export type SnippetLanguage =
   | 'js'
   | 'javascript'
 
-export type SnippetIDE = 'vim'
+export type SnippetIDE = 'vim' | 'vscode'
 
 interface SnippetsProps {
   language: SnippetLanguage
@@ -61,6 +61,22 @@ const handleVim = async (language: SnippetLanguage) => {
   }
 }
 
+const handleVscode = async (language: SnippetLanguage) => {
+  switch (language) {
+    case 'reason':
+    case 'reasonml':
+      copySnippet({
+        template: 'reason.vscode',
+        message:
+          'ReasonML snippets for VSCode have been copied to the clipboard',
+      })
+      break
+
+    default:
+      console.log(`I don't have any snippets for that language (${language})`)
+  }
+}
+
 export const snippets = async ({ language, ide }: SnippetsProps) => {
   if (!ide) {
     console.log('--ide flag is missing')
@@ -75,6 +91,9 @@ export const snippets = async ({ language, ide }: SnippetsProps) => {
   switch (ide) {
     case 'vim':
       handleVim(language)
+      break
+    case 'vscode':
+      handleVscode(language)
       break
     default:
       console.log(`I don't have any snippets for that IDE (${ide})`)

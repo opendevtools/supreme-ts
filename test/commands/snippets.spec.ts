@@ -64,6 +64,28 @@ test('should handle vim and reason (reasonml) snippets', async () => {
   )
 })
 
+test('should handle vscode and reason snippets', async () => {
+  ;(ejs as jest.Mock).renderFile.mockResolvedValue('reasonsnippet')
+
+  await snippets({ language: 'reason', ide: 'vscode' })
+
+  expect((clipboardy.writeSync as jest.Mock).mock.calls[0][0]).toMatchSnapshot()
+  expect(global.console.log).toHaveBeenCalledWith(
+    'ReasonML snippets for VSCode have been copied to the clipboard'
+  )
+})
+
+test('should handle vscode and reason (reasonml) snippets', async () => {
+  ;(ejs as jest.Mock).renderFile.mockResolvedValue('reasonsnippet')
+
+  await snippets({ language: 'reasonml', ide: 'vscode' })
+
+  expect((clipboardy.writeSync as jest.Mock).mock.calls[0][0]).toMatchSnapshot()
+  expect(global.console.log).toHaveBeenCalledWith(
+    'ReasonML snippets for VSCode have been copied to the clipboard'
+  )
+})
+
 test('should handle vim and javascript snippets', async () => {
   ;(ejs as jest.Mock).renderFile.mockResolvedValue('javascriptsnippet')
 
@@ -88,6 +110,14 @@ test('should handle vim and javascript (javascript) snippets', async () => {
 
 test('should display error for unknown language', async () => {
   await snippets({ language: '__no_lang__', ide: 'vim' })
+
+  expect(global.console.log).toHaveBeenCalledWith(
+    "I don't have any snippets for that language (__no_lang__)"
+  )
+})
+
+test('should display error for unknown language (vscode)', async () => {
+  await snippets({ language: '__no_lang__', ide: 'vscode' })
 
   expect(global.console.log).toHaveBeenCalledWith(
     "I don't have any snippets for that language (__no_lang__)"
