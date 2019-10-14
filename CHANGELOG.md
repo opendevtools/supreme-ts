@@ -1,3 +1,10 @@
+# [2.9.0](https://github.com/Iteam1337/supreme/compare/v2.8.0...v2.9.0) (2019-10-14)
+
+
+### Features
+
+* **snippets:** add reasonml for vscode ([#68](https://github.com/Iteam1337/supreme/issues/68)) ([21fbc2a](https://github.com/Iteam1337/supreme/commit/21fbc2a1cb935cd6b0b3b5f16e56662884d0e4bd))
+
 # [2.8.0](https://github.com/Iteam1337/supreme/compare/v2.7.2...v2.8.0) (2019-10-14)
 
 
