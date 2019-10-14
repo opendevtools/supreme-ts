@@ -341,6 +341,12 @@ describe('#eslint', () => {
     expect(installPkg).toHaveBeenCalledWith('eslint', { cwd: 'test' })
   })
 
+  test('install eslint without cwd', async () => {
+    await eslint()
+
+    expect(installPkg).toHaveBeenCalledWith('eslint', {})
+  })
+
   describe('Node', () => {
     test('installs eslint node config', async () => {
       await eslint({ cwd: 'test', node: true })

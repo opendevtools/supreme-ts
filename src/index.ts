@@ -6,6 +6,7 @@ import { reason } from './commands/reason'
 import { init } from './commands/init'
 import { snippets, SnippetLanguage, SnippetIDE } from './commands/snippets'
 import { graphql } from './commands/graphql'
+import { ghactions } from './commands/ghactions'
 
 export interface CLIFlags {
   examples?: boolean
@@ -49,6 +50,9 @@ export const run = (cli: meow.Result) => {
     case 'graphql':
       graphql({ name, flags: flags as CLIFlags })
       break
+    case 'ghactions':
+      ghactions()
+      break
     default:
       console.log(help)
   }
@@ -66,6 +70,7 @@ const cli = meow(
     $ reason <name>             Creates a ReasonReact app
     $ snippets [flags]          Copy snippets to clipboard
     $ graphql <name>            Create a GraphQL API
+    $ ghactions                 Create base GitHub actions
 
     Flags
     --javascript    JavaScript app (react)
