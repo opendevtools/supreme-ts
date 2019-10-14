@@ -1,3 +1,10 @@
+## [2.9.1](https://github.com/Iteam1337/supreme/compare/v2.9.0...v2.9.1) (2019-10-14)
+
+
+### Bug Fixes
+
+* **graphql:** ignore node_modules to reduce rebuild time ([5f58c9a](https://github.com/Iteam1337/supreme/commit/5f58c9a027115ccc9e1ae6776647bc7539253056))
+
 # [2.9.0](https://github.com/Iteam1337/supreme/compare/v2.8.0...v2.9.0) (2019-10-14)
 
 
