@@ -29,6 +29,15 @@ describe('#gitignore', () => {
       output: '.gitignore',
     })
   })
+
+  test('creates a gitignore file in subfolder', async () => {
+    await gitignore({ cwd: 'test' })
+
+    expect(create).toHaveBeenCalledWith({
+      templateName: 'gitignore',
+      output: 'test/.gitignore',
+    })
+  })
 })
 
 describe('#prettierrc', () => {

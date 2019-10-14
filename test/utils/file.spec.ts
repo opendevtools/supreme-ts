@@ -193,6 +193,16 @@ describe('#createFolder', () => {
 
     expect(mkdir).toHaveBeenCalledWith(expect.stringMatching(/test(\/|\\)test/))
   })
+
+  test('handles errors', async () => {
+    mkdir.mockRejectedValue('err')
+
+    process.exit = jest.fn()
+
+    await createFolder('/test/test')
+
+    expect(process.exit).toHaveBeenCalledWith(1)
+  })
 })
 
 describe('#folderExists', () => {
