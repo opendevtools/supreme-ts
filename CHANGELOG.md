@@ -1,3 +1,10 @@
+## [2.7.1](https://github.com/Iteam1337/supreme/compare/v2.7.0...v2.7.1) (2019-10-14)
+
+
+### Bug Fixes
+
+* use existsSync to check folders ([498f356](https://github.com/Iteam1337/supreme/commit/498f356bb4e941339d71999de043c245f4ff0134))
+
 # [2.7.0](https://github.com/Iteam1337/supreme/compare/v2.6.0...v2.7.0) (2019-10-14)
 
 
