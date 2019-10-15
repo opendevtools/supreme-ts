@@ -1,3 +1,10 @@
+# [2.10.0](https://github.com/Iteam1337/supreme/compare/v2.9.1...v2.10.0) (2019-10-15)
+
+
+### Features
+
+* add codegen to graphql ([#73](https://github.com/Iteam1337/supreme/issues/73)) ([194cf7f](https://github.com/Iteam1337/supreme/commit/194cf7f292bc8a617cab2f3a5812e67e325c526f))
+
 ## [2.9.1](https://github.com/Iteam1337/supreme/compare/v2.9.0...v2.9.1) (2019-10-14)
 
 
