@@ -55,6 +55,7 @@ export const graphql = async ({ name, flags }: GraphQLProps) => {
   })
 
   await createFolder(`${name}/lib`)
+  await createFolder(`${name}/lib/__generated__`)
 
   if (flags.examples) {
     await create({
@@ -68,9 +69,8 @@ export const graphql = async ({ name, flags }: GraphQLProps) => {
       output: `${name}/lib/resolvers/queue.ts`,
     })
 
-    await createFolder(`${name}/lib/__generated__`)
     await create({
-      templateName: 'graphql/graphql.d.ts',
+      templateName: 'graphql/graphqlExample.d.ts',
       output: `${name}/lib/__generated__/graphql.d.ts`,
     })
   } else {
@@ -78,7 +78,17 @@ export const graphql = async ({ name, flags }: GraphQLProps) => {
       templateName: 'graphql/server.ts',
       output: `${name}/lib/server.ts`,
     })
+
+    await create({
+      templateName: 'graphql/graphql.d.ts',
+      output: `${name}/lib/__generated__/graphql.d.ts`,
+    })
   }
+
+  await create({
+    templateName: 'graphql/codegen.yml',
+    output: `${name}/codegen.yml`,
+  })
 
   spinner.stop()
 

@@ -125,12 +125,31 @@ test('should add resolvers with examples', async () => {
   })
 })
 
-test('should add generated types', async () => {
+test('should add generated types for examples', async () => {
   await graphql({ name: 'test', flags: { examples: true } })
+
+  expect(createFolder).toHaveBeenCalledWith('test/lib/__generated__')
+  expect(create).toHaveBeenCalledWith({
+    templateName: 'graphql/graphqlExample.d.ts',
+    output: 'test/lib/__generated__/graphql.d.ts',
+  })
+})
+
+test('should add generated types', async () => {
+  await graphql({ name: 'test', flags: {} })
 
   expect(createFolder).toHaveBeenCalledWith('test/lib/__generated__')
   expect(create).toHaveBeenCalledWith({
     templateName: 'graphql/graphql.d.ts',
     output: 'test/lib/__generated__/graphql.d.ts',
+  })
+})
+
+test('should add codegen configuration', async () => {
+  await graphql({ name: 'test', flags: {} })
+
+  expect(create).toHaveBeenCalledWith({
+    templateName: 'graphql/codegen.yml',
+    output: 'test/codegen.yml',
   })
 })

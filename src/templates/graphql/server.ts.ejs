@@ -1,5 +1,6 @@
 import express from 'express'
 import { ApolloServer, gql } from 'apollo-server-express'
+import { QueryResolvers } from './__generated__/graphql'
 
 const typeDefs = gql`
   type Query {
@@ -7,9 +8,11 @@ const typeDefs = gql`
   }
 `
 
+const hello: QueryResolvers['hello'] = () => 'Hello world!'
+
 const resolvers = {
   Query: {
-    hello: () => 'Hello world!',
+    hello,
   },
 }
 
