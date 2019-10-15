@@ -1,3 +1,10 @@
+## [2.10.1](https://github.com/Iteam1337/supreme/compare/v2.10.0...v2.10.1) (2019-10-15)
+
+
+### Bug Fixes
+
+* use spinner for install package when available ([#74](https://github.com/Iteam1337/supreme/issues/74)) ([f6a5e8b](https://github.com/Iteam1337/supreme/commit/f6a5e8b5c02808369a3f74a5c62d0ac4f5ed35a7))
+
 # [2.10.0](https://github.com/Iteam1337/supreme/compare/v2.9.1...v2.10.0) (2019-10-15)
 
 
