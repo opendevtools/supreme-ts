@@ -53,12 +53,31 @@ test('should install dependencies', async () => {
 test('should use tools to create files', async () => {
   await typescript({ name: 'test', flags: {} })
 
-  expect(prettierrc).toHaveBeenCalledWith({ cwd: 'test' })
-  expect(jestFn).toHaveBeenCalledWith({ cwd: 'test' })
-  expect(nvmrc).toHaveBeenCalledWith({ cwd: 'test' })
-  expect(husky).toHaveBeenCalledWith({ cwd: 'test' })
-  expect(gitignore).toHaveBeenCalledWith({ cwd: 'test' })
-  expect(eslint).toHaveBeenCalledWith({ cwd: 'test', node: true })
+  expect(prettierrc).toHaveBeenCalledWith({
+    cwd: 'test',
+    spinner: expect.any(Object),
+  })
+  expect(jestFn).toHaveBeenCalledWith({
+    cwd: 'test',
+    spinner: expect.any(Object),
+  })
+  expect(nvmrc).toHaveBeenCalledWith({
+    cwd: 'test',
+    spinner: expect.any(Object),
+  })
+  expect(husky).toHaveBeenCalledWith({
+    cwd: 'test',
+    spinner: expect.any(Object),
+  })
+  expect(gitignore).toHaveBeenCalledWith({
+    cwd: 'test',
+    spinner: expect.any(Object),
+  })
+  expect(eslint).toHaveBeenCalledWith({
+    cwd: 'test',
+    node: true,
+    spinner: expect.any(Object),
+  })
 })
 
 test('creates lib folder', async () => {

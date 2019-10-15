@@ -1,8 +1,10 @@
 import { create, createFolder, folderExists, installPkg } from '../utils/file'
 import execa from 'execa'
+import { Ora } from 'ora'
 
 interface ToolProps {
   cwd?: string
+  spinner?: Ora
 }
 
 export const gitignore = async (options: ToolProps = {}) => {
