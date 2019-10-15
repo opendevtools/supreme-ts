@@ -289,6 +289,17 @@ describe('#installPkg', () => {
     )
   })
 
+  test('uses spinner for text if it exists', async () => {
+    readPkgUp.mockReturnValue(undefined)
+
+    const spinner = {}
+
+    await installPkg('jest', { spinner })
+
+    expect(global.console.log).not.toHaveBeenCalled()
+    expect(spinner.text).toEqual('Installing jest')
+  })
+
   test('handles sub folders', async () => {
     readPkgUp.mockReturnValue(undefined)
 

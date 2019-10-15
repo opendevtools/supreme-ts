@@ -41,11 +41,11 @@ export const graphql = async ({ name, flags }: GraphQLProps) => {
   })
   await execa.command('npm install --silent', projectFolder)
 
-  await prettierrc({ cwd: name })
-  await jest({ cwd: name })
-  await nvmrc({ cwd: name })
-  await husky({ cwd: name })
-  await eslint({ cwd: name, node: true })
+  await prettierrc({ cwd: name, spinner })
+  await jest({ cwd: name, spinner })
+  await nvmrc({ cwd: name, spinner })
+  await husky({ cwd: name, spinner })
+  await eslint({ cwd: name, node: true, spinner })
 
   spinner.text = 'Creating base files'
 

@@ -6,6 +6,7 @@ import util from 'util'
 import ejs from 'ejs'
 import readPkgUp from 'read-pkg-up'
 import inquirer from 'inquirer'
+import { Ora } from 'ora'
 
 interface HandleFileData {
   templateName: string
@@ -90,6 +91,7 @@ export const folderExists = (folderName: string) => {
 
 interface PackageOptions {
   cwd?: string
+  spinner?: Ora
 }
 
 export const hasPkg = async (packageName: string, options: PackageOptions) => {
@@ -115,7 +117,14 @@ export const installPkg = async (
   const hasPackageInstalled = await hasPkg(packageName, options)
 
   if (!hasPackageInstalled) {
-    console.log(`Installing ${chalk.blue(packageName)}`)
+    const msg = `Installing ${chalk.blue(packageName)}`
+
+    if (options.spinner) {
+      options.spinner.text = msg
+    } else {
+      console.log(msg)
+    }
+
     await execa.command(
       `npm install --save-dev --save-exact ${packageName}`,
       options
