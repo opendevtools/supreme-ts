@@ -1,3 +1,10 @@
+## [2.10.4](https://github.com/Iteam1337/supreme/compare/v2.10.3...v2.10.4) (2019-11-04)
+
+
+### Bug Fixes
+
+* **deps:** update dependency app-root-path to v3 ([#86](https://github.com/Iteam1337/supreme/issues/86)) ([2e73de9](https://github.com/Iteam1337/supreme/commit/2e73de9579fa92c030adfd40f9d7531dcef2aad3))
+
 ## [2.10.3](https://github.com/Iteam1337/supreme/compare/v2.10.2...v2.10.3) (2019-10-19)
 
 
