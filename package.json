@@ -53,7 +53,7 @@
     "@types/app-root-path": "1.2.4",
     "@types/ejs": "2.6.3",
     "@types/inquirer": "6.5.0",
-    "@types/jest": "24.0.21",
+    "@types/jest": "24.0.22",
     "@types/meow": "5.0.0",
     "@typescript-eslint/eslint-plugin": "2.6.1",
     "husky": "3.0.9",
