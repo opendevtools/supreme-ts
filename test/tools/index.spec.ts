@@ -359,6 +359,15 @@ describe('#eslint', () => {
       )
     })
 
+    test('installs typescript eslint parser', async () => {
+      await eslint({ cwd: 'test', react: true })
+
+      expect(installPkg).toHaveBeenCalledWith('@typescript-eslint/parser', {
+        cwd: 'test',
+        react: true,
+      })
+    })
+
     test('creates a config', async () => {
       await eslint({ react: true })
 

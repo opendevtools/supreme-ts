@@ -149,6 +149,7 @@ export const eslint = async (options: EslintFlags = {}) => {
   if (options.react) {
     await installPkg('@iteam/eslint-config-react', options)
     await installPkg('@typescript-eslint/eslint-plugin', options)
+    await installPkg('@typescript-eslint/parser', options)
 
     await create({
       templateName: 'eslint/eslintrc.react',
