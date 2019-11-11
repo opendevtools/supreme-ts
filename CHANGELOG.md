@@ -1,3 +1,10 @@
+## [2.10.5](https://github.com/Iteam1337/supreme/compare/v2.10.4...v2.10.5) (2019-11-11)
+
+
+### Bug Fixes
+
+* **eslint:** install typescript parser ([48cd4d5](https://github.com/Iteam1337/supreme/commit/48cd4d5186c855aa4468887c010001197ba13145))
+
 ## [2.10.4](https://github.com/Iteam1337/supreme/compare/v2.10.3...v2.10.4) (2019-11-04)
 
 
