@@ -60,7 +60,7 @@
     "is-ci-cli": "2.0.0",
     "jest": "24.9.0",
     "jest-watch-typeahead": "0.4.2",
-    "prettier": "1.18.2",
+    "prettier": "1.19.1",
     "pretty-quick": "2.0.1",
     "tsdx": "0.11.0",
     "tslib": "1.10.0",
