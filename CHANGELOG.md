@@ -1,3 +1,10 @@
+## [2.10.6](https://github.com/Iteam1337/supreme/compare/v2.10.5...v2.10.6) (2019-11-12)
+
+
+### Bug Fixes
+
+* **deps:** update dependency chalk to v3 ([#94](https://github.com/Iteam1337/supreme/issues/94)) ([c8a631f](https://github.com/Iteam1337/supreme/commit/c8a631fd4975a4fc2267b1f1beb5a9a4b0853987))
+
 ## [2.10.5](https://github.com/Iteam1337/supreme/compare/v2.10.4...v2.10.5) (2019-11-11)
 
 
