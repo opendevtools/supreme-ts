@@ -1,3 +1,10 @@
+## [2.10.8](https://github.com/Iteam1337/supreme/compare/v2.10.7...v2.10.8) (2019-11-15)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ora to v4.0.3 ([cb9e606](https://github.com/Iteam1337/supreme/commit/cb9e606659ab7be01e685a33c12a929f64e91742))
+
 ## [2.10.7](https://github.com/Iteam1337/supreme/compare/v2.10.6...v2.10.7) (2019-11-14)
 
 
