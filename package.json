@@ -48,7 +48,7 @@
   },
   "devDependencies": {
     "@iteam/config": "12.1.0",
-    "@semantic-release/changelog": "3.0.5",
+    "@semantic-release/changelog": "3.0.6",
     "@semantic-release/git": "7.0.18",
     "@types/app-root-path": "1.2.4",
     "@types/ejs": "2.6.3",
