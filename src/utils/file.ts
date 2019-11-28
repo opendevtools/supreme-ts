@@ -41,7 +41,7 @@ const handleFile = async (
   const writeFile = util.promisify(fs.writeFile)
 
   try {
-    const template = await ejs.renderFile<string>(
+    const template = await ejs.renderFile(
       path.join(__dirname, `../src/templates/${templateName}.ejs`),
       templateData
     )
@@ -59,7 +59,7 @@ const handleFile = async (
 }
 
 export const readSnippet = (templateName: string) => {
-  return ejs.renderFile<string>(
+  return ejs.renderFile(
     path.resolve(__dirname, `../src/templates/snippets/${templateName}.ejs`)
   )
 }
