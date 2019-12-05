@@ -51,7 +51,7 @@
     "@semantic-release/changelog": "3.0.6",
     "@semantic-release/git": "7.0.18",
     "@types/app-root-path": "1.2.4",
-    "@types/ejs": "2.7.0",
+    "@types/ejs": "3.0.0",
     "@types/inquirer": "6.5.0",
     "@types/jest": "24.0.23",
     "@types/meow": "5.0.0",
