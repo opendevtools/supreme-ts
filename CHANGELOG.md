@@ -1,3 +1,10 @@
+## [2.10.13](https://github.com/Iteam1337/supreme/compare/v2.10.12...v2.10.13) (2019-12-09)
+
+
+### Bug Fixes
+
+* **deps:** update dependency read-pkg-up to v7.0.1 ([550638b](https://github.com/Iteam1337/supreme/commit/550638be891c9b2f1d6d269307ad6dd1fa3650e3))
+
 ## [2.10.12](https://github.com/Iteam1337/supreme/compare/v2.10.11...v2.10.12) (2019-11-27)
 
 
