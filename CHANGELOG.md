@@ -1,3 +1,10 @@
+## [2.10.14](https://github.com/Iteam1337/supreme/compare/v2.10.13...v2.10.14) (2019-12-11)
+
+
+### Bug Fixes
+
+* **deps:** update dependency meow to v6 ([#113](https://github.com/Iteam1337/supreme/issues/113)) ([91996d9](https://github.com/Iteam1337/supreme/commit/91996d9742dffbeef5bb382093cdd6cff0ecf82d))
+
 ## [2.10.13](https://github.com/Iteam1337/supreme/compare/v2.10.12...v2.10.13) (2019-12-09)
 
 
