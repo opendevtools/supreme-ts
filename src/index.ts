@@ -23,7 +23,7 @@ export interface CLIProps {
   flags: CLIFlags
 }
 
-export const run = (cli: meow.Result) => {
+export const run = (cli: any) => {
   const { input, flags, help } = cli
   const [command, name] = input
 
