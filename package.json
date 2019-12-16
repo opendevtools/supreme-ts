@@ -72,7 +72,7 @@
     "clipboardy": "2.1.0",
     "ejs": "3.0.1",
     "execa": "3.4.0",
-    "inquirer": "7.0.0",
+    "inquirer": "7.0.1",
     "meow": "6.0.0",
     "ora": "4.0.3",
     "read-pkg-up": "7.0.1"
