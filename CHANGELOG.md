@@ -1,3 +1,10 @@
+## [2.10.18](https://github.com/Iteam1337/supreme/compare/v2.10.17...v2.10.18) (2020-01-20)
+
+
+### Bug Fixes
+
+* **reason:** update for bucklescript 7 ([#136](https://github.com/Iteam1337/supreme/issues/136)) ([9b7f80a](https://github.com/Iteam1337/supreme/commit/9b7f80ab529d68c4c096c84b5a36d8a7f44c5ac2))
+
 ## [2.10.17](https://github.com/Iteam1337/supreme/compare/v2.10.16...v2.10.17) (2020-01-08)
 
 
