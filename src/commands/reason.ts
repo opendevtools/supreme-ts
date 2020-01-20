@@ -8,14 +8,15 @@ import ora from 'ora'
 export const reason = async ({ name }: CLIProps) => {
   const projectName = name || 'supreme-reason'
   const projectFolder = { cwd: path.join(process.cwd(), projectName) }
-  const srcFolder = { cwd: path.join(projectFolder.cwd, 'src') }
 
   console.log(`Creating app ${chalk.blue(projectName)}`)
 
   const spinner = ora({ text: 'Creating folder', color: 'blue' }).start()
 
   // Create app
-  await execa.command(`bsb -init ${projectName} -theme react-hooks`)
+  await execa.command(`mkdir ${projectName}`)
+  await execa.command('mkdir public', projectFolder)
+  await execa.command('mkdir src', projectFolder)
 
   // Overwrite base files
   spinner.text = 'Updating configs'
@@ -85,8 +86,6 @@ export const reason = async ({ name }: CLIProps) => {
 
   // Move and overwrite index html
   spinner.text = 'Updating base files'
-  await execa.command('mkdir public', projectFolder)
-  await execa('mv', ['src/index.html', 'public/index.html'], projectFolder)
 
   await overwrite({
     templateName: 'reason/index.html',
@@ -96,14 +95,11 @@ export const reason = async ({ name }: CLIProps) => {
     },
   })
 
-  // Replace default component setup
-  await execa.command('rm Component1.re', srcFolder)
-  await execa.command('rm Component2.re', srcFolder)
-
   await overwrite({
     templateName: 'reason/Index.re',
     output: `${projectName}/src/Index.re`,
   })
+
   await create({
     templateName: 'reason/App.re',
     output: `${projectName}/src/App.re`,
@@ -115,12 +111,6 @@ export const reason = async ({ name }: CLIProps) => {
   await create({
     templateName: 'reason/App_test.re',
     output: `${projectName}/__tests__/App_test.re`,
-  })
-
-  // Travis setup
-  await create({
-    templateName: 'reason/travis.yml',
-    output: `${projectName}/.travis.yml`,
   })
 
   spinner.stop()
