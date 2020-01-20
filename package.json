@@ -55,7 +55,7 @@
     "@types/inquirer": "6.5.0",
     "@types/jest": "24.9.0",
     "@types/meow": "5.0.0",
-    "@typescript-eslint/eslint-plugin": "2.16.0",
+    "@typescript-eslint/eslint-plugin": "2.17.0",
     "husky": "4.0.10",
     "is-ci-cli": "2.0.0",
     "jest": "24.9.0",
