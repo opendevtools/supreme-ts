@@ -20,17 +20,19 @@ test('should setup a spinner', async () => {
 test('creates bucklescript app', async () => {
   await reason({ name: 'test', flags: {} })
 
-  expect(execa.command).toHaveBeenCalledWith(
-    'bsb -init test -theme react-hooks'
-  )
+  expect(execa.command).toHaveBeenCalledWith('mkdir test')
+  expect(execa.command).toHaveBeenCalledWith('mkdir public', {
+    cwd: expect.stringMatching(/test/),
+  })
+  expect(execa.command).toHaveBeenCalledWith('mkdir src', {
+    cwd: expect.stringMatching(/test/),
+  })
 })
 
 test('creates bucklescript app using default name', async () => {
   await reason({ flags: {} })
 
-  expect(execa.command).toHaveBeenCalledWith(
-    'bsb -init supreme-reason -theme react-hooks'
-  )
+  expect(execa.command).toHaveBeenCalledWith('mkdir supreme-reason')
 })
 
 test('overwrites base files', async () => {
@@ -118,38 +120,8 @@ test('creates releaserc for semantic release', async () => {
   })
 })
 
-test('move and replace index.html', async () => {
-  await reason({ name: 'test', flags: {} })
-
-  expect(execa.command).toHaveBeenCalledWith('mkdir public', {
-    cwd: expect.stringMatching(/test/),
-  })
-  expect(execa).toHaveBeenCalledWith(
-    'mv',
-    ['src/index.html', 'public/index.html'],
-    {
-      cwd: expect.stringMatching(/test/),
-    }
-  )
-
-  expect(overwrite).toHaveBeenCalledWith({
-    templateName: 'reason/index.html',
-    output: 'test/public/index.html',
-    templateData: {
-      name: 'test',
-    },
-  })
-})
-
 test('replace default components', async () => {
   await reason({ name: 'test', flags: {} })
-
-  expect(execa.command).toHaveBeenCalledWith('rm Component1.re', {
-    cwd: expect.stringMatching(/test/),
-  })
-  expect(execa.command).toHaveBeenCalledWith('rm Component2.re', {
-    cwd: expect.stringMatching(/test/),
-  })
 
   expect(overwrite).toHaveBeenCalledWith({
     templateName: 'reason/Index.re',
@@ -169,14 +141,5 @@ test('creates testing directory with simple test', async () => {
   expect(create).toHaveBeenCalledWith({
     templateName: 'reason/App_test.re',
     output: 'test/__tests__/App_test.re',
-  })
-})
-
-test('add travis build setup', async () => {
-  await reason({ name: 'test', flags: {} })
-
-  expect(create).toHaveBeenCalledWith({
-    templateName: 'reason/travis.yml',
-    output: 'test/.travis.yml',
   })
 })
