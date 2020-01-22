@@ -58,7 +58,7 @@
     "@typescript-eslint/eslint-plugin": "2.17.0",
     "husky": "4.0.10",
     "is-ci-cli": "2.0.0",
-    "jest": "24.9.0",
+    "jest": "25.1.0",
     "jest-watch-typeahead": "0.4.2",
     "prettier": "1.19.1",
     "pretty-quick": "2.0.1",
