@@ -1,17 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should handle vim and javascript (javascript) snippets 1`] = `"javascriptsnippet"`;
+exports[`should handle vim and javascript (javascript) snippets 1`] = `"javascript.vim"`;
 
-exports[`should handle vim and javascript snippets 1`] = `"javascriptsnippet"`;
+exports[`should handle vim and javascript snippets 1`] = `"javascript.vim"`;
 
-exports[`should handle vim and reason (reasonml) snippets 1`] = `"reasonsnippet"`;
+exports[`should handle vim and reason (reasonml) snippets 1`] = `"reason.vim"`;
 
-exports[`should handle vim and reason snippets 1`] = `"reasonsnippet"`;
+exports[`should handle vim and reason snippets 1`] = `"reason.vim"`;
 
-exports[`should handle vim and typescript (ts) snippets 1`] = `"tssnippet"`;
+exports[`should handle vim and typescript (ts) snippets 1`] = `"typescript.vim"`;
 
-exports[`should handle vim and typescript snippets 1`] = `"tssnippet"`;
+exports[`should handle vim and typescript snippets 1`] = `"typescript.vim"`;
 
-exports[`should handle vscode and reason (reasonml) snippets 1`] = `"reasonsnippet"`;
+exports[`should handle vscode and reason (reasonml) snippets 1`] = `"reason.vscode"`;
 
-exports[`should handle vscode and reason snippets 1`] = `"reasonsnippet"`;
+exports[`should handle vscode and reason snippets 1`] = `"reason.vscode"`;
