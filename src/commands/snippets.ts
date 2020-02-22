@@ -21,10 +21,11 @@ interface CopySnippetProps {
   message: string
 }
 
-const copySnippet = async ({ template, message }: CopySnippetProps) => {
-  const snippet = await readSnippet(template)
-  clipboardy.writeSync(snippet)
-  console.log(message)
+const copySnippet = ({ template, message }: CopySnippetProps) => {
+  readSnippet(template).then(snippet => {
+    clipboardy.writeSync(snippet)
+    console.log(message)
+  })
 }
 
 const handleVim = async (language: SnippetLanguage) => {
@@ -90,10 +91,10 @@ export const snippets = async ({ language, ide }: SnippetsProps) => {
 
   switch (ide) {
     case 'vim':
-      handleVim(language)
+      await handleVim(language)
       break
     case 'vscode':
-      handleVscode(language)
+      await handleVscode(language)
       break
     default:
       console.log(`I don't have any snippets for that IDE (${ide})`)

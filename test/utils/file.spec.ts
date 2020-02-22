@@ -105,7 +105,7 @@ describe('#create', () => {
     expect(writeFile).toHaveBeenCalledWith(
       expect.stringContaining('test'),
       'template',
-      { flag: 'w' }
+      { flag: 'wx' }
     )
     expect(global.console.error).toHaveBeenCalledWith(
       'File already exists test.md'
