@@ -1,3 +1,10 @@
+## [2.10.25](https://github.com/Iteam1337/supreme/compare/v2.10.24...v2.10.25) (2020-03-21)
+
+
+### Bug Fixes
+
+* **deps:** update dependency clipboardy to v2.3.0 ([31df211](https://github.com/Iteam1337/supreme/commit/31df2117218456b533d62e0c6fd22d5838fa7290))
+
 ## [2.10.24](https://github.com/Iteam1337/supreme/compare/v2.10.23...v2.10.24) (2020-03-12)
 
 
