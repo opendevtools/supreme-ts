@@ -1,3 +1,10 @@
+## [2.10.26](https://github.com/Iteam1337/supreme/compare/v2.10.25...v2.10.26) (2020-03-21)
+
+
+### Bug Fixes
+
+* **deps:** update dependency meow to v6.1.0 ([52eb8a6](https://github.com/Iteam1337/supreme/commit/52eb8a64e6f0222eec0ea7b4f96122717ae66896))
+
 ## [2.10.25](https://github.com/Iteam1337/supreme/compare/v2.10.24...v2.10.25) (2020-03-21)
 
 
