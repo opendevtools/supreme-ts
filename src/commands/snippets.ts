@@ -22,7 +22,7 @@ interface CopySnippetProps {
 }
 
 const copySnippet = ({ template, message }: CopySnippetProps) => {
-  readSnippet(template).then(snippet => {
+  readSnippet(template).then((snippet) => {
     clipboardy.writeSync(snippet)
     console.log(message)
   })

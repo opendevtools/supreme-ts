@@ -8,7 +8,7 @@ jest.mock('../../src/utils/file')
 
 beforeEach(() => {
   jest.resetAllMocks()
-  ;(readSnippet as jest.Mock).mockImplementation(input =>
+  ;(readSnippet as jest.Mock).mockImplementation((input) =>
     Promise.resolve(input)
   )
 })
