@@ -1,3 +1,10 @@
+## [2.10.27](https://github.com/Iteam1337/supreme/compare/v2.10.26...v2.10.27) (2020-03-31)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ejs to v3.0.2 ([4dc7007](https://github.com/Iteam1337/supreme/commit/4dc70072e3a4ba73a7b4bd3684cfcfc32c93d5b7))
+
 ## [2.10.26](https://github.com/Iteam1337/supreme/compare/v2.10.25...v2.10.26) (2020-03-21)
 
 
