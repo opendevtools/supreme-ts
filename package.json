@@ -68,7 +68,7 @@
   },
   "dependencies": {
     "app-root-path": "3.0.0",
-    "chalk": "3.0.0",
+    "chalk": "4.0.0",
     "clipboardy": "2.3.0",
     "ejs": "3.0.2",
     "execa": "4.0.0",
