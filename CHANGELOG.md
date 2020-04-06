@@ -1,3 +1,10 @@
+## [2.10.28](https://github.com/Iteam1337/supreme/compare/v2.10.27...v2.10.28) (2020-04-06)
+
+
+### Bug Fixes
+
+* **deps:** update dependency chalk to v4 ([#183](https://github.com/Iteam1337/supreme/issues/183)) ([801eb0e](https://github.com/Iteam1337/supreme/commit/801eb0ed4e3e12eebcfce9c70b575da8ee112906))
+
 ## [2.10.27](https://github.com/Iteam1337/supreme/compare/v2.10.26...v2.10.27) (2020-03-31)
 
 
