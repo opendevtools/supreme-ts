@@ -70,7 +70,7 @@
     "app-root-path": "3.0.0",
     "chalk": "4.0.0",
     "clipboardy": "2.3.0",
-    "ejs": "3.0.2",
+    "ejs": "3.1.2",
     "execa": "4.0.0",
     "inquirer": "7.1.0",
     "meow": "6.1.0",
