@@ -5,6 +5,7 @@ import {
   hasPkg,
   overwrite,
   installPkg,
+  readSnippet,
 } from '../../src/utils/file'
 import ejs from 'ejs'
 import util from 'util'
@@ -30,6 +31,16 @@ jest.spyOn(global.console, 'error').mockImplementation(() => {})
 
 beforeEach(() => {
   jest.clearAllMocks()
+})
+
+describe('#readSnippet', () => {
+  it('gets a specific snippet', () => {
+    readSnippet('test')
+
+    expect(ejs.renderFile).toHaveBeenCalledWith(
+      expect.stringContaining('test.ejs')
+    )
+  })
 })
 
 describe('#create', () => {

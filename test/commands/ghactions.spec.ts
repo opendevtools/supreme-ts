@@ -85,6 +85,9 @@ test('should create a release action', async () => {
   expect(create).toHaveBeenCalledWith({
     templateName: 'ghactions/release.yml',
     output: '.github/workflows/release.yml',
+    templateData: {
+      npm: true,
+    },
   })
 })
 

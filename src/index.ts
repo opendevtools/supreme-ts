@@ -16,7 +16,7 @@ export interface CLIFlags {
   language?: string
   node?: boolean
   react?: boolean
-  npm?: boolean
+  npm: boolean
 }
 
 export interface CLIProps {

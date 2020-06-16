@@ -27,5 +27,4 @@ jobs:
       env:
         # GITHUB_TOKEN is added automatically by GitHub
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        CI: true
+        <% if (npm) { %>NPM_TOKEN: ${{ secrets.NPM_TOKEN }}<% } %>

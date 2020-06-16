@@ -41,6 +41,9 @@ export const ghactions = async ({ flags }: GhActionsProps) => {
   await create({
     templateName: 'ghactions/release.yml',
     output: '.github/workflows/release.yml',
+    templateData: {
+      npm: flags.npm,
+    },
   })
 
   console.log(`Added GitHub actions in ${chalk.green(`.github/workflows`)}`)
