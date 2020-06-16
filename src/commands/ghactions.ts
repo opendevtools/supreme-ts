@@ -1,7 +1,12 @@
 import { create, createFolder, folderExists, installPkg } from '../utils/file'
 import chalk from 'chalk'
+import { CLIFlags } from '../'
 
-export const ghactions = async () => {
+interface GhActionsProps {
+  flags: CLIFlags
+}
+
+export const ghactions = async ({ flags }: GhActionsProps) => {
   const githubFolder = folderExists('.github')
   const workflowsFolder = folderExists('.github/workflows')
 
@@ -16,10 +21,17 @@ export const ghactions = async () => {
     await createFolder('.github/workflows')
   }
 
-  await create({
-    templateName: 'ghactions/releaserc',
-    output: '.releaserc',
-  })
+  if (flags.npm) {
+    await create({
+      templateName: 'ghactions/releaserc',
+      output: '.releaserc',
+    })
+  } else {
+    await create({
+      templateName: 'ghactions/releaserc.nonpm',
+      output: '.releaserc',
+    })
+  }
 
   await create({
     templateName: 'ghactions/pr_check.yml',

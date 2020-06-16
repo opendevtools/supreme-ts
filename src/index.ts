@@ -16,6 +16,7 @@ export interface CLIFlags {
   language?: string
   node?: boolean
   react?: boolean
+  npm?: boolean
 }
 
 export interface CLIProps {
@@ -52,7 +53,7 @@ export const run = (cli: any) => {
       graphql({ name, flags: flags as CLIFlags })
       break
     case 'ghactions':
-      ghactions()
+      ghactions({ flags: flags as CLIFlags })
       break
     case 'typescript':
       typescript({ name, flags: flags as CLIFlags })
@@ -84,6 +85,7 @@ const cli = meow(
     --examples      GraphQL examples (examples)
     --node          ESLint node (add/init)
     --react         ESLint react (add/init)
+    --no-npm        Remove npm release (ghactions)    
     `,
   {
     flags: {
@@ -105,6 +107,10 @@ const cli = meow(
       },
       node: {
         type: 'boolean',
+      },
+      npm: {
+        type: 'boolean',
+        default: true,
       },
     },
   }

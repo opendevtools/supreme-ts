@@ -79,7 +79,7 @@ test('handles graphql command', () => {
 test('handles github actions command', () => {
   run({ input: ['ghactions'], flags: {} })
 
-  expect(ghactions).toHaveBeenCalled()
+  expect(ghactions).toHaveBeenCalledWith({ flags: {} })
 })
 
 test('handles typescript command', () => {
