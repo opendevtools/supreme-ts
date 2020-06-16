@@ -1,3 +1,10 @@
+# [2.11.0](https://github.com/Iteam1337/supreme/compare/v2.10.36...v2.11.0) (2020-06-16)
+
+
+### Features
+
+* add github actions without npm release ([#223](https://github.com/Iteam1337/supreme/issues/223)) ([d76273c](https://github.com/Iteam1337/supreme/commit/d76273cd92f2cc67ffd8a021557f77c960bb6bcc))
+
 ## [2.10.36](https://github.com/Iteam1337/supreme/compare/v2.10.35...v2.10.36) (2020-06-16)
 
 
