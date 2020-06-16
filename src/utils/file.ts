@@ -11,7 +11,7 @@ import { Ora } from 'ora'
 interface HandleFileData {
   templateName: string
   output: string
-  templateData?: { [key: string]: string }
+  templateData?: { [key: string]: string | boolean }
 }
 
 interface HandleFileOptions {
