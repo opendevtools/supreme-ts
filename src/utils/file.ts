@@ -92,6 +92,7 @@ export const folderExists = (folderName: string) => {
 interface PackageOptions {
   cwd?: string
   spinner?: Ora
+  dev?: boolean
 }
 
 export const hasPkg = async (packageName: string, options: PackageOptions) => {
@@ -126,7 +127,9 @@ export const installPkg = async (
     }
 
     await execa.command(
-      `npm install --save-dev --save-exact ${packageName}`,
+      `npm install ${
+        options.dev === false ? '' : '--save-dev'
+      } --save-exact ${packageName}`,
       options
     )
   }
