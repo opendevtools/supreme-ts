@@ -7,7 +7,7 @@
     "lib": "lib"
   },
   "scripts": {
-    "dev": "ts-node-dev --no-notify --ignore-watch node_modules lib/server.ts",
+    "dev": "ts-node-dev --no-notify --type-check --ignore-watch node_modules lib/server.ts",
     "generate": "graphql-codegen --config codegen.yml"
   },
   "keywords": ["graphql", "apollo"],
@@ -24,6 +24,6 @@
     "@graphql-codegen/typescript-resolvers": "1.8.1",
     "@types/lodash.merge": "4.6.6",
     "ts-node-dev": "1.0.0-pre.43",
-    "typescript": "3.6.4"
+    "typescript": "3.9.5"
   }
 }
