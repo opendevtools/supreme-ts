@@ -1,4 +1,9 @@
-import { createFolder, create, overwrite } from '../../src/utils/file'
+import {
+  createFolder,
+  create,
+  overwrite,
+  installPkg,
+} from '../../src/utils/file'
 import ora from 'ora'
 import { graphql } from '../../src/commands/graphql'
 import execa from 'execa'
@@ -167,5 +172,58 @@ test('should add codegen configuration', async () => {
   expect(create).toHaveBeenCalledWith({
     templateName: 'graphql/codegen.yml',
     output: 'test/codegen.yml',
+  })
+})
+
+describe('flags:auth', () => {
+  test('should install additional dependencies', async () => {
+    const name = 'test'
+    await graphql({ name, flags: { auth: true } })
+
+    expect(installPkg).toHaveBeenCalledWith(
+      'graphql-directive-auth@0.3.2',
+      expect.objectContaining({ cwd: name, dev: false })
+    )
+    expect(installPkg).toHaveBeenCalledWith(
+      'graphql-tools@6.0.10',
+      expect.objectContaining({ cwd: name, dev: false })
+    )
+  })
+
+  test('should add generated types', async () => {
+    await graphql({ name: 'test', flags: { auth: true } })
+
+    expect(createFolder).toHaveBeenCalledWith('test/lib/__generated__')
+    expect(create).toHaveBeenCalledWith({
+      templateName: 'graphql/auth/graphql.d.ts',
+      output: 'test/lib/__generated__/graphql.d.ts',
+    })
+  })
+
+  test('should add server', async () => {
+    await graphql({ name: 'test', flags: { auth: true } })
+
+    expect(create).toHaveBeenCalledWith({
+      templateName: 'graphql/auth/server.ts',
+      output: 'test/lib/server.ts',
+    })
+  })
+
+  test('should add global type declaration file', async () => {
+    await graphql({ name: 'test', flags: { auth: true } })
+
+    expect(create).toHaveBeenCalledWith({
+      templateName: 'graphql/auth/index.d.ts',
+      output: 'test/index.d.ts',
+    })
+  })
+
+  test('should add tsconfig', async () => {
+    await graphql({ name: 'test', flags: { auth: true } })
+
+    expect(create).toHaveBeenCalledWith({
+      templateName: 'graphql/auth/tsconfig.json',
+      output: 'test/tsconfig.json',
+    })
   })
 })
