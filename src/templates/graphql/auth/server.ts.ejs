@@ -1,0 +1,63 @@
+import express from 'express'
+import { ApolloServer, gql } from 'apollo-server-express'
+import { QueryResolvers } from './__generated__/graphql'
+import { makeExecutableSchema } from 'graphql-tools'
+import { AuthDirective } from 'graphql-directive-auth'
+
+/*
+ * AuthDirective uses the environment
+ * variable name 'APP_SECRET' to verify JWT.
+ */
+process.env.APP_SECRET = 'jwtKey' // move me!
+
+const typeDefs = gql`
+  """
+  Directives
+  """
+  directive @isAuthenticated on FIELD | FIELD_DEFINITION
+  directive @hasRole(role: String) on FIELD | FIELD_DEFINITION
+
+  type Person {
+    name: String!
+    age: Int!
+  }
+
+  type Query {
+    person: Person! @isAuthenticated
+  }
+`
+
+const person: QueryResolvers<AuthContext>['person'] = (
+  _,
+  __,
+  { auth } // Properties from parsed JWT as type AuthContext
+) => ({ name: auth.fullName, age: 30 })
+
+const resolvers = {
+  Query: {
+    person,
+  },
+}
+
+const schema = { typeDefs, resolvers }
+
+const executableSchema = makeExecutableSchema({
+  ...schema,
+  schemaDirectives: {
+    // to use @hasRole and @isAuthenticated directives
+    ...AuthDirective(),
+  },
+})
+
+const server = new ApolloServer({
+  schema: executableSchema,
+  context: ({ connection, req }) => (connection ? connection.context : { req }),
+})
+
+const app = express()
+
+server.applyMiddleware({ app })
+
+app.listen({ port: 4000 }, () =>
+  console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
+)

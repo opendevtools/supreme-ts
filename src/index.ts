@@ -17,6 +17,7 @@ export interface CLIFlags {
   node?: boolean
   react?: boolean
   npm: boolean
+  auth?: boolean
 }
 
 export interface CLIProps {
@@ -74,7 +75,7 @@ const cli = meow(
     $ react <name> [flags]      Creates a React app (CRA)
     $ reason <name>             Creates a ReasonReact app
     $ snippets [flags]          Copy snippets to clipboard
-    $ graphql <name>            Create a GraphQL API
+    $ graphql <name> [flags]    Create a GraphQL API
     $ ghactions                 Create base GitHub actions
     $ typescript                Create basic Typescript app
 
@@ -86,6 +87,7 @@ const cli = meow(
     --node          ESLint node (add/init)
     --react         ESLint react (add/init)
     --no-npm        Remove npm release (ghactions)    
+    --auth          Directives for JWT authorization (graphql)
     `,
   {
     flags: {
@@ -112,6 +114,7 @@ const cli = meow(
         type: 'boolean',
         default: true,
       },
+      auth: { type: 'boolean' },
     },
   }
 )

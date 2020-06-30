@@ -3,7 +3,7 @@ import execa from 'execa'
 import ora from 'ora'
 import path from 'path'
 import { husky, jest, nvmrc, prettierrc, eslint } from '../tools'
-import { create, createFolder, overwrite } from '../utils/file'
+import { create, createFolder, overwrite, installPkg } from '../utils/file'
 
 interface GraphQLProps {
   flags: any
@@ -49,15 +49,40 @@ export const graphql = async ({ name, flags }: GraphQLProps) => {
 
   spinner.text = 'Creating base files'
 
-  await create({
-    templateName: 'typescript/tsconfig.json',
-    output: `${name}/tsconfig.json`,
-  })
-
   await createFolder(`${name}/lib`)
   await createFolder(`${name}/lib/__generated__`)
 
-  if (flags.examples) {
+  if (flags.auth) {
+    spinner.text = 'Installing additional dependencies'
+
+    await installPkg('graphql-directive-auth@0.3.2', {
+      spinner,
+      cwd: name,
+      dev: false,
+    })
+    await installPkg('graphql-tools@6.0.10', { spinner, cwd: name, dev: false })
+
+    spinner.text = 'Creating base files'
+    await create({
+      templateName: 'graphql/auth/server.ts',
+      output: `${name}/lib/server.ts`,
+    })
+
+    await create({
+      templateName: 'graphql/auth/graphql.d.ts',
+      output: `${name}/lib/__generated__/graphql.d.ts`,
+    })
+
+    await create({
+      templateName: 'graphql/auth/index.d.ts',
+      output: `${name}/index.d.ts`,
+    })
+
+    await create({
+      templateName: 'graphql/auth/tsconfig.json',
+      output: `${name}/tsconfig.json`,
+    })
+  } else if (flags.examples) {
     await create({
       templateName: 'graphql/serverExample.ts',
       output: `${name}/lib/server.ts`,
@@ -82,6 +107,11 @@ export const graphql = async ({ name, flags }: GraphQLProps) => {
     await create({
       templateName: 'graphql/graphql.d.ts',
       output: `${name}/lib/__generated__/graphql.d.ts`,
+    })
+
+    await create({
+      templateName: 'typescript/tsconfig.json',
+      output: `${name}/tsconfig.json`,
     })
   }
 
