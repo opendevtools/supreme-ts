@@ -1,3 +1,10 @@
+# [2.12.0](https://github.com/Iteam1337/supreme/compare/v2.11.0...v2.12.0) (2020-06-30)
+
+
+### Features
+
+* graphql auth flag ([#224](https://github.com/Iteam1337/supreme/issues/224)) ([e33f863](https://github.com/Iteam1337/supreme/commit/e33f863a368b3e4e58faa7c82e72947093591577))
+
 # [2.11.0](https://github.com/Iteam1337/supreme/compare/v2.10.36...v2.11.0) (2020-06-16)
 
 
