@@ -1,3 +1,10 @@
+## [2.12.1](https://github.com/Iteam1337/supreme/compare/v2.12.0...v2.12.1) (2020-07-03)
+
+
+### Bug Fixes
+
+* **deps:** update dependency inquirer to v7.3.0 ([2ae0327](https://github.com/Iteam1337/supreme/commit/2ae03279a701c34d6126bc87fada6cf985a26701))
+
 # [2.12.0](https://github.com/Iteam1337/supreme/compare/v2.11.0...v2.12.0) (2020-06-30)
 
 
