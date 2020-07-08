@@ -1,3 +1,10 @@
+## [2.12.2](https://github.com/Iteam1337/supreme/compare/v2.12.1...v2.12.2) (2020-07-08)
+
+
+### Bug Fixes
+
+* **deps:** update dependency execa to v4.0.3 ([20cec0d](https://github.com/Iteam1337/supreme/commit/20cec0d29d3afddfdb3828dcb753c6b1903fb126))
+
 ## [2.12.1](https://github.com/Iteam1337/supreme/compare/v2.12.0...v2.12.1) (2020-07-03)
 
 
