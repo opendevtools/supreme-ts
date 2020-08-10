@@ -1,3 +1,10 @@
+## [2.12.6](https://github.com/Iteam1337/supreme/compare/v2.12.5...v2.12.6) (2020-08-10)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ora to v4.1.1 ([9979655](https://github.com/Iteam1337/supreme/commit/9979655d5dece0c4b67f47c46a1ce026db31c26d))
+
 ## [2.12.5](https://github.com/Iteam1337/supreme/compare/v2.12.4...v2.12.5) (2020-07-20)
 
 
