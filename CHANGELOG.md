@@ -1,3 +1,10 @@
+## [2.12.7](https://github.com/Iteam1337/supreme/compare/v2.12.6...v2.12.7) (2020-08-19)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ejs to v3.1.5 ([3fab3f1](https://github.com/Iteam1337/supreme/commit/3fab3f1ad7ad789a3e54fee119b82bb3ab5eeab5))
+
 ## [2.12.6](https://github.com/Iteam1337/supreme/compare/v2.12.5...v2.12.6) (2020-08-10)
 
 
