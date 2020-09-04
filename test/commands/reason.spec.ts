@@ -86,17 +86,13 @@ test('installs app dependencies', async () => {
   })
 })
 
-test('setup for tailwind', async () => {
-  await reason({ name: 'test', flags: {} })
-
-  expect(execa).toHaveBeenCalledWith('npx', ['tailwind', 'init'], {
-    cwd: expect.stringMatching(/test/),
-  })
-})
-
 test('create tailwind config', async () => {
   await reason({ name: 'test', flags: {} })
 
+  expect(create).toHaveBeenCalledWith({
+    templateName: 'reason/tailwind.config.js',
+    output: 'test/tailwind.config.js',
+  })
   expect(create).toHaveBeenCalledWith({
     templateName: 'reason/postcss.config.js',
     output: 'test/postcss.config.js',
