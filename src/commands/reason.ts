@@ -63,8 +63,11 @@ export const reason = async ({ name }: CLIProps) => {
 
   // Setup Tailwind CSS
   spinner.text = 'Setting up styling'
-  await execa('npx', ['tailwind', 'init'], projectFolder)
 
+  await create({
+    templateName: 'reason/tailwind.config.js',
+    output: `${projectName}/tailwind.config.js`,
+  })
   await create({
     templateName: 'reason/postcss.config.js',
     output: `${projectName}/postcss.config.js`,
