@@ -1,3 +1,10 @@
+# [2.13.0](https://github.com/Iteam1337/supreme/compare/v2.12.7...v2.13.0) (2020-09-04)
+
+
+### Features
+
+* update reason setup ([#244](https://github.com/Iteam1337/supreme/issues/244)) ([6d8676c](https://github.com/Iteam1337/supreme/commit/6d8676ca499871033e6f5885f9e0ee1123dc8783))
+
 ## [2.12.7](https://github.com/Iteam1337/supreme/compare/v2.12.6...v2.12.7) (2020-08-19)
 
 
