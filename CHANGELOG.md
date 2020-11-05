@@ -1,3 +1,10 @@
+## [2.13.4](https://github.com/opendevtools/supreme/compare/v2.13.3...v2.13.4) (2020-11-05)
+
+
+### Bug Fixes
+
+* **deps:** update dependency inquirer to v7.3.3 ([#234](https://github.com/opendevtools/supreme/issues/234)) ([e62761e](https://github.com/opendevtools/supreme/commit/e62761ee16041efedc0b603995c61cc02d15e7f2))
+
 ## [2.13.3](https://github.com/opendevtools/supreme/compare/v2.13.2...v2.13.3) (2020-11-05)
 
 
