@@ -1,3 +1,10 @@
+## [2.13.3](https://github.com/opendevtools/supreme/compare/v2.13.2...v2.13.3) (2020-11-05)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ora to v5 ([#236](https://github.com/opendevtools/supreme/issues/236)) ([23fd4a0](https://github.com/opendevtools/supreme/commit/23fd4a09055c65b4ef0cb10525cae160810f5db7))
+
 ## [2.13.2](https://github.com/opendevtools/supreme/compare/v2.13.1...v2.13.2) (2020-11-05)
 
 
