@@ -4,28 +4,26 @@
   </p>
 </div>
 
-[![](https://github.com/Iteam1337/supreme/workflows/Release/badge.svg)](https://github.com/Iteam1337/supreme/actions?workflow=Release)
-[![npm (scoped)](https://img.shields.io/npm/v/@iteam/supreme)](https://npm.im/@iteam/supreme)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/f43b4db75e264464c6d1/test_coverage)](https://codeclimate.com/github/Iteam1337/supreme/test_coverage) [![Maintainability](https://api.codeclimate.com/v1/badges/f43b4db75e264464c6d1/maintainability)](https://codeclimate.com/github/Iteam1337/supreme/maintainability)
+[![](https://github.com/opendevtools/supreme/workflows/Release/badge.svg)](https://github.com/opendevtools/supreme/actions?workflow=Release)
+[![npm (scoped)](https://img.shields.io/npm/v/@opendevtools/supreme)](https://npm.im/@opendevtools/supreme)
 
 Use this tool to get up and running fast with configs and more in your project.
 The tool currently supports creating React apps (using [`create-react-app`](https://facebook.github.io/create-react-app)), [ReasonReact](https://reasonml.github.io/reason-react/) apps and [GraphQL](https://graphql.org/) APIs with TypeScript. It can also create some basic configs in your project.
 
-Built with ❤️ by [@Jimjardland](https://github.com/Jimjardland) and [@believer](https://github.com/believer).
-
 ## Installation
 
 ```bash
-npx @iteam/supreme
+npx @opendevtools/supreme
 ```
 
-or
+or install globally
 
 ```bash
-npm install -g @iteam/supreme
+npm install -g @opendevtools/supreme
 ```
 
 After that you'll have `supreme` as a global command to use in a repository of your choice.
 
 ## Documentation
-Find everything you need to know at [Iteam Supreme](https://iteam1337.github.io/#/supreme)
+
+Find everything you need to know at [Supreme](https://opendevtools.github.io/#/supreme)

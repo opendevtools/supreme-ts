@@ -1,10 +1,10 @@
 {
-  "name": "@iteam/supreme",
+  "name": "@opendevtools/supreme",
   "version": "2.13.1",
   "description": "A CLI tool that helps you get up an running fast",
   "author": {
-    "name": "Rickard Laurin",
-    "email": "rickard.laurin@gmail.com",
+    "name": "Rickard Natt och Dag",
+    "email": "nattochdag@hey.com",
     "url": "https://willcodefor.beer"
   },
   "contributors": [
@@ -15,9 +15,9 @@
       "name": "Andreas Lundqvist"
     }
   ],
-  "repository": "github:Iteam1337/supreme",
-  "homepage": "https://iteam1337.github.io/#/supreme",
-  "bugs": "https://github.com/Iteam1337/supreme/issues",
+  "repository": "github:opendevtools/supreme",
+  "homepage": "https://opendevtools.github.io/#/supreme",
+  "bugs": "https://opendevtools.com/Iteam1337/supreme/issues",
   "main": "bin/supreme",
   "bin": "bin/supreme",
   "preferGlobal": true,
