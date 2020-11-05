@@ -1,3 +1,10 @@
+## [2.13.2](https://github.com/opendevtools/supreme/compare/v2.13.1...v2.13.2) (2020-11-05)
+
+
+### Bug Fixes
+
+* **build:** publish to new organization ([018ada8](https://github.com/opendevtools/supreme/commit/018ada841bae90c4ebac59277fc13d0bdf2d4d82))
+
 ## [2.13.1](https://github.com/Iteam1337/supreme/compare/v2.13.0...v2.13.1) (2020-10-30)
 
 
