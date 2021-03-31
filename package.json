@@ -51,7 +51,7 @@
   },
   "devDependencies": {
     "@babel/preset-env": "7.13.12",
-    "@babel/preset-typescript": "7.12.1",
+    "@babel/preset-typescript": "7.13.0",
     "@iteam/config": "12.1.1",
     "@semantic-release/changelog": "5.0.1",
     "@semantic-release/git": "9.0.0",
