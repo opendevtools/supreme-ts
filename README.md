@@ -1,3 +1,7 @@
+# DEPRECATED
+
+Use [Supreme](https://github.com/opendevtools/supreme) instead which is a rebuilt version.
+
 [![](https://github.com/opendevtools/supreme/workflows/Release/badge.svg)](https://github.com/opendevtools/supreme/actions?workflow=Release)
 [![npm (scoped)](https://img.shields.io/npm/v/@opendevtools/supreme)](https://npm.im/@opendevtools/supreme)
 
